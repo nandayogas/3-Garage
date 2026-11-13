@@ -101,14 +101,14 @@
                     <a href="#hero" onclick="toggleMobileMenu(); showSection('publicHome');" class="flex items-center gap-4 p-3.5 rounded-xl bg-brand-dark/50 hover:bg-brand-blue/10 text-gray-200 hover:text-brand-blue transition-colors font-medium">
                         <i class="fa-solid fa-house w-6 text-brand-blue"></i> Beranda Utama
                     </a>
-                    <a href="#catalog" onclick="toggleMobileMenu(); showSection('publicHome'); scrollToSection('catalogSection');" class="flex items-center gap-4 p-3.5 rounded-xl bg-brand-dark/50 hover:bg-brand-blue/10 text-gray-200 hover:text-brand-blue transition-colors font-medium">
+                    <a href="#partsSection" onclick="toggleMobileMenu(); showSection('publicHome'); scrollToSection('partsSection');" class="flex items-center gap-4 p-3.5 rounded-xl bg-brand-dark/50 hover:bg-brand-blue/10 text-gray-200 hover:text-brand-blue transition-colors font-medium">
+                        <i class="fa-solid fa-box-open w-6 text-brand-orange"></i> Katalog Sparepart & Oli
+                    </a>
+                    <a href="#catalogSection" onclick="toggleMobileMenu(); showSection('publicHome'); scrollToSection('catalogSection');" class="flex items-center gap-4 p-3.5 rounded-xl bg-brand-dark/50 hover:bg-brand-blue/10 text-gray-200 hover:text-brand-blue transition-colors font-medium">
                         <i class="fa-solid fa-video w-6 text-brand-blue"></i> Katalog Video Projek
                     </a>
                     <a href="#about" onclick="toggleMobileMenu(); showSection('publicHome'); scrollToSection('aboutSection');" class="flex items-center gap-4 p-3.5 rounded-xl bg-brand-dark/50 hover:bg-brand-blue/10 text-gray-200 hover:text-brand-blue transition-colors font-medium">
                         <i class="fa-solid fa-circle-info w-6 text-brand-orange"></i> Info Bengkel & Layanan
-                    </a>
-                    <a href="#socials" onclick="toggleMobileMenu(); showSection('publicHome'); scrollToSection('socialsSection');" class="flex items-center gap-4 p-3.5 rounded-xl bg-brand-dark/50 hover:bg-brand-blue/10 text-gray-200 hover:text-brand-blue transition-colors font-medium">
-                        <i class="fa-solid fa-share-nodes w-6 text-brand-orange"></i> Sosial Media Resmi
                     </a>
                     <button onclick="toggleMobileMenu(); openBookingModal();" class="w-full flex items-center gap-4 p-3.5 rounded-xl bg-brand-blue/20 border border-brand-blue/40 text-blue-400 hover:bg-brand-blue hover:text-white transition-all font-medium text-left">
                         <i class="fa-solid fa-calendar-plus w-6"></i> Form Booking Servis
@@ -142,7 +142,6 @@
                 </div>
 
                 <div class="relative z-10 max-w-4xl mx-auto text-center space-y-6">
-                    <!-- BOOKING TODAY LIVE COUNTER BADGE & CAR NAMES -->
                     <div class="inline-flex flex-col items-center gap-1 px-6 py-3 rounded-2xl bg-brand-card/90 border border-brand-orange/50 text-white text-xs sm:text-sm backdrop-blur-md shadow-xl">
                         <div class="flex items-center gap-2">
                             <span class="w-2.5 h-2.5 rounded-full bg-brand-orange animate-ping"></span>
@@ -163,10 +162,31 @@
                         <button onclick="openBookingModal()" class="w-full sm:w-auto px-8 py-4 rounded-xl bg-gradient-to-r from-brand-blue to-blue-600 hover:from-blue-600 hover:to-brand-blue text-white font-bold text-base shadow-xl shadow-blue-600/30 transition-all transform hover:-translate-y-0.5">
                             <i class="fa-solid fa-calendar-days mr-2"></i>Booking Jadwal Servis
                         </button>
-                        <a href="#catalogSection" class="w-full sm:w-auto px-8 py-4 rounded-xl bg-brand-card/80 hover:bg-brand-card border border-brand-border text-white font-semibold text-base backdrop-blur-md transition-all">
-                            <i class="fa-solid fa-play mr-2 text-brand-orange"></i>Tonton Katalog Video
+                        <a href="#partsSection" class="w-full sm:w-auto px-8 py-4 rounded-xl bg-brand-card/80 hover:bg-brand-card border border-brand-border text-white font-semibold text-base backdrop-blur-md transition-all">
+                            <i class="fa-solid fa-box-open mr-2 text-brand-orange"></i>Lihat Katalog Sparepart
                         </a>
                     </div>
+                </div>
+            </section>
+
+            <!-- SPAREPART & OLI CATALOG SECTION (DYNAMIC & FLEXIBLE) -->
+            <section id="partsSection" class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-8">
+                <div class="flex flex-col sm:flex-row items-start sm:items-end justify-between gap-4 border-b border-brand-border pb-4">
+                    <div>
+                        <span class="text-xs font-bold tracking-widest text-brand-blue uppercase">Suku Cadang & Pelumas Resmi</span>
+                        <h3 class="text-2xl sm:text-3xl font-extrabold text-white">Katalog Sparepart & Produk</h3>
+                    </div>
+                    <p class="text-sm text-gray-400">Pilih kategori atau langsung pesan via WhatsApp.</p>
+                </div>
+
+                <!-- Tombol Filter Kategori Otomatis -->
+                <div id="publicCategoryTabs" class="flex flex-wrap gap-3">
+                    <!-- Terisi otomatis oleh script sesuai kategori yang ada -->
+                </div>
+
+                <!-- Grid Tampilan Produk Sparepart -->
+                <div id="publicPartsGrid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                    <!-- Dinamis terisi dari script -->
                 </div>
             </section>
 
@@ -182,83 +202,6 @@
 
                 <div id="publicMediaGrid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                     <!-- Dynamic Media Rendered Here -->
-                </div>
-            </section>
-
-            <!-- SPAREPART, OLI & CHEMICAL CATALOG SECTION -->
-            <section id="partsSection" class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-8">
-                <div class="flex flex-col sm:flex-row items-start sm:items-end justify-between gap-4 border-b border-brand-border pb-4">
-                    <div>
-                        <span class="text-xs font-bold tracking-widest text-brand-blue uppercase">Suku Cadang & Cairan Resmi</span>
-                        <h3 class="text-2xl sm:text-3xl font-extrabold text-white">Katalog Oli, Chemical & Sparepart Spesialis</h3>
-                    </div>
-                    <p class="text-sm text-gray-400">Komponen berkualitas tinggi untuk menjaga performa mobil sport Jepang Anda.</p>
-                </div>
-
-                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-                    <!-- Part 1 -->
-                    <div class="bg-brand-card border border-brand-border rounded-2xl p-6 space-y-4 hover:border-brand-blue transition-all">
-                        <div class="w-12 h-12 rounded-xl bg-blue-500/20 text-brand-blue flex items-center justify-center text-xl font-bold">
-                            <i class="fa-solid fa-oil-can"></i>
-                        </div>
-                        <div>
-                            <span class="text-[10px] uppercase font-bold text-brand-blue tracking-widest">Oli Mesin High Performance</span>
-                            <h4 class="text-white font-bold text-lg">Motul 300V / Eneos Sustina</h4>
-                            <p class="text-xs text-gray-400 mt-1">Viskositas khusus 0W-20 & 5W-40 untuk perlindungan mesin Boxer & Rotary suhu tinggi.</p>
-                        </div>
-                        <div class="pt-2 border-t border-brand-border flex items-center justify-between text-xs font-semibold">
-                            <span class="text-brand-orange">Ready Stock</span>
-                            <span class="text-gray-300">Original Import</span>
-                        </div>
-                    </div>
-
-                    <!-- Part 2 -->
-                    <div class="bg-brand-card border border-brand-border rounded-2xl p-6 space-y-4 hover:border-brand-orange transition-all">
-                        <div class="w-12 h-12 rounded-xl bg-orange-500/20 text-brand-orange flex items-center justify-center text-xl font-bold">
-                            <i class="fa-solid fa-spray-can-sparkles"></i>
-                        </div>
-                        <div>
-                            <span class="text-[10px] uppercase font-bold text-brand-orange tracking-widest">Chemical & Carbon Cleaner</span>
-                            <h4 class="text-white font-bold text-lg">Liqui Moly & Subaru Carbon Clean</h4>
-                            <p class="text-xs text-gray-400 mt-1">Pembersih kerak injektor dan ruang bakar khusus mesin direct injection & rotary.</p>
-                        </div>
-                        <div class="pt-2 border-t border-brand-border flex items-center justify-between text-xs font-semibold">
-                            <span class="text-brand-orange">Ready Stock</span>
-                            <span class="text-gray-300">Workshop Grade</span>
-                        </div>
-                    </div>
-
-                    <!-- Part 3 -->
-                    <div class="bg-brand-card border border-brand-border rounded-2xl p-6 space-y-4 hover:border-brand-blue transition-all">
-                        <div class="w-12 h-12 rounded-xl bg-blue-500/20 text-brand-blue flex items-center justify-center text-xl font-bold">
-                            <i class="fa-solid fa-gears"></i>
-                        </div>
-                        <div>
-                            <span class="text-[10px] uppercase font-bold text-brand-blue tracking-widest">Engine Internals</span>
-                            <h4 class="text-white font-bold text-lg">Forged Piston & Apex Seals</h4>
-                            <p class="text-xs text-gray-400 mt-1">CP Pistons, Manley Conrods, dan OEM Mazda Rotary Apex Seals untuk ketahanan boost tinggi.</p>
-                        </div>
-                        <div class="pt-2 border-t border-brand-border flex items-center justify-between text-xs font-semibold">
-                            <span class="text-brand-orange">By Order / Ready</span>
-                            <span class="text-gray-300">Racing Spec</span>
-                        </div>
-                    </div>
-
-                    <!-- Part 4 -->
-                    <div class="bg-brand-card border border-brand-border rounded-2xl p-6 space-y-4 hover:border-brand-orange transition-all">
-                        <div class="w-12 h-12 rounded-xl bg-orange-500/20 text-brand-orange flex items-center justify-center text-xl font-bold">
-                            <i class="fa-solid fa-shield-halved"></i>
-                        </div>
-                        <div>
-                            <span class="text-[10px] uppercase font-bold text-brand-orange tracking-widest">Filters & Ignition</span>
-                            <h4 class="text-white font-bold text-lg">OEM Oil Filter & Iridium Plugs</h4>
-                            <p class="text-xs text-gray-400 mt-1">Genuine Subaru/Mazda oil filter, Denso Iridium Racing spark plugs untuk pengapian sempurna.</p>
-                        </div>
-                        <div class="pt-2 border-t border-brand-border flex items-center justify-between text-xs font-semibold">
-                            <span class="text-brand-orange">Ready Stock</span>
-                            <span class="text-gray-300">100% Genuine</span>
-                        </div>
-                    </div>
                 </div>
             </section>
 
@@ -335,7 +278,7 @@
                         </div>
                         <div>
                             <h4 class="font-bold text-white text-lg">WhatsApp Admin</h4>
-                            <p class="text-xs text-gray-400">+62 812-3456-7890</p>
+                            <p class="text-xs text-gray-400">+62 895-3929-22023</p>
                         </div>
                     </a>
                 </div>
@@ -355,7 +298,7 @@
                     </div>
                     <div>
                         <h2 class="text-xl font-extrabold text-white">Panel Kontrol Admin (Nanda)</h2>
-                        <p class="text-xs text-gray-400">Kelola jadwal booking, status servis, dan galeri media online.</p>
+                        <p class="text-xs text-gray-400">Kelola jadwal booking, katalog sparepart, dan galeri media online.</p>
                     </div>
                 </div>
                 <div class="flex items-center gap-3 w-full sm:w-auto">
@@ -369,12 +312,15 @@
             </div>
 
             <!-- ADMIN TABS NAVIGATION -->
-            <div class="flex border-b border-brand-border gap-6">
-                <button onclick="switchAdminTab('bookingsTab')" id="btnBookingsTab" class="pb-4 font-bold text-sm border-b-2 border-brand-blue text-brand-blue transition-colors flex items-center gap-2">
+            <div class="flex border-b border-brand-border gap-6 overflow-x-auto">
+                <button onclick="switchAdminTab('bookingsTab')" id="btnBookingsTab" class="pb-4 font-bold text-sm border-b-2 border-brand-blue text-brand-blue transition-colors flex items-center gap-2 whitespace-nowrap">
                     <i class="fa-solid fa-calendar-days"></i> Kelola Booking Servis (<span id="adminBookingCount">0</span>)
                 </button>
-                <button onclick="switchAdminTab('mediaTab')" id="btnMediaTab" class="pb-4 font-semibold text-sm border-b-2 border-transparent text-gray-400 hover:text-white transition-colors flex items-center gap-2">
-                    <i class="fa-solid photo-film"></i> Kelola Galeri Media (Foto/Video) (<span id="adminMediaCount">0</span>)
+                <button onclick="switchAdminTab('partsTab')" id="btnPartsTab" class="pb-4 font-semibold text-sm border-b-2 border-transparent text-gray-400 hover:text-white transition-colors flex items-center gap-2 whitespace-nowrap">
+                    <i class="fa-solid fa-box-open"></i> Kelola Katalog Sparepart (<span id="adminPartsCount">0</span>)
+                </button>
+                <button onclick="switchAdminTab('mediaTab')" id="btnMediaTab" class="pb-4 font-semibold text-sm border-b-2 border-transparent text-gray-400 hover:text-white transition-colors flex items-center gap-2 whitespace-nowrap">
+                    <i class="fa-solid fa-photo-film"></i> Kelola Galeri Media (<span id="adminMediaCount">0</span>)
                 </button>
             </div>
 
@@ -406,15 +352,73 @@
                 </div>
             </div>
 
-            <!-- TAB 2: MEDIA GALLERY MANAGEMENT (FOTO & VIDEO) -->
+            <!-- TAB 2: SPAREPART CATALOG MANAGEMENT (WITH IMAGE & CUSTOM STATUS) -->
+            <div id="contentPartsTab" class="space-y-6 hidden">
+                <div class="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
+                    <h3 class="text-lg font-bold text-white">Tambah & Kelola Sparepart, Oli, atau Produk Lain</h3>
+                    <div class="text-xs text-gray-400">Upload foto produk, atur kategori bebas, dan status stok sesuka Anda.</div>
+                </div>
+
+                <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+                    <!-- Form Tambah Produk -->
+                    <div class="bg-brand-card border border-brand-border rounded-2xl p-6 shadow-xl space-y-4 h-fit">
+                        <h4 class="font-bold text-white text-base border-b border-brand-border pb-3">Tambah Produk Baru</h4>
+                        <form onsubmit="handleSparepartAdd(event)" class="space-y-3">
+                            <div>
+                                <label class="block text-xs font-bold uppercase text-gray-400 mb-1">Nama Produk / Barang</label>
+                                <input type="text" id="partName" placeholder="Contoh: Motul 300V 5W-40" required
+                                       class="w-full bg-brand-dark border border-brand-border rounded-xl px-4 py-2.5 text-white text-sm focus:outline-none focus:border-brand-blue">
+                            </div>
+                            <div>
+                                <label class="block text-xs font-bold uppercase text-gray-400 mb-1">Nama Kategori (Bebas)</label>
+                                <input type="text" id="partCategory" placeholder="Contoh: Oli Mesin / Kaki-kaki / Turbo" required
+                                       class="w-full bg-brand-dark border border-brand-border rounded-xl px-4 py-2.5 text-white text-sm focus:outline-none focus:border-brand-blue">
+                                <p class="text-[10px] text-gray-500 mt-1">Ketik apa saja untuk membuat tab kategori baru di web.</p>
+                            </div>
+                            <div>
+                                <label class="block text-xs font-bold uppercase text-gray-400 mb-1">Harga</label>
+                                <input type="text" id="partPrice" placeholder="Contoh: Rp 250.000" required
+                                       class="w-full bg-brand-dark border border-brand-border rounded-xl px-4 py-2.5 text-white text-sm focus:outline-none focus:border-brand-blue">
+                            </div>
+                            <div>
+                                <label class="block text-xs font-bold uppercase text-gray-400 mb-1">Status Ketersediaan Stok</label>
+                                <input type="text" id="partStatus" placeholder="Contoh: Ready Stock / Stok Terbatas / By Order" value="Ready Stock" required
+                                       class="w-full bg-brand-dark border border-brand-border rounded-xl px-4 py-2.5 text-white text-sm focus:outline-none focus:border-brand-blue">
+                            </div>
+                            <div>
+                                <label class="block text-xs font-bold uppercase text-gray-400 mb-1">Foto Produk (Pilih Gambar)</label>
+                                <input type="file" id="partImageFile" accept="image/*" required
+                                       class="w-full text-xs text-gray-400 file:mr-4 file:py-2 file:px-4 file:rounded-xl file:border-0 file:text-xs file:font-semibold file:bg-brand-blue file:text-white hover:file:bg-blue-600 cursor-pointer">
+                            </div>
+                            <div>
+                                <label class="block text-xs font-bold uppercase text-gray-400 mb-1">Deskripsi Singkat</label>
+                                <textarea id="partDesc" rows="2" placeholder="Spesifikasi produk..." required
+                                          class="w-full bg-brand-dark border border-brand-border rounded-xl px-4 py-2.5 text-white text-sm focus:outline-none focus:border-brand-blue"></textarea>
+                            </div>
+                            <button type="submit" class="w-full py-2.5 rounded-xl bg-brand-blue hover:bg-blue-600 text-white font-bold text-sm shadow-lg shadow-blue-600/20 transition-all">
+                                <i class="fa-solid fa-plus mr-2"></i>Simpan Produk
+                            </button>
+                        </form>
+                    </div>
+
+                    <!-- List Produk di Admin -->
+                    <div class="lg:col-span-2 bg-brand-card border border-brand-border rounded-2xl p-6 shadow-xl space-y-4">
+                        <h4 class="font-bold text-white text-base border-b border-brand-border pb-3">Daftar Produk Aktif di Katalog</h4>
+                        <div id="adminPartsGrid" class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                            <!-- Rendered dynamically -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- TAB 3: MEDIA GALLERY MANAGEMENT (FOTO & VIDEO) -->
             <div id="contentMediaTab" class="space-y-6 hidden">
                 <div class="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
                     <h3 class="text-lg font-bold text-white">Kelola Galeri Online (Foto / Video)</h3>
                 </div>
 
-                <!-- Action Cards for Adding Media -->
                 <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
-                    <!-- Upload From Device (Photo/Video) -->
+                    <!-- Upload From Device -->
                     <div class="bg-brand-card border border-brand-border rounded-2xl p-6 shadow-xl space-y-4">
                         <div class="flex items-center gap-3">
                             <div class="w-10 h-10 rounded-xl bg-brand-blue/20 text-brand-blue flex items-center justify-center font-bold">
@@ -447,7 +451,7 @@
                         </form>
                     </div>
 
-                    <!-- Add YouTube Video with Plus Button -->
+                    <!-- Add YouTube Video -->
                     <div class="bg-brand-card border border-brand-border rounded-2xl p-6 shadow-xl space-y-4 flex flex-col justify-between">
                         <div class="flex items-center gap-3">
                             <div class="w-10 h-10 rounded-xl bg-red-500/20 text-red-500 flex items-center justify-center font-bold text-lg">
@@ -632,7 +636,7 @@
 
     <!-- JAVASCRIPT LOGIC -->
     <script>
-        // Default Mock Data for Media Gallery (Photos & Videos)
+        // Default Mock Data for Media Gallery
         const defaultMedia = [
             {
                 id: 1,
@@ -647,17 +651,50 @@
                 title: "Engine Bay Detailing Mazda RX-7 FD3S",
                 url: "https://images.unsplash.com/photo-1617814076367-b759c7d7e738?w=800&auto=format&fit=crop&q=80",
                 desc: "Perapihan kabel wire-tuck dan instalasi intercooler custom untuk putaran rotary optimal."
-            },
-            {
-                id: 3,
-                type: "video",
-                title: "Subaru BRZ FA20 Supercharger Kit Installation & Dyno Tune",
-                url: "https://www.youtube.com/embed/dQw4w9WgXcQ",
-                desc: "Pemasangan bolt-on supercharger rotrex dan kalibrasi ECU menggunakan EcuTek untuk lonjakan tenaga signifikan."
             }
         ];
 
-        // Format today's date YYYY-MM-DD for testing counter
+        // Default Mock Data for Spareparts Catalog (with image and custom status)
+        const defaultParts = [
+            {
+                id: 201,
+                name: "Motul H-Tech 100 Plus 5W-30 (1L)",
+                category: "Oli Mesin",
+                price: "Rp 185.000",
+                status: "Ready Stock",
+                image: "https://images.unsplash.com/photo-1553531384-cc64ac80f931?w=600&auto=format&fit=crop&q=80",
+                desc: "Oli sintetis khusus mesin modern Subaru & Mazda."
+            },
+            {
+                id: 202,
+                name: "Idemitsu Zepro Touring 0W-20 (1L)",
+                category: "Oli Mesin",
+                price: "Rp 160.000",
+                status: "Stok Terbatas",
+                image: "https://images.unsplash.com/photo-1486006920555-c77dce18193b?w=600&auto=format&fit=crop&q=80",
+                desc: "Oli standar pabrikan jepang untuk efisiensi maksimal."
+            },
+            {
+                id: 203,
+                name: "Filter Oli Original Subaru",
+                category: "Filter & Rem",
+                price: "Rp 125.000",
+                status: "Ready Stock",
+                image: "https://images.unsplash.com/photo-1580273916550-e323be2ae537?w=600&auto=format&fit=crop&q=80",
+                desc: "Menyaring kotoran mesin secara optimal."
+            },
+            {
+                id: 204,
+                name: "Kampas Rem Depan Bendix Racing",
+                category: "Filter & Rem",
+                price: "Rp 650.000",
+                status: "By Order",
+                image: "https://images.unsplash.com/photo-1486006920555-c77dce18193b?w=600&auto=format&fit=crop&q=80",
+                desc: "Pengereman lebih pepat dan tahan suhu tinggi."
+            }
+        ];
+
+        // Format today's date YYYY-MM-DD
         const todayStr = new Date().toISOString().split('T')[0];
 
         const defaultBookings = [
@@ -687,6 +724,9 @@
         if (!localStorage.getItem('garage_media')) {
             localStorage.setItem('garage_media', JSON.stringify(defaultMedia));
         }
+        if (!localStorage.getItem('garage_parts')) {
+            localStorage.setItem('garage_parts', JSON.stringify(defaultParts));
+        }
         if (!localStorage.getItem('garage_bookings')) {
             localStorage.setItem('garage_bookings', JSON.stringify(defaultBookings));
         }
@@ -694,7 +734,9 @@
         // App Initialization on Load
         window.onload = function() {
             renderPublicMedia();
+            initPublicPartsCatalog();
             renderAdminBookings();
+            renderAdminParts();
             renderAdminMedia();
             updateTodayBookingCounter();
             
@@ -841,20 +883,182 @@
         // Admin Tabs Switcher
         function switchAdminTab(tabName) {
             const btnBookings = document.getElementById('btnBookingsTab');
+            const btnParts = document.getElementById('btnPartsTab');
             const btnMedia = document.getElementById('btnMediaTab');
+            
             const contentBookings = document.getElementById('contentBookingsTab');
+            const contentParts = document.getElementById('contentPartsTab');
             const contentMedia = document.getElementById('contentMediaTab');
 
+            // Reset tabs style
+            btnBookings.className = "pb-4 font-semibold text-sm border-b-2 border-transparent text-gray-400 hover:text-white transition-colors flex items-center gap-2 whitespace-nowrap";
+            btnParts.className = "pb-4 font-semibold text-sm border-b-2 border-transparent text-gray-400 hover:text-white transition-colors flex items-center gap-2 whitespace-nowrap";
+            btnMedia.className = "pb-4 font-semibold text-sm border-b-2 border-transparent text-gray-400 hover:text-white transition-colors flex items-center gap-2 whitespace-nowrap";
+            
+            contentBookings.classList.add('hidden');
+            contentParts.classList.add('hidden');
+            contentMedia.classList.add('hidden');
+
             if (tabName === 'bookingsTab') {
-                btnBookings.className = "pb-4 font-bold text-sm border-b-2 border-brand-blue text-brand-blue transition-colors flex items-center gap-2";
-                btnMedia.className = "pb-4 font-semibold text-sm border-b-2 border-transparent text-gray-400 hover:text-white transition-colors flex items-center gap-2";
+                btnBookings.className = "pb-4 font-bold text-sm border-b-2 border-brand-blue text-brand-blue transition-colors flex items-center gap-2 whitespace-nowrap";
                 contentBookings.classList.remove('hidden');
-                contentMedia.classList.add('hidden');
+            } else if (tabName === 'partsTab') {
+                btnParts.className = "pb-4 font-bold text-sm border-b-2 border-brand-orange text-brand-orange transition-colors flex items-center gap-2 whitespace-nowrap";
+                contentParts.classList.remove('hidden');
             } else {
-                btnMedia.className = "pb-4 font-bold text-sm border-b-2 border-brand-orange text-brand-orange transition-colors flex items-center gap-2";
-                btnBookings.className = "pb-4 font-semibold text-sm border-b-2 border-transparent text-gray-400 hover:text-white transition-colors flex items-center gap-2";
+                btnMedia.className = "pb-4 font-bold text-sm border-b-2 border-brand-orange text-brand-orange transition-colors flex items-center gap-2 whitespace-nowrap";
                 contentMedia.classList.remove('hidden');
-                contentBookings.classList.add('hidden');
+            }
+        }
+
+        // Dynamic Public Parts Catalog with Auto-Categories
+        function initPublicPartsCatalog() {
+            const partsList = JSON.parse(localStorage.getItem('garage_parts')) || [];
+            const categories = [...new Set(partsList.map(p => p.category))];
+            
+            const tabsContainer = document.getElementById('publicCategoryTabs');
+            if (categories.length === 0) {
+                tabsContainer.innerHTML = `<p class="text-gray-500 text-xs">Belum ada kategori produk.</p>`;
+                document.getElementById('publicPartsGrid').innerHTML = '';
+                return;
+            }
+
+            // Render category buttons dynamically
+            tabsContainer.innerHTML = categories.map((cat, idx) => `
+                <button onclick="filterPublicParts('${cat}')" id="catBtn_${idx}" class="px-5 py-2.5 rounded-xl text-xs font-bold transition-all ${idx === 0 ? 'bg-brand-blue text-white shadow-lg shadow-blue-500/20' : 'bg-brand-card border border-brand-border text-gray-300 hover:text-white'}">
+                    <i class="fa-solid fa-box-open mr-2"></i>${cat}
+                </button>
+            `).join('');
+
+            // Load first category by default
+            filterPublicParts(categories[0]);
+        }
+
+        function filterPublicParts(selectedCategory) {
+            const partsList = JSON.parse(localStorage.getItem('garage_parts')) || [];
+            const categories = [...new Set(partsList.map(p => p.category))];
+
+            // Highlight active tab
+            categories.forEach((cat, idx) => {
+                const btn = document.getElementById(`catBtn_${idx}`);
+                if (btn) {
+                    if (cat === selectedCategory) {
+                        btn.className = "px-5 py-2.5 rounded-xl bg-brand-blue text-white text-xs font-bold transition-all shadow-lg shadow-blue-500/20";
+                    } else {
+                        btn.className = "px-5 py-2.5 rounded-xl bg-brand-card border border-brand-border text-gray-300 hover:text-white text-xs font-bold transition-all";
+                    }
+                }
+            });
+
+            const filtered = partsList.filter(p => p.category === selectedCategory);
+            const grid = document.getElementById('publicPartsGrid');
+
+            if (filtered.length === 0) {
+                grid.innerHTML = `<p class="col-span-full text-center text-gray-500 py-10">Belum ada produk dalam kategori ini.</p>`;
+                return;
+            }
+
+            grid.innerHTML = filtered.map(p => `
+                <div class="bg-brand-card border border-brand-border rounded-2xl overflow-hidden hover:border-brand-blue transition-all flex flex-col justify-between shadow-xl">
+                    <div>
+                        <div class="relative aspect-video bg-black overflow-hidden">
+                            <img src="${p.image}" alt="${p.name}" class="w-full h-full object-cover hover:scale-105 transition-transform duration-500" onerror="this.src='https://images.unsplash.com/photo-1552519507-da3b142c6e3d?w=600&auto=format&fit=crop&q=80'">
+                            <span class="absolute top-3 left-3 px-2.5 py-1 rounded-lg bg-brand-orange/90 text-white text-[10px] font-bold uppercase tracking-wider backdrop-blur-md">${p.status}</span>
+                        </div>
+                        <div class="p-5 space-y-2">
+                            <span class="text-[10px] uppercase font-bold text-brand-blue tracking-widest">${p.category}</span>
+                            <h4 class="text-white font-bold text-base leading-snug">${p.name}</h4>
+                            <p class="text-xs text-gray-400 leading-relaxed">${p.desc}</p>
+                        </div>
+                    </div>
+                    <div class="p-5 pt-0 space-y-3">
+                        <div class="flex items-center justify-between text-sm font-bold">
+                            <span class="text-brand-orange text-base">${p.price}</span>
+                        </div>
+                        <button onclick="pesanSparepart('${p.name}', '${p.price}')" class="w-full py-2.5 rounded-xl bg-green-600 hover:bg-green-700 text-white font-bold text-xs shadow-lg transition-all flex items-center justify-center gap-2">
+                            <i class="fa-brands fa-whatsapp"></i>Pesan via WhatsApp
+                        </button>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        // WhatsApp Order Trigger for Spareparts
+        function pesanSparepart(namaBarang, hargaBarang) {
+            const nomorWhatsApp = "62895392922023";
+            const pesan = `Halo 3 Garage, saya ingin memesan produk berikut:%0A%0A` +
+                          `*Produk:* ${namaBarang}%0A` +
+                          `*Harga:* ${hargaBarang}%0A%0A` +
+                          `Mohon informasi ketersediaan dan cara pengambilan/pengirimannya. Terima kasih!`;
+            
+            window.location.href = `https://wa.me/${nomorWhatsApp}?text=${pesan}`;
+        }
+
+        // Admin Sparepart Management (with image upload and custom status)
+        function renderAdminParts() {
+            const partsList = JSON.parse(localStorage.getItem('garage_parts')) || [];
+            document.getElementById('adminPartsCount').textContent = partsList.length;
+            const grid = document.getElementById('adminPartsGrid');
+
+            if (partsList.length === 0) {
+                grid.innerHTML = `<p class="col-span-2 text-center text-gray-500 py-6">Belum ada sparepart.</p>`;
+                return;
+            }
+
+            grid.innerHTML = partsList.map(p => `
+                <div class="bg-brand-dark border border-brand-border rounded-xl p-4 flex flex-col justify-between space-y-3">
+                    <div class="flex gap-3">
+                        <img src="${p.image}" class="w-16 h-16 rounded-lg object-cover border border-brand-border" onerror="this.src='https://images.unsplash.com/photo-1552519507-da3b142c6e3d?w=200&auto=format&fit=crop&q=80'">
+                        <div class="flex-1 min-w-0">
+                            <div class="flex items-center justify-between gap-2">
+                                <span class="text-[9px] uppercase font-bold text-brand-orange px-1.5 py-0.5 rounded bg-brand-card truncate">${p.category}</span>
+                                <span class="text-[10px] font-bold text-green-400">${p.status}</span>
+                            </div>
+                            <h5 class="font-bold text-white text-xs mt-1 truncate">${p.name}</h5>
+                            <p class="text-xs font-bold text-brand-blue mt-0.5">${p.price}</p>
+                        </div>
+                    </div>
+                    <button onclick="deleteSparepart(${p.id})" class="w-full py-1.5 rounded-lg bg-red-600/20 border border-red-500/40 text-red-400 hover:bg-red-600 hover:text-white text-xs font-bold transition-all">
+                        <i class="fa-solid fa-trash mr-1"></i>Hapus Produk
+                    </button>
+                </div>
+            `).join('');
+        }
+
+        function handleSparepartAdd(e) {
+            e.preventDefault();
+            const name = document.getElementById('partName').value;
+            const category = document.getElementById('partCategory').value.trim();
+            const price = document.getElementById('partPrice').value;
+            const status = document.getElementById('partStatus').value;
+            const desc = document.getElementById('partDesc').value;
+            const imageFile = document.getElementById('partImageFile');
+
+            if (imageFile.files && imageFile.files[0]) {
+                const reader = new FileReader();
+                reader.onload = function(uploadEvent) {
+                    const imageUrl = uploadEvent.target.result;
+
+                    let partsList = JSON.parse(localStorage.getItem('garage_parts')) || [];
+                    partsList.unshift({ id: Date.now(), name, category, price, status, image: imageUrl, desc });
+                    localStorage.setItem('garage_parts', JSON.stringify(partsList));
+
+                    e.target.reset();
+                    renderAdminParts();
+                    initPublicPartsCatalog();
+                    alert('Produk berhasil ditambahkan dengan foto & status ketersediaannya!');
+                };
+                reader.readAsDataURL(imageFile.files[0]);
+            }
+        }
+
+        function deleteSparepart(id) {
+            if (confirm('Yakin ingin menghapus produk ini dari katalog?')) {
+                let partsList = JSON.parse(localStorage.getItem('garage_parts')) || [];
+                partsList = partsList.filter(p => p.id !== id);
+                localStorage.setItem('garage_parts', JSON.stringify(partsList));
+                renderAdminParts();
+                initPublicPartsCatalog();
             }
         }
 
@@ -984,7 +1188,7 @@
             e.target.reset();
             renderAdminMedia();
             renderPublicMedia();
-            alert('Video YouTube berhasil ditambahkan dengan tombol (+) dan dipublikasikan!');
+            alert('Video YouTube berhasil ditambahkan dan dipublikasikan!');
         }
 
         function deleteMedia(id) {
@@ -1063,95 +1267,5 @@
             }
         }
     </script>
-    <!-- Bagian Form Booking Servis -->
-<section id="booking-section" style="padding: 20px; background: #121212; color: #fff; font-family: sans-serif; margin-top: 20px;">
-    <h2>Form Booking Servis 3 Garage</h2>
-    <p>Spesialis Subaru & Mazda</p>
-    
-    <form id="whatsappBookingForm" style="display: flex; flex-direction: column; gap: 12px; max-width: 400px;">
-        <label for="nama">Nama Lengkap:</label>
-        <input type="text" id="nama" required style="padding: 10px; border-radius: 5px; border: 1px solid #444; background: #222; color: #fff;">
-
-        <label for="mobil">Model Mobil (Contoh: Subaru Impreza / Mazda 2):</label>
-        <input type="text" id="mobil" required style="padding: 10px; border-radius: 5px; border: 1px solid #444; background: #222; color: #fff;">
-
-        <label for="layanan">Jenis Servis / Keluhan:</label>
-        <select id="layanan" style="padding: 10px; border-radius: 5px; border: 1px solid #444; background: #222; color: #fff;">
-            <option value="Servis Berkala / Tune Up">Servis Berkala / Tune Up</option>
-            <option value="Turun Mesin / Overhaul">Turun Mesin / Overhaul</option>
-            <option value="Kaki-kaki & Suspensi">Kaki-kaki & Suspensi</option>
-            <option value="Scanner & Diagnostik">Scanner & Diagnostik</option>
-            <option value="Lainnya">Lainnya</option>
-        </select>
-
-        <label for="tanggal">Rencana Tanggal Kedatangan:</label>
-        <input type="date" id="tanggal" required style="padding: 10px; border-radius: 5px; border: 1px solid #444; background: #222; color: #fff;">
-
-        <button type="submit" style="padding: 12px; background: #25D366; color: #fff; font-weight: bold; border: none; border-radius: 5px; cursor: pointer; margin-top: 10px;">
-            Kirim Booking via WhatsApp
-        </button>
-    </form>
-</section>
-
-<!-- Skrip JavaScript untuk Otomatis Kirim Pesan ke WhatsApp -->
-<script>
-<!-- Bagian Form Booking Servis -->
-<section id="booking-section" style="padding: 20px; background: #121212; color: #fff; font-family: sans-serif; margin-top: 20px;">
-    <h2>Form Booking Servis 3 Garage</h2>
-    <p>Spesialis Subaru & Mazda</p>
-    
-    <div style="display: flex; flex-direction: column; gap: 12px; max-width: 400px;">
-        <label for="nama">Nama Lengkap:</label>
-        <input type="text" id="nama" placeholder="Masukkan nama Anda" style="padding: 10px; border-radius: 5px; border: 1px solid #444; background: #222; color: #fff;">
-
-        <label for="mobil">Model Mobil (Contoh: Subaru Impreza / Mazda 2):</label>
-        <input type="text" id="mobil" placeholder="Model mobil" style="padding: 10px; border-radius: 5px; border: 1px solid #444; background: #222; color: #fff;">
-
-        <label for="layanan">Jenis Servis / Keluhan:</label>
-        <select id="layanan" style="padding: 10px; border-radius: 5px; border: 1px solid #444; background: #222; color: #fff;">
-            <option value="Servis Berkala / Tune Up">Servis Berkala / Tune Up</option>
-            <option value="Turun Mesin / Overhaul">Turun Mesin / Overhaul</option>
-            <option value="Kaki-kaki & Suspensi">Kaki-kaki & Suspensi</option>
-            <option value="Scanner & Diagnostik">Scanner & Diagnostik</option>
-            <option value="Lainnya">Lainnya</option>
-        </select>
-
-        <label for="tanggal">Rencana Tanggal Kedatangan:</label>
-        <input type="date" id="tanggal" style="padding: 10px; border-radius: 5px; border: 1px solid #444; background: #222; color: #fff;">
-
-        <!-- Tombol langsung panggil fungsi JavaScript -->
-        <button type="button" onclick="kirimKeWhatsApp()" style="padding: 12px; background: #25D366; color: #fff; font-weight: bold; border: none; border-radius: 5px; cursor: pointer; margin-top: 10px;">
-            Kirim Booking via WhatsApp
-        </button>
-    </div>
-</section>
-
-<!-- Skrip JavaScript Pemroses Langsung ke WA -->
-<script>
-function kirimKeWhatsApp() {
-    const nama = document.getElementById('nama').value;
-    const mobil = document.getElementById('mobil').value;
-    const layanan = document.getElementById('layanan').value;
-    const tanggal = document.getElementById('tanggal').value;
-    
-    if (!nama || !mobil) {
-        alert("Mohon isi Nama dan Model Mobil terlebih dahulu!");
-        return;
-    }
-    
-    const nomorWhatsApp = "62895392922023";
-    
-    const pesan = `Halo 3 Garage, saya ingin melakukan booking servis.%0A%0A` +
-                  `*Nama:* ${nama}%0A` +
-                  `*Mobil:* ${mobil}%0A` +
-                  `*Jenis Layanan:* ${layanan}%0A` +
-                  `*Tanggal:* ${tanggal}%0A%0A` +
-                  `Mohon konfirmasi jadwalnya. Terima kasih!`;
-    
-    window.location.href = `https://wa.me/${nomorWhatsApp}?text=${pesan}`;
-}
-
-</script>
-
 </body>
 </html>
