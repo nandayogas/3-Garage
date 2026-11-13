@@ -1062,60 +1062,6 @@
                 updateTodayBookingCounter();
             }
         }
-       <section id="booking-section" style="padding: 20px; background: #121212; color: #fff; font-family: sans-serif;">
-    <h2>Form Booking Servis 3 Garage</h2>
-    <p>Spesialis Subaru & Mazda</p>
-    
-    <form id="whatsappBookingForm" style="display: flex; flex-direction: column; gap: 12px; maxWidth: 400px;">
-        <label for="nama">Nama Lengkap:</label>
-        <input type="text" id="nama" required style="padding: 10px; border-radius: 5px; border: 1px solid #444; background: #222; color: #fff;">
-
-        <label for="mobil">Model Mobil (Contoh: Subaru Impreza / Mazda 2):</label>
-        <input type="text" id="mobil" required style="padding: 10px; border-radius: 5px; border: 1px solid #444; background: #222; color: #fff;">
-
-        <label for="layanan">Jenis Servis / Keluhan:</label>
-        <select id="layanan" style="padding: 10px; border-radius: 5px; border: 1px solid #444; background: #222; color: #fff;">
-            <option value="Servis Berkala / Tune Up">Servis Berkala / Tune Up</option>
-            <option value="Turun Mesin / Overhaul">Turun Mesin / Overhaul</option>
-            <option value="Kaki-kaki & Suspensi">Kaki-kaki & Suspensi</option>
-            <option value="Scanner & Diagnostik">Scanner & Diagnostik</option>
-            <option value="Lainnya">Lainnya</option>
-        </select>
-
-        <label for="tanggal">Rencana Tanggal Kedatangan:</label>
-        <input type="date" id="tanggal" required style="padding: 10px; border-radius: 5px; border: 1px solid #444; background: #222; color: #fff;">
-
-        <button type="submit" style="padding: 12px; background: #25D366; color: #fff; font-weight: bold; border: none; border-radius: 5px; cursor: pointer; margin-top: 10px;">
-            Kirim Booking via WhatsApp
-        </button>
-    </form>
-</section>
-<script>
-    document.getElementById('whatsappBookingForm').addEventListener('submit', function(e) {
-        e.preventDefault();
-
-        // Ambil nilai dari form
-        const nama = document.getElementById('nama').value;
-        const mobil = document.getElementById('mobil').value;
-        const layanan = document.getElementById('layanan').value;
-        const tanggal = document.getElementById('tanggal').value;
-
-        // Nomor WhatsApp Anda (Ganti dengan nomor WhatsApp bengkel Anda, format internasional tanpa tanda + atau 0 di depan, misal: 62895392922023)
-        const nomorWhatsApp = "62895392922023";
-
-        // Format pesan yang akan otomatis terkirim
-        const pesan = `Halo 3 Garage, saya ingin melakukan booking servis.%0A%0A` +
-                      `*Nama:* ${nama}%0A` +
-                      `*Mobil:* ${mobil}%0A` +
-                      `*Jenis Layanan:* ${layanan}%0A` +
-                      `*Tanggal:* ${tanggal}%0A%0A` +
-                      `Mohon konfirmasi jadwalnya. Terima kasih!`;
-
-        // Buka link WhatsApp
-        const urlWhatsApp = `https://wa.me/${nomorWhatsApp}?text=${pesan}`;
-        window.open(urlWhatsApp, '_blank');
-    });
     </script>
-    
 </body>
 </html>
