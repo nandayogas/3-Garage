@@ -1,0 +1,1067 @@
+<!DOCTYPE html>
+<html lang="id" class="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>3 Garage - Subaru & Mazda Specialist</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        brand: {
+                            blue: '#0055ff',
+                            orange: '#ff6600',
+                            dark: '#0a0a0c',
+                            card: '#141419',
+                            border: '#262630'
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <!-- Font Inter & Font Awesome Icons -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        body { font-family: 'Inter', sans-serif; background-color: #0a0a0c; color: #f3f4f6; }
+        .glow-blue { box-shadow: 0 0 25px rgba(0, 85, 255, 0.3); }
+        .glow-orange { box-shadow: 0 0 25px rgba(255, 102, 0, 0.3); }
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: #0a0a0c; }
+        ::-webkit-scrollbar-thumb { background: #262630; border-radius: 4px; }
+        ::-webkit-scrollbar-thumb:hover { background: #0055ff; }
+    </style>
+</head>
+<body class="bg-brand-dark min-h-screen flex flex-col selection:bg-brand-blue selection:text-white">
+
+    <!-- NAVIGATION HEADER -->
+    <header class="fixed top-0 left-0 right-0 z-50 bg-brand-dark/90 backdrop-blur-md border-b border-brand-border transition-all duration-300">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+            
+            <!-- LOGO & BRAND -->
+            <a href="#" onclick="showSection('publicHome')" class="flex items-center gap-3 group">
+                <div class="relative w-12 h-12 rounded-full overflow-hidden border-2 border-brand-blue group-hover:border-brand-orange transition-colors">
+                    <img src="logo.png" 
+                         onerror="this.src='https://images.unsplash.com/photo-1552519507-da3b142c6e3d?w=100&auto=format&fit=crop&q=60';" 
+                         alt="3 Garage Logo" class="w-full h-full object-cover">
+                </div>
+                <div>
+                    <h1 class="font-extrabold text-xl tracking-wider text-white flex items-center gap-1">
+                        3 <span class="text-brand-blue">GARAGE</span>
+                    </h1>
+                    <p class="text-[10px] tracking-widest text-brand-orange font-semibold uppercase">Subaru & Mazda Specialist</p>
+                </div>
+            </a>
+
+            <!-- DESKTOP QUICK ACTIONS -->
+            <div class="hidden md:flex items-center gap-4">
+                <button onclick="openBookingModal()" class="px-5 py-2.5 rounded-xl bg-gradient-to-r from-brand-blue to-blue-600 hover:from-blue-600 hover:to-brand-blue text-white font-semibold text-sm shadow-lg shadow-blue-500/20 transition-all transform hover:-translate-y-0.5">
+                    <i class="fa-solid fa-calendar-check mr-2"></i>Booking Servis
+                </button>
+                <button onclick="toggleMobileMenu()" class="w-11 h-11 rounded-xl bg-brand-card border border-brand-border flex items-center justify-center text-gray-300 hover:text-white hover:border-brand-blue transition-colors">
+                    <i class="fa-solid fa-bars text-lg"></i>
+                </button>
+            </div>
+
+            <!-- MOBILE HAMBURGER BUTTON -->
+            <div class="flex md:hidden items-center gap-3">
+                <button onclick="openBookingModal()" class="px-3.5 py-2 rounded-lg bg-brand-blue text-white text-xs font-bold">
+                    Booking
+                </button>
+                <button onclick="toggleMobileMenu()" class="w-10 h-10 rounded-lg bg-brand-card border border-brand-border flex items-center justify-center text-white">
+                    <i class="fa-solid fa-bars text-lg"></i>
+                </button>
+            </div>
+
+        </div>
+    </header>
+
+    <!-- SLIDE-OVER / FULL MENU (HAMBURGER DRAWER) -->
+    <div id="mobileMenu" class="fixed inset-0 z-50 bg-black/80 backdrop-blur-md hidden transition-opacity opacity-0 duration-300">
+        <div class="absolute right-0 top-0 bottom-0 w-full max-w-sm bg-brand-card border-l border-brand-border p-6 flex flex-col justify-between shadow-2xl transform translate-x-full transition-transform duration-300" id="menuDrawer">
+            <div>
+                <div class="flex items-center justify-between mb-8 pb-4 border-b border-brand-border">
+                    <div class="flex items-center gap-3">
+                        <div class="w-10 h-10 rounded-full overflow-hidden border border-brand-blue">
+                            <img src="logo.png" onerror="this.src='https://images.unsplash.com/photo-1552519507-da3b142c6e3d?w=100&auto=format&fit=crop&q=60';" alt="Logo" class="w-full h-full object-cover">
+                        </div>
+                        <span class="font-bold text-lg text-white">3 GARAGE MENU</span>
+                    </div>
+                    <button onclick="toggleMobileMenu()" class="w-9 h-9 rounded-lg bg-brand-dark border border-brand-border flex items-center justify-center text-gray-400 hover:text-white">
+                        <i class="fa-solid fa-xmark text-lg"></i>
+                    </button>
+                </div>
+
+                <nav class="space-y-4">
+                    <a href="#hero" onclick="toggleMobileMenu(); showSection('publicHome');" class="flex items-center gap-4 p-3.5 rounded-xl bg-brand-dark/50 hover:bg-brand-blue/10 text-gray-200 hover:text-brand-blue transition-colors font-medium">
+                        <i class="fa-solid fa-house w-6 text-brand-blue"></i> Beranda Utama
+                    </a>
+                    <a href="#catalog" onclick="toggleMobileMenu(); showSection('publicHome'); scrollToSection('catalogSection');" class="flex items-center gap-4 p-3.5 rounded-xl bg-brand-dark/50 hover:bg-brand-blue/10 text-gray-200 hover:text-brand-blue transition-colors font-medium">
+                        <i class="fa-solid fa-video w-6 text-brand-blue"></i> Katalog Video Projek
+                    </a>
+                    <a href="#about" onclick="toggleMobileMenu(); showSection('publicHome'); scrollToSection('aboutSection');" class="flex items-center gap-4 p-3.5 rounded-xl bg-brand-dark/50 hover:bg-brand-blue/10 text-gray-200 hover:text-brand-blue transition-colors font-medium">
+                        <i class="fa-solid fa-circle-info w-6 text-brand-orange"></i> Info Bengkel & Layanan
+                    </a>
+                    <a href="#socials" onclick="toggleMobileMenu(); showSection('publicHome'); scrollToSection('socialsSection');" class="flex items-center gap-4 p-3.5 rounded-xl bg-brand-dark/50 hover:bg-brand-blue/10 text-gray-200 hover:text-brand-blue transition-colors font-medium">
+                        <i class="fa-solid fa-share-nodes w-6 text-brand-orange"></i> Sosial Media Resmi
+                    </a>
+                    <button onclick="toggleMobileMenu(); openBookingModal();" class="w-full flex items-center gap-4 p-3.5 rounded-xl bg-brand-blue/20 border border-brand-blue/40 text-blue-400 hover:bg-brand-blue hover:text-white transition-all font-medium text-left">
+                        <i class="fa-solid fa-calendar-plus w-6"></i> Form Booking Servis
+                    </button>
+                </nav>
+            </div>
+
+            <!-- SECRET ADMIN LOGIN BUTTON AT BOTTOM OF DRAWER -->
+            <div class="pt-6 border-t border-brand-border">
+                <button onclick="toggleMobileMenu(); openAdminLoginModal();" class="w-full flex items-center justify-center gap-2 py-3 rounded-xl bg-brand-dark border border-brand-border text-gray-400 hover:text-brand-orange hover:border-brand-orange/50 text-sm font-semibold transition-colors">
+                    <i class="fa-solid fa-lock text-xs"></i> Admin Login (Nanda)
+                </button>
+                <p class="text-center text-[10px] text-gray-500 mt-3">&copy; 2026 3 Garage. All Rights Reserved.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- MAIN CONTAINER -->
+    <main class="flex-grow pt-20">
+
+        <!-- PUBLIC HOME SECTION -->
+        <div id="publicHomeView" class="space-y-16 pb-20">
+
+            <!-- HERO BANNER -->
+            <section id="hero" class="relative min-h-[85vh] flex items-center justify-center overflow-hidden px-4 sm:px-6 lg:px-8">
+                <div class="absolute inset-0 z-0">
+                    <img src="https://images.unsplash.com/photo-1552519507-da3b142c6e3d?w=1920&auto=format&fit=crop&q=80" 
+                         alt="Subaru & Mazda Sports Car" class="w-full h-full object-cover object-center filter brightness-50 contrast-125 scale-105">
+                    <div class="absolute inset-0 bg-gradient-to-t from-brand-dark via-brand-dark/60 to-transparent"></div>
+                    <div class="absolute inset-0 bg-gradient-to-r from-brand-dark via-transparent to-brand-dark"></div>
+                </div>
+
+                <div class="relative z-10 max-w-4xl mx-auto text-center space-y-6">
+                    <!-- BOOKING TODAY LIVE COUNTER BADGE & CAR NAMES -->
+                    <div class="inline-flex flex-col items-center gap-1 px-6 py-3 rounded-2xl bg-brand-card/90 border border-brand-orange/50 text-white text-xs sm:text-sm backdrop-blur-md shadow-xl">
+                        <div class="flex items-center gap-2">
+                            <span class="w-2.5 h-2.5 rounded-full bg-brand-orange animate-ping"></span>
+                            <span>Booking Hari Ini: <strong id="heroTodayCount" class="text-brand-orange font-extrabold text-base">0</strong> Unit</span>
+                        </div>
+                        <p id="heroTodayCarList" class="text-xs text-gray-300 font-medium italic mt-1">Belum ada booking</p>
+                    </div>
+                    
+                    <h2 class="text-4xl sm:text-6xl lg:text-7xl font-extrabold tracking-tight text-white leading-tight">
+                        PULIHKAN PERFORMA <span class="text-transparent bg-clip-text bg-gradient-to-r from-brand-blue via-blue-400 to-brand-orange">BOXER & ROTARY</span> ANDA
+                    </h2>
+                    
+                    <p class="text-base sm:text-xl text-gray-300 max-w-2xl mx-auto font-light">
+                        Bengkel spesialis independen terkemuka untuk kendaraan <strong class="text-white font-semibold">Subaru</strong> (WRX, BRZ, Forester) dan <strong class="text-white font-semibold">Mazda</strong> (RX-7, RX-8, Mazda3, CX series) dengan standar diagnostik pabrikan dan suku cadang original.
+                    </p>
+
+                    <div class="flex flex-col sm:flex-row items-center justify-center gap-4 pt-4">
+                        <button onclick="openBookingModal()" class="w-full sm:w-auto px-8 py-4 rounded-xl bg-gradient-to-r from-brand-blue to-blue-600 hover:from-blue-600 hover:to-brand-blue text-white font-bold text-base shadow-xl shadow-blue-600/30 transition-all transform hover:-translate-y-0.5">
+                            <i class="fa-solid fa-calendar-days mr-2"></i>Booking Jadwal Servis
+                        </button>
+                        <a href="#catalogSection" class="w-full sm:w-auto px-8 py-4 rounded-xl bg-brand-card/80 hover:bg-brand-card border border-brand-border text-white font-semibold text-base backdrop-blur-md transition-all">
+                            <i class="fa-solid fa-play mr-2 text-brand-orange"></i>Tonton Katalog Video
+                        </a>
+                    </div>
+                </div>
+            </section>
+
+            <!-- VIDEO & PHOTO GALLERY CATALOG SECTION -->
+            <section id="catalogSection" class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-8">
+                <div class="flex flex-col sm:flex-row items-start sm:items-end justify-between gap-4 border-b border-brand-border pb-4">
+                    <div>
+                        <span class="text-xs font-bold tracking-widest text-brand-orange uppercase">Galeri & Portofolio Online</span>
+                        <h3 class="text-2xl sm:text-3xl font-extrabold text-white">Katalog Media & Projek Bengkel</h3>
+                    </div>
+                    <p class="text-sm text-gray-400">Dokumentasi foto dan video pengerjaan Subaru & Mazda.</p>
+                </div>
+
+                <div id="publicMediaGrid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                    <!-- Dynamic Media Rendered Here -->
+                </div>
+            </section>
+
+            <!-- SPAREPART, OLI & CHEMICAL CATALOG SECTION -->
+            <section id="partsSection" class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-8">
+                <div class="flex flex-col sm:flex-row items-start sm:items-end justify-between gap-4 border-b border-brand-border pb-4">
+                    <div>
+                        <span class="text-xs font-bold tracking-widest text-brand-blue uppercase">Suku Cadang & Cairan Resmi</span>
+                        <h3 class="text-2xl sm:text-3xl font-extrabold text-white">Katalog Oli, Chemical & Sparepart Spesialis</h3>
+                    </div>
+                    <p class="text-sm text-gray-400">Komponen berkualitas tinggi untuk menjaga performa mobil sport Jepang Anda.</p>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                    <!-- Part 1 -->
+                    <div class="bg-brand-card border border-brand-border rounded-2xl p-6 space-y-4 hover:border-brand-blue transition-all">
+                        <div class="w-12 h-12 rounded-xl bg-blue-500/20 text-brand-blue flex items-center justify-center text-xl font-bold">
+                            <i class="fa-solid fa-oil-can"></i>
+                        </div>
+                        <div>
+                            <span class="text-[10px] uppercase font-bold text-brand-blue tracking-widest">Oli Mesin High Performance</span>
+                            <h4 class="text-white font-bold text-lg">Motul 300V / Eneos Sustina</h4>
+                            <p class="text-xs text-gray-400 mt-1">Viskositas khusus 0W-20 & 5W-40 untuk perlindungan mesin Boxer & Rotary suhu tinggi.</p>
+                        </div>
+                        <div class="pt-2 border-t border-brand-border flex items-center justify-between text-xs font-semibold">
+                            <span class="text-brand-orange">Ready Stock</span>
+                            <span class="text-gray-300">Original Import</span>
+                        </div>
+                    </div>
+
+                    <!-- Part 2 -->
+                    <div class="bg-brand-card border border-brand-border rounded-2xl p-6 space-y-4 hover:border-brand-orange transition-all">
+                        <div class="w-12 h-12 rounded-xl bg-orange-500/20 text-brand-orange flex items-center justify-center text-xl font-bold">
+                            <i class="fa-solid fa-spray-can-sparkles"></i>
+                        </div>
+                        <div>
+                            <span class="text-[10px] uppercase font-bold text-brand-orange tracking-widest">Chemical & Carbon Cleaner</span>
+                            <h4 class="text-white font-bold text-lg">Liqui Moly & Subaru Carbon Clean</h4>
+                            <p class="text-xs text-gray-400 mt-1">Pembersih kerak injektor dan ruang bakar khusus mesin direct injection & rotary.</p>
+                        </div>
+                        <div class="pt-2 border-t border-brand-border flex items-center justify-between text-xs font-semibold">
+                            <span class="text-brand-orange">Ready Stock</span>
+                            <span class="text-gray-300">Workshop Grade</span>
+                        </div>
+                    </div>
+
+                    <!-- Part 3 -->
+                    <div class="bg-brand-card border border-brand-border rounded-2xl p-6 space-y-4 hover:border-brand-blue transition-all">
+                        <div class="w-12 h-12 rounded-xl bg-blue-500/20 text-brand-blue flex items-center justify-center text-xl font-bold">
+                            <i class="fa-solid fa-gears"></i>
+                        </div>
+                        <div>
+                            <span class="text-[10px] uppercase font-bold text-brand-blue tracking-widest">Engine Internals</span>
+                            <h4 class="text-white font-bold text-lg">Forged Piston & Apex Seals</h4>
+                            <p class="text-xs text-gray-400 mt-1">CP Pistons, Manley Conrods, dan OEM Mazda Rotary Apex Seals untuk ketahanan boost tinggi.</p>
+                        </div>
+                        <div class="pt-2 border-t border-brand-border flex items-center justify-between text-xs font-semibold">
+                            <span class="text-brand-orange">By Order / Ready</span>
+                            <span class="text-gray-300">Racing Spec</span>
+                        </div>
+                    </div>
+
+                    <!-- Part 4 -->
+                    <div class="bg-brand-card border border-brand-border rounded-2xl p-6 space-y-4 hover:border-brand-orange transition-all">
+                        <div class="w-12 h-12 rounded-xl bg-orange-500/20 text-brand-orange flex items-center justify-center text-xl font-bold">
+                            <i class="fa-solid fa-shield-halved"></i>
+                        </div>
+                        <div>
+                            <span class="text-[10px] uppercase font-bold text-brand-orange tracking-widest">Filters & Ignition</span>
+                            <h4 class="text-white font-bold text-lg">OEM Oil Filter & Iridium Plugs</h4>
+                            <p class="text-xs text-gray-400 mt-1">Genuine Subaru/Mazda oil filter, Denso Iridium Racing spark plugs untuk pengapian sempurna.</p>
+                        </div>
+                        <div class="pt-2 border-t border-brand-border flex items-center justify-between text-xs font-semibold">
+                            <span class="text-brand-orange">Ready Stock</span>
+                            <span class="text-gray-300">100% Genuine</span>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- ABOUT US & SERVICES SECTION -->
+            <section id="aboutSection" class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
+                <div class="bg-brand-card border border-brand-border rounded-3xl p-8 sm:p-12 relative overflow-hidden">
+                    <div class="absolute -right-20 -bottom-20 w-80 h-80 bg-brand-blue/10 rounded-full blur-3xl pointer-events-none"></div>
+                    
+                    <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+                        <div class="space-y-6">
+                            <div class="inline-block px-3 py-1 rounded-lg bg-brand-orange/20 text-brand-orange text-xs font-bold tracking-wider uppercase">Tentang 3 Garage</div>
+                            <h3 class="text-3xl sm:text-4xl font-extrabold text-white">Spesialis Tanpa Kompromi untuk Mobil Impian Anda</h3>
+                            <p class="text-gray-300 leading-relaxed">
+                                Didirikan oleh mekanik berpengalaman khusus platform mesin Boxer Subaru dan Rotary/SkyActiv Mazda. Kami menyediakan peralatan diagnosa tingkat lanjut, dyno tuning berkala, serta penanganan presisi tinggi untuk harian maupun track day.
+                            </p>
+                            <div class="grid grid-cols-2 gap-4 pt-2">
+                                <div class="p-4 rounded-xl bg-brand-dark border border-brand-border">
+                                    <h4 class="text-brand-blue font-bold text-lg mb-1">Subaru Tech</h4>
+                                    <p class="text-xs text-gray-400">EJ20, EJ25, FA20, FA24 Boxer Engine Specialist.</p>
+                                </div>
+                                <div class="p-4 rounded-xl bg-brand-dark border border-brand-border">
+                                    <h4 class="text-brand-orange font-bold text-lg mb-1">Mazda Tech</h4>
+                                    <p class="text-xs text-gray-400">13B Rotary, SkyActiv-G & Turbo Performance.</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="relative h-72 sm:h-96 rounded-2xl overflow-hidden border border-brand-border">
+                            <img src="https://images.unsplash.com/photo-1617814076367-b759c7d7e738?w=800&auto=format&fit=crop&q=80" 
+                                 alt="Workshop 3 Garage" class="w-full h-full object-cover">
+                            <div class="absolute inset-0 bg-gradient-to-t from-brand-dark/80 via-transparent to-transparent flex items-end p-6">
+                                <div class="text-white">
+                                    <p class="font-bold text-lg">Bengkel Utama 3 Garage</p>
+                                    <p class="text-xs text-gray-300">Dilengkapi lift hidrolik modern dan tools khusus pabrikan.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- SOCIAL MEDIA SECTION -->
+            <section id="socialsSection" class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center space-y-3 mb-10">
+                    <span class="text-xs font-bold tracking-widest text-brand-blue uppercase">Terhubung Dengan Kami</span>
+                    <h3 class="text-2xl sm:text-3xl font-extrabold text-white">Sosial Media Resmi & Komunitas</h3>
+                    <p class="text-sm text-gray-400">Ikuti update harian pengerjaan mobil customer dan tips perawatan.</p>
+                </div>
+
+                <div class="grid grid-cols-1 sm:grid-cols-3 gap-6">
+                    <a href="https://instagram.com" target="_blank" class="p-6 rounded-2xl bg-brand-card border border-brand-border hover:border-brand-orange transition-all group flex items-center gap-5">
+                        <div class="w-14 h-14 rounded-xl bg-gradient-to-tr from-yellow-500 via-pink-500 to-purple-600 flex items-center justify-center text-white text-2xl shadow-lg group-hover:scale-110 transition-transform">
+                            <i class="fa-brands fa-instagram"></i>
+                        </div>
+                        <div>
+                            <h4 class="font-bold text-white text-lg">Instagram</h4>
+                            <p class="text-xs text-gray-400">@3garage.official</p>
+                        </div>
+                    </a>
+
+                    <a href="https://youtube.com" target="_blank" class="p-6 rounded-2xl bg-brand-card border border-brand-border hover:border-brand-blue transition-all group flex items-center gap-5">
+                        <div class="w-14 h-14 rounded-xl bg-red-600 flex items-center justify-center text-white text-2xl shadow-lg group-hover:scale-110 transition-transform">
+                            <i class="fa-brands fa-youtube"></i>
+                        </div>
+                        <div>
+                            <h4 class="font-bold text-white text-lg">YouTube</h4>
+                            <p class="text-xs text-gray-400">3 Garage TV</p>
+                        </div>
+                    </a>
+
+                    <a href="https://whatsapp.com" target="_blank" class="p-6 rounded-2xl bg-brand-card border border-brand-border hover:border-green-500 transition-all group flex items-center gap-5">
+                        <div class="w-14 h-14 rounded-xl bg-green-600 flex items-center justify-center text-white text-2xl shadow-lg group-hover:scale-110 transition-transform">
+                            <i class="fa-brands fa-whatsapp"></i>
+                        </div>
+                        <div>
+                            <h4 class="font-bold text-white text-lg">WhatsApp Admin</h4>
+                            <p class="text-xs text-gray-400">+62 812-3456-7890</p>
+                        </div>
+                    </a>
+                </div>
+            </section>
+
+        </div>
+
+
+        <!-- ADMIN PANEL VIEW (HIDDEN UNTIL LOGIN) -->
+        <div id="adminPanelView" class="hidden max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 space-y-8">
+            
+            <!-- ADMIN HEADER BAR -->
+            <div class="bg-brand-card border border-brand-border rounded-2xl p-6 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
+                <div class="flex items-center gap-4">
+                    <div class="w-12 h-12 rounded-xl bg-brand-orange/20 border border-brand-orange text-brand-orange flex items-center justify-center text-xl font-bold">
+                        <i class="fa-solid fa-user-shield"></i>
+                    </div>
+                    <div>
+                        <h2 class="text-xl font-extrabold text-white">Panel Kontrol Admin (Nanda)</h2>
+                        <p class="text-xs text-gray-400">Kelola jadwal booking, status servis, dan galeri media online.</p>
+                    </div>
+                </div>
+                <div class="flex items-center gap-3 w-full sm:w-auto">
+                    <button onclick="showSection('publicHome')" class="flex-1 sm:flex-none px-4 py-2.5 rounded-xl bg-brand-dark border border-brand-border text-gray-300 hover:text-white text-sm font-semibold transition-colors">
+                        <i class="fa-solid fa-arrow-left mr-2"></i>Kembali ke Web Publik
+                    </button>
+                    <button onclick="adminLogout()" class="flex-1 sm:flex-none px-4 py-2.5 rounded-xl bg-red-600/20 border border-red-500/40 text-red-400 hover:bg-red-600 hover:text-white text-sm font-semibold transition-colors">
+                        <i class="fa-solid fa-right-from-bracket mr-2"></i>Logout
+                    </button>
+                </div>
+            </div>
+
+            <!-- ADMIN TABS NAVIGATION -->
+            <div class="flex border-b border-brand-border gap-6">
+                <button onclick="switchAdminTab('bookingsTab')" id="btnBookingsTab" class="pb-4 font-bold text-sm border-b-2 border-brand-blue text-brand-blue transition-colors flex items-center gap-2">
+                    <i class="fa-solid fa-calendar-days"></i> Kelola Booking Servis (<span id="adminBookingCount">0</span>)
+                </button>
+                <button onclick="switchAdminTab('mediaTab')" id="btnMediaTab" class="pb-4 font-semibold text-sm border-b-2 border-transparent text-gray-400 hover:text-white transition-colors flex items-center gap-2">
+                    <i class="fa-solid photo-film"></i> Kelola Galeri Media (Foto/Video) (<span id="adminMediaCount">0</span>)
+                </button>
+            </div>
+
+            <!-- TAB 1: BOOKING MANAGEMENT -->
+            <div id="contentBookingsTab" class="space-y-6">
+                <div class="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
+                    <h3 class="text-lg font-bold text-white">Daftar Permintaan Masuk</h3>
+                    <div class="text-xs text-gray-400">Ubah status pengerjaan atau hapus data booking yang selesai.</div>
+                </div>
+
+                <div class="bg-brand-card border border-brand-border rounded-2xl overflow-hidden shadow-xl">
+                    <div class="overflow-x-auto">
+                        <table class="w-full text-left border-collapse">
+                            <thead>
+                                <tr class="bg-brand-dark/80 border-b border-brand-border text-xs text-gray-400 uppercase tracking-wider">
+                                    <th class="p-4">Pelanggan & Kontak</th>
+                                    <th class="p-4">Kendaraan</th>
+                                    <th class="p-4">Jenis Servis & Catatan</th>
+                                    <th class="p-4">Jadwal</th>
+                                    <th class="p-4">Status</th>
+                                    <th class="p-4 text-center">Aksi</th>
+                                </tr>
+                            </thead>
+                            <tbody id="adminBookingTableBody" class="divide-y divide-brand-border text-sm">
+                                <!-- Rendered dynamically -->
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+            <!-- TAB 2: MEDIA GALLERY MANAGEMENT (FOTO & VIDEO) -->
+            <div id="contentMediaTab" class="space-y-6 hidden">
+                <div class="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
+                    <h3 class="text-lg font-bold text-white">Kelola Galeri Online (Foto / Video)</h3>
+                </div>
+
+                <!-- Action Cards for Adding Media -->
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                    <!-- Upload From Device (Photo/Video) -->
+                    <div class="bg-brand-card border border-brand-border rounded-2xl p-6 shadow-xl space-y-4">
+                        <div class="flex items-center gap-3">
+                            <div class="w-10 h-10 rounded-xl bg-brand-blue/20 text-brand-blue flex items-center justify-center font-bold">
+                                <i class="fa-solid fa-cloud-arrow-up"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-white text-base">Upload dari Galeri HP/Perangkat</h4>
+                                <p class="text-xs text-gray-400">Pilih file foto atau video langsung dari galeri lokal.</p>
+                            </div>
+                        </div>
+                        <form onsubmit="handleDeviceUpload(event)" class="space-y-3">
+                            <div>
+                                <label class="block text-xs font-bold uppercase text-gray-400 mb-1">Judul Media</label>
+                                <input type="text" id="deviceMediaTitle" placeholder="Contoh: Dyno Test WRX STI" required
+                                       class="w-full bg-brand-dark border border-brand-border rounded-xl px-4 py-2.5 text-white text-sm focus:outline-none focus:border-brand-blue">
+                            </div>
+                            <div>
+                                <label class="block text-xs font-bold uppercase text-gray-400 mb-1">Pilih File (Foto/Video)</label>
+                                <input type="file" id="deviceFile" accept="image/*,video/*" required
+                                       class="w-full text-xs text-gray-400 file:mr-4 file:py-2 file:px-4 file:rounded-xl file:border-0 file:text-xs file:font-semibold file:bg-brand-blue file:text-white hover:file:bg-blue-600 cursor-pointer">
+                            </div>
+                            <div>
+                                <label class="block text-xs font-bold uppercase text-gray-400 mb-1">Deskripsi Singkat</label>
+                                <textarea id="deviceMediaDesc" rows="2" placeholder="Keterangan singkat..." required
+                                          class="w-full bg-brand-dark border border-brand-border rounded-xl px-4 py-2.5 text-white text-sm focus:outline-none focus:border-brand-blue"></textarea>
+                            </div>
+                            <button type="submit" class="w-full py-2.5 rounded-xl bg-brand-blue hover:bg-blue-600 text-white font-bold text-sm shadow-lg shadow-blue-600/20 transition-all">
+                                <i class="fa-solid fa-upload mr-2"></i>Upload ke Beranda Publik
+                            </button>
+                        </form>
+                    </div>
+
+                    <!-- Add YouTube Video with Plus Button -->
+                    <div class="bg-brand-card border border-brand-border rounded-2xl p-6 shadow-xl space-y-4 flex flex-col justify-between">
+                        <div class="flex items-center gap-3">
+                            <div class="w-10 h-10 rounded-xl bg-red-500/20 text-red-500 flex items-center justify-center font-bold text-lg">
+                                <i class="fa-brands fa-youtube"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-white text-base">Tambah Video YouTube (+)</h4>
+                                <p class="text-xs text-gray-400">Publikasikan video review atau liputan dari YouTube.</p>
+                            </div>
+                        </div>
+                        <form onsubmit="handleYoutubeAdd(event)" class="space-y-3">
+                            <div>
+                                <label class="block text-xs font-bold uppercase text-gray-400 mb-1">Judul Video YouTube</label>
+                                <input type="text" id="ytMediaTitle" placeholder="Contoh: Review Knalpot HKS Subaru" required
+                                       class="w-full bg-brand-dark border border-brand-border rounded-xl px-4 py-2.5 text-white text-sm focus:outline-none focus:border-brand-blue">
+                            </div>
+                            <div>
+                                <label class="block text-xs font-bold uppercase text-gray-400 mb-1">Link Embed YouTube URL</label>
+                                <div class="flex gap-2">
+                                    <input type="text" id="ytMediaUrl" placeholder="https://www.youtube.com/embed/..." required
+                                           class="w-full bg-brand-dark border border-brand-border rounded-xl px-4 py-2.5 text-white text-sm focus:outline-none focus:border-brand-blue">
+                                    <button type="submit" class="px-4 rounded-xl bg-red-600 hover:bg-red-700 text-white font-bold text-base flex items-center justify-center shadow-lg shadow-red-600/20 transition-all" title="Tambah Video YouTube">
+                                        <i class="fa-solid fa-plus"></i>
+                                    </button>
+                                </div>
+                            </div>
+                            <div>
+                                <label class="block text-xs font-bold uppercase text-gray-400 mb-1">Deskripsi Singkat</label>
+                                <textarea id="ytMediaDesc" rows="2" placeholder="Keterangan video..." required
+                                          class="w-full bg-brand-dark border border-brand-border rounded-xl px-4 py-2.5 text-white text-sm focus:outline-none focus:border-brand-blue"></textarea>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+
+                <h3 class="text-lg font-bold text-white pt-4">Daftar Galeri Aktif di Beranda</h3>
+                <div id="adminMediaGrid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                    <!-- Rendered dynamically -->
+                </div>
+            </div>
+
+        </div>
+
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="bg-brand-card border-t border-brand-border py-12 mt-auto">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row items-center justify-between gap-6 text-center md:text-left">
+            <div class="flex items-center gap-3">
+                <div class="w-10 h-10 rounded-full overflow-hidden border border-brand-blue">
+                    <img src="logo.png" onerror="this.src='https://images.unsplash.com/photo-1552519507-da3b142c6e3d?w=100&auto=format&fit=crop&q=60';" alt="Logo" class="w-full h-full object-cover">
+                </div>
+                <div>
+                    <h4 class="font-extrabold text-white text-base">3 GARAGE</h4>
+                    <p class="text-xs text-brand-orange font-medium">Subaru & Mazda Specialist Workshop</p>
+                </div>
+            </div>
+
+            <p class="text-xs text-gray-400">
+                &copy; 2026 3 Garage. Dibangun khusus untuk performa maksimal mobil sport Jepang Anda.
+            </p>
+
+            <div class="flex items-center gap-4 text-gray-400">
+                <a href="https://instagram.com" target="_blank" class="hover:text-brand-orange transition-colors"><i class="fa-brands fa-instagram text-xl"></i></a>
+                <a href="https://youtube.com" target="_blank" class="hover:text-brand-blue transition-colors"><i class="fa-brands fa-youtube text-xl"></i></a>
+                <a href="https://whatsapp.com" target="_blank" class="hover:text-green-500 transition-colors"><i class="fa-brands fa-whatsapp text-xl"></i></a>
+            </div>
+        </div>
+    </footer>
+
+
+    <!-- MODAL 1: BOOKING SERVIS -->
+    <div id="bookingModal" class="fixed inset-0 z-50 bg-black/80 backdrop-blur-md hidden flex items-center justify-center p-4 overflow-y-auto">
+        <div class="bg-brand-card border border-brand-border rounded-3xl max-w-lg w-full p-6 sm:p-8 shadow-2xl relative transform scale-95 transition-transform duration-300" id="bookingModalContent">
+            <div class="flex items-center justify-between mb-6 pb-4 border-b border-brand-border">
+                <div class="flex items-center gap-3">
+                    <div class="w-10 h-10 rounded-xl bg-brand-blue/20 border border-brand-blue text-brand-blue flex items-center justify-center font-bold">
+                        <i class="fa-solid fa-calendar-check"></i>
+                    </div>
+                    <div>
+                        <h3 class="font-extrabold text-lg text-white">Form Booking Servis</h3>
+                        <p class="text-xs text-gray-400">Jadwalkan kedatangan mobil Anda ke bengkel.</p>
+                    </div>
+                </div>
+                <button onclick="closeBookingModal()" class="w-9 h-9 rounded-lg bg-brand-dark border border-brand-border flex items-center justify-center text-gray-400 hover:text-white">
+                    <i class="fa-solid fa-xmark"></i>
+                </button>
+            </div>
+
+            <form id="bookingForm" onsubmit="handleBookingSubmit(event)" class="space-y-4">
+                <div>
+                    <label class="block text-xs font-bold uppercase text-gray-400 mb-1.5">Nama Lengkap</label>
+                    <input type="text" id="bookName" placeholder="Contoh: Budi Santoso" required
+                           class="w-full bg-brand-dark border border-brand-border rounded-xl px-4 py-3 text-white text-sm focus:outline-none focus:border-brand-blue">
+                </div>
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                    <div>
+                        <label class="block text-xs font-bold uppercase text-gray-400 mb-1.5">No. WhatsApp / Telepon</label>
+                        <input type="tel" id="bookPhone" placeholder="08123456789" required
+                               class="w-full bg-brand-dark border border-brand-border rounded-xl px-4 py-3 text-white text-sm focus:outline-none focus:border-brand-blue">
+                    </div>
+                    <div>
+                        <label class="block text-xs font-bold uppercase text-gray-400 mb-1.5">Model Kendaraan</label>
+                        <select id="bookCar" class="w-full bg-brand-dark border border-brand-border rounded-xl px-4 py-3 text-white text-sm focus:outline-none focus:border-brand-blue">
+                            <option value="Subaru WRX / STI">Subaru WRX / STI</option>
+                            <option value="Subaru BRZ">Subaru BRZ</option>
+                            <option value="Subaru Forester / XV">Subaru Forester / XV</option>
+                            <option value="Mazda RX-7 / RX-8">Mazda RX-7 / RX-8</option>
+                            <option value="Mazda 3 / 6 (SkyActiv)">Mazda 3 / 6 (SkyActiv)</option>
+                            <option value="Mazda CX-5 / CX-9">Mazda CX-5 / CX-9</option>
+                            <option value="Lainnya (Spesialis)">Lainnya (Spesialis)</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                    <div>
+                        <label class="block text-xs font-bold uppercase text-gray-400 mb-1.5">Jenis Servis / Pengerjaan</label>
+                        <select id="bookService" class="w-full bg-brand-dark border border-brand-border rounded-xl px-4 py-3 text-white text-sm focus:outline-none focus:border-brand-blue">
+                            <option value="Tune-up & Diagnostik">Tune-up & Diagnostik Komprehensif</option>
+                            <option value="Engine Overhaul / Build">Engine Overhaul / Build</option>
+                            <option value="ECU Tuning / Dyno">ECU Tuning & Remap</option>
+                            <option value="Kaki-kaki & Suspensi">Kaki-kaki & Suspensi Upgrade</option>
+                            <option value="Servis Berkala / Oli">Servis Berkala / Ganti Oli</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label class="block text-xs font-bold uppercase text-gray-400 mb-1.5">Tanggal Kedatangan</label>
+                        <input type="date" id="bookDate" required
+                               class="w-full bg-brand-dark border border-brand-border rounded-xl px-4 py-3 text-white text-sm focus:outline-none focus:border-brand-blue">
+                    </div>
+                </div>
+                <div>
+                    <label class="block text-xs font-bold uppercase text-gray-400 mb-1.5">Catatan / Keluhan Tambahan</label>
+                    <textarea id="bookNotes" rows="2" placeholder="Ceritakan keluhan atau modifikasi yang diinginkan..."
+                              class="w-full bg-brand-dark border border-brand-border rounded-xl px-4 py-3 text-white text-sm focus:outline-none focus:border-brand-blue"></textarea>
+                </div>
+                <button type="submit" class="w-full py-3.5 rounded-xl bg-gradient-to-r from-brand-blue to-blue-600 hover:from-blue-600 hover:to-brand-blue text-white font-bold text-sm shadow-lg shadow-blue-600/30 transition-all">
+                    Kirim Permintaan Booking
+                </button>
+            </form>
+        </div>
+    </div>
+
+
+    <!-- MODAL 2: ADMIN LOGIN (SECRET FOR NANDA) -->
+    <div id="adminLoginModal" class="fixed inset-0 z-50 bg-black/80 backdrop-blur-md hidden flex items-center justify-center p-4">
+        <div class="bg-brand-card border border-brand-border rounded-3xl max-w-sm w-full p-6 sm:p-8 shadow-2xl relative">
+            <div class="flex items-center justify-between mb-6 pb-4 border-b border-brand-border">
+                <div class="flex items-center gap-3">
+                    <div class="w-10 h-10 rounded-xl bg-brand-orange/20 border border-brand-orange text-brand-orange flex items-center justify-center font-bold">
+                        <i class="fa-solid fa-lock"></i>
+                    </div>
+                    <div>
+                        <h3 class="font-extrabold text-lg text-white">Admin Login</h3>
+                        <p class="text-xs text-gray-400">Khusus pemilik (Nanda).</p>
+                    </div>
+                </div>
+                <button onclick="closeAdminLoginModal()" class="w-9 h-9 rounded-lg bg-brand-dark border border-brand-border flex items-center justify-center text-gray-400 hover:text-white">
+                    <i class="fa-solid fa-xmark"></i>
+                </button>
+            </div>
+
+            <form id="adminLoginForm" onsubmit="handleAdminLogin(event)" class="space-y-4">
+                <div>
+                    <label class="block text-xs font-bold uppercase text-gray-400 mb-1.5">Username / Admin ID</label>
+                    <input type="text" id="adminUser" placeholder="" required
+                           class="w-full bg-brand-dark border border-brand-border rounded-xl px-4 py-3 text-white text-sm focus:outline-none focus:border-brand-orange">
+                </div>
+                <div>
+                    <label class="block text-xs font-bold uppercase text-gray-400 mb-1.5">Password Rahasia</label>
+                    <input type="password" id="adminPass" placeholder="" required
+                           class="w-full bg-brand-dark border border-brand-border rounded-xl px-4 py-3 text-white text-sm focus:outline-none focus:border-brand-orange">
+                </div>
+                <p id="loginError" class="text-red-500 text-xs hidden"></p>
+                <button type="submit" class="w-full py-3.5 rounded-xl bg-gradient-to-r from-brand-orange to-amber-600 hover:from-amber-600 hover:to-brand-orange text-white font-bold text-sm shadow-lg shadow-orange-500/20 transition-all">
+                    Masuk ke Panel Admin
+                </button>
+            </form>
+        </div>
+    </div>
+
+
+    <!-- JAVASCRIPT LOGIC -->
+    <script>
+        // Default Mock Data for Media Gallery (Photos & Videos)
+        const defaultMedia = [
+            {
+                id: 1,
+                type: "video",
+                title: "Subaru WRX STI EJ25 Full Engine Build & Forged Internals",
+                url: "https://www.youtube.com/embed/dQw4w9WgXcQ",
+                desc: "Pengerjaan total teardown mesin boxer EJ25, penggantian conrod forged, dan tuning harian boost 1.4 bar."
+            },
+            {
+                id: 2,
+                type: "photo",
+                title: "Engine Bay Detailing Mazda RX-7 FD3S",
+                url: "https://images.unsplash.com/photo-1617814076367-b759c7d7e738?w=800&auto=format&fit=crop&q=80",
+                desc: "Perapihan kabel wire-tuck dan instalasi intercooler custom untuk putaran rotary optimal."
+            },
+            {
+                id: 3,
+                type: "video",
+                title: "Subaru BRZ FA20 Supercharger Kit Installation & Dyno Tune",
+                url: "https://www.youtube.com/embed/dQw4w9WgXcQ",
+                desc: "Pemasangan bolt-on supercharger rotrex dan kalibrasi ECU menggunakan EcuTek untuk lonjakan tenaga signifikan."
+            }
+        ];
+
+        // Format today's date YYYY-MM-DD for testing counter
+        const todayStr = new Date().toISOString().split('T')[0];
+
+        const defaultBookings = [
+            {
+                id: 101,
+                name: "Rian Pratama",
+                phone: "081298765432",
+                car: "Subaru WRX STI",
+                service: "Tune-up & Diagnostik",
+                date: todayStr,
+                notes: "Check engine menyala saat RPM tinggi di tol.",
+                status: "Antre"
+            },
+            {
+                id: 102,
+                name: "Dimas Anggara",
+                phone: "081876543210",
+                car: "Mazda RX-7 FD3S",
+                service: "Engine Overhaul / Build",
+                date: todayStr,
+                notes: "Kompresi rotary turun, minta rebuild seal.",
+                status: "Dikerjakan"
+            }
+        ];
+
+        // Initialize LocalStorage if empty
+        if (!localStorage.getItem('garage_media')) {
+            localStorage.setItem('garage_media', JSON.stringify(defaultMedia));
+        }
+        if (!localStorage.getItem('garage_bookings')) {
+            localStorage.setItem('garage_bookings', JSON.stringify(defaultBookings));
+        }
+
+        // App Initialization on Load
+        window.onload = function() {
+            renderPublicMedia();
+            renderAdminBookings();
+            renderAdminMedia();
+            updateTodayBookingCounter();
+            
+            // Check session
+            if (localStorage.getItem('garage_is_admin') === 'true') {
+                showSection('adminPanel');
+            }
+        };
+
+        // Calculate and display today's booking counter and car names
+        function updateTodayBookingCounter() {
+            const bookings = JSON.parse(localStorage.getItem('garage_bookings')) || [];
+            const today = new Date().toISOString().split('T')[0];
+            const todayBookings = bookings.filter(b => b.date === today);
+            
+            const counterEl = document.getElementById('heroTodayCount');
+            const carListEl = document.getElementById('heroTodayCarList');
+            
+            if (counterEl) {
+                counterEl.textContent = todayBookings.length;
+            }
+
+            if (carListEl) {
+                if (todayBookings.length === 0) {
+                    carListEl.textContent = "Belum ada booking";
+                } else {
+                    const carNames = todayBookings.map(b => b.car).join(', ');
+                    carListEl.textContent = "Kendaraan: " + carNames;
+                }
+            }
+        }
+
+        // Navigation & Views Controller
+        function showSection(viewId) {
+            const publicView = document.getElementById('publicHomeView');
+            const adminView = document.getElementById('adminPanelView');
+
+            if (viewId === 'publicHome') {
+                publicView.classList.remove('hidden');
+                adminView.classList.add('hidden');
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            } else if (viewId === 'adminPanel') {
+                publicView.classList.add('hidden');
+                adminView.classList.remove('hidden');
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            }
+        }
+
+        function scrollToSection(sectionId) {
+            const el = document.getElementById(sectionId);
+            if (el) {
+                el.scrollIntoView({ behavior: 'smooth' });
+            }
+        }
+
+        // Hamburger Menu Drawer Controller
+        function toggleMobileMenu() {
+            const menu = document.getElementById('mobileMenu');
+            const drawer = document.getElementById('menuDrawer');
+            if (menu.classList.contains('hidden')) {
+                menu.classList.remove('hidden');
+                setTimeout(() => {
+                    menu.classList.remove('opacity-0');
+                    drawer.classList.remove('translate-x-full');
+                }, 10);
+            } else {
+                menu.classList.add('opacity-0');
+                drawer.classList.add('translate-x-full');
+                setTimeout(() => {
+                    menu.classList.add('hidden');
+                }, 300);
+            }
+        }
+
+        // Booking Modal Controller
+        function openBookingModal() {
+            const modal = document.getElementById('bookingModal');
+            modal.classList.remove('hidden');
+            const today = new Date().toISOString().split('T')[0];
+            document.getElementById('bookDate').min = today;
+        }
+
+        function closeBookingModal() {
+            document.getElementById('bookingModal').classList.add('hidden');
+        }
+
+        function handleBookingSubmit(e) {
+            e.preventDefault();
+            const newBooking = {
+                id: Date.now(),
+                name: document.getElementById('bookName').value,
+                phone: document.getElementById('bookPhone').value,
+                car: document.getElementById('bookCar').value,
+                service: document.getElementById('bookService').value,
+                date: document.getElementById('bookDate').value,
+                notes: document.getElementById('bookNotes').value || '-',
+                status: 'Antre'
+            };
+
+            let bookings = JSON.parse(localStorage.getItem('garage_bookings')) || [];
+            bookings.unshift(newBooking);
+            localStorage.setItem('garage_bookings', JSON.stringify(bookings));
+
+            alert('Berhasil! Permintaan booking servis Anda telah dikirim ke tim 3 Garage. Kami akan segera menghubungi nomor WhatsApp Anda.');
+            document.getElementById('bookingForm').reset();
+            closeBookingModal();
+            renderAdminBookings();
+            updateTodayBookingCounter();
+        }
+
+        // Admin Login Modal Controller (Credentials: Username: 10262026, Pass: 3333)
+        function openAdminLoginModal() {
+            document.getElementById('adminLoginModal').classList.remove('hidden');
+        }
+
+        function closeAdminLoginModal() {
+            document.getElementById('adminLoginModal').classList.add('hidden');
+            document.getElementById('adminLoginForm').reset();
+            document.getElementById('loginError').classList.add('hidden');
+        }
+
+        function handleAdminLogin(e) {
+            e.preventDefault();
+            const user = document.getElementById('adminUser').value.trim();
+            const pass = document.getElementById('adminPass').value.trim();
+            const errEl = document.getElementById('loginError');
+
+            if (user === '10262026' && pass === '3333') {
+                localStorage.setItem('garage_is_admin', 'true');
+                closeAdminLoginModal();
+                showSection('adminPanel');
+            } else {
+                errEl.textContent = "Username atau Password Admin salah!";
+                errEl.classList.remove('hidden');
+            }
+        }
+
+        function adminLogout() {
+            localStorage.setItem('garage_is_admin', 'false');
+            showSection('publicHome');
+            alert('Anda telah keluar dari Panel Admin.');
+        }
+
+        // Admin Tabs Switcher
+        function switchAdminTab(tabName) {
+            const btnBookings = document.getElementById('btnBookingsTab');
+            const btnMedia = document.getElementById('btnMediaTab');
+            const contentBookings = document.getElementById('contentBookingsTab');
+            const contentMedia = document.getElementById('contentMediaTab');
+
+            if (tabName === 'bookingsTab') {
+                btnBookings.className = "pb-4 font-bold text-sm border-b-2 border-brand-blue text-brand-blue transition-colors flex items-center gap-2";
+                btnMedia.className = "pb-4 font-semibold text-sm border-b-2 border-transparent text-gray-400 hover:text-white transition-colors flex items-center gap-2";
+                contentBookings.classList.remove('hidden');
+                contentMedia.classList.add('hidden');
+            } else {
+                btnMedia.className = "pb-4 font-bold text-sm border-b-2 border-brand-orange text-brand-orange transition-colors flex items-center gap-2";
+                btnBookings.className = "pb-4 font-semibold text-sm border-b-2 border-transparent text-gray-400 hover:text-white transition-colors flex items-center gap-2";
+                contentMedia.classList.remove('hidden');
+                contentBookings.classList.add('hidden');
+            }
+        }
+
+        // Render Public Media (Photos & Videos)
+        function renderPublicMedia() {
+            const mediaList = JSON.parse(localStorage.getItem('garage_media')) || [];
+            const grid = document.getElementById('publicMediaGrid');
+            
+            if (mediaList.length === 0) {
+                grid.innerHTML = `<p class="col-span-3 text-center text-gray-500 py-10">Belum ada galeri media online.</p>`;
+                return;
+            }
+
+            grid.innerHTML = mediaList.map(m => {
+                let mediaContent = '';
+                if (m.type === 'video') {
+                    mediaContent = `
+                        <div class="relative aspect-video bg-black overflow-hidden">
+                            <iframe src="${m.url}" title="${m.title}" class="w-full h-full object-cover border-0" allowfullscreen></iframe>
+                        </div>
+                    `;
+                } else {
+                    mediaContent = `
+                        <div class="relative aspect-video bg-black overflow-hidden">
+                            <img src="${m.url}" alt="${m.title}" class="w-full h-full object-cover hover:scale-105 transition-transform duration-500" onerror="this.src='https://images.unsplash.com/photo-1552519507-da3b142c6e3d?w=800&auto=format&fit=crop&q=80'">
+                            <span class="absolute top-3 left-3 px-2.5 py-1 rounded-lg bg-brand-orange/90 text-white text-[10px] font-bold uppercase tracking-wider backdrop-blur-md">Foto Galeri</span>
+                        </div>
+                    `;
+                }
+
+                return `
+                    <div class="bg-brand-card border border-brand-border rounded-2xl overflow-hidden shadow-xl hover:border-brand-blue/50 transition-all group flex flex-col justify-between">
+                        <div>
+                            ${mediaContent}
+                            <div class="p-6 space-y-2">
+                                <h4 class="font-bold text-white text-lg group-hover:text-brand-blue transition-colors">${m.title}</h4>
+                                <p class="text-xs text-gray-400 leading-relaxed">${m.desc}</p>
+                            </div>
+                        </div>
+                        <div class="px-6 pb-6 pt-0">
+                            <button onclick="openBookingModal()" class="w-full py-2.5 rounded-xl bg-brand-dark border border-brand-border text-gray-300 hover:text-white hover:border-brand-orange text-xs font-bold transition-all">
+                                Booking Servis Serupa
+                            </button>
+                        </div>
+                    </div>
+                `;
+            }).join('');
+        }
+
+        // Render Admin Media
+        function renderAdminMedia() {
+            const mediaList = JSON.parse(localStorage.getItem('garage_media')) || [];
+            document.getElementById('adminMediaCount').textContent = mediaList.length;
+            const grid = document.getElementById('adminMediaGrid');
+
+            if (mediaList.length === 0) {
+                grid.innerHTML = `<p class="col-span-3 text-center text-gray-500 py-10">Belum ada galeri media online.</p>`;
+                return;
+            }
+
+            grid.innerHTML = mediaList.map(m => {
+                let preview = m.type === 'video' 
+                    ? `<iframe src="${m.url}" class="w-full h-full object-cover border-0"></iframe>` 
+                    : `<img src="${m.url}" class="w-full h-full object-cover" onerror="this.src='https://images.unsplash.com/photo-1552519507-da3b142c6e3d?w=800&auto=format&fit=crop&q=80'">`;
+
+                return `
+                    <div class="bg-brand-card border border-brand-border rounded-2xl overflow-hidden shadow-xl flex flex-col justify-between">
+                        <div>
+                            <div class="relative aspect-video bg-black overflow-hidden">
+                                ${preview}
+                                <span class="absolute top-2 right-2 px-2 py-0.5 rounded bg-black/70 text-white text-[10px] uppercase font-bold">${m.type}</span>
+                            </div>
+                            <div class="p-4 space-y-1">
+                                <h4 class="font-bold text-white text-sm">${m.title}</h4>
+                                <p class="text-[11px] text-gray-400 line-clamp-2">${m.desc}</p>
+                            </div>
+                        </div>
+                        <div class="p-4 pt-0">
+                            <button onclick="deleteMedia(${m.id})" class="w-full py-2 rounded-xl bg-red-600/20 border border-red-500/40 text-red-400 hover:bg-red-600 hover:text-white text-xs font-bold transition-all">
+                                <i class="fa-solid fa-trash mr-1"></i>Hapus Media
+                            </button>
+                        </div>
+                    </div>
+                `;
+            }).join('');
+        }
+
+        // Handle Device File Upload (Photo/Video)
+        function handleDeviceUpload(e) {
+            e.preventDefault();
+            const title = document.getElementById('deviceMediaTitle').value;
+            const desc = document.getElementById('deviceMediaDesc').value;
+            const fileInput = document.getElementById('deviceFile');
+            
+            if (fileInput.files && fileInput.files[0]) {
+                const file = fileInput.files[0];
+                const reader = new FileReader();
+                
+                reader.onload = function(uploadEvent) {
+                    const fileUrl = uploadEvent.target.result;
+                    const fileType = file.type.startsWith('video') ? 'video' : 'photo';
+
+                    let mediaList = JSON.parse(localStorage.getItem('garage_media')) || [];
+                    mediaList.unshift({ id: Date.now(), title, type: fileType, url: fileUrl, desc });
+                    localStorage.setItem('garage_media', JSON.stringify(mediaList));
+
+                    e.target.reset();
+                    renderAdminMedia();
+                    renderPublicMedia();
+                    alert('File dari perangkat berhasil diunggah dan dipublikasikan ke beranda!');
+                };
+                reader.readAsDataURL(file);
+            }
+        }
+
+        // Handle YouTube Video Add via Plus Button (+)
+        function handleYoutubeAdd(e) {
+            e.preventDefault();
+            const title = document.getElementById('ytMediaTitle').value;
+            const url = document.getElementById('ytMediaUrl').value;
+            const desc = document.getElementById('ytMediaDesc').value;
+
+            let mediaList = JSON.parse(localStorage.getItem('garage_media')) || [];
+            mediaList.unshift({ id: Date.now(), title, type: 'video', url, desc });
+            localStorage.setItem('garage_media', JSON.stringify(mediaList));
+
+            e.target.reset();
+            renderAdminMedia();
+            renderPublicMedia();
+            alert('Video YouTube berhasil ditambahkan dengan tombol (+) dan dipublikasikan!');
+        }
+
+        function deleteMedia(id) {
+            if (confirm('Yakin ingin menghapus media ini dari galeri?')) {
+                let mediaList = JSON.parse(localStorage.getItem('garage_media')) || [];
+                mediaList = mediaList.filter(m => m.id !== id);
+                localStorage.setItem('garage_media', JSON.stringify(mediaList));
+                renderAdminMedia();
+                renderPublicMedia();
+            }
+        }
+
+        // Render Admin Bookings Table
+        function renderAdminBookings() {
+            const bookings = JSON.parse(localStorage.getItem('garage_bookings')) || [];
+            document.getElementById('adminBookingCount').textContent = bookings.length;
+            const tbody = document.getElementById('adminBookingTableBody');
+
+            if (bookings.length === 0) {
+                tbody.innerHTML = `<tr><td colspan="6" class="p-6 text-center text-gray-500">Belum ada data booking masuk.</td></tr>`;
+                return;
+            }
+
+            tbody.innerHTML = bookings.map(b => {
+                let statusBadge = '';
+                if (b.status === 'Antre') statusBadge = 'bg-yellow-500/20 text-yellow-400 border-yellow-500/40';
+                else if (b.status === 'Dikerjakan') statusBadge = 'bg-blue-500/20 text-blue-400 border-blue-500/40';
+                else if (b.status === 'Selesai') statusBadge = 'bg-green-500/20 text-green-400 border-green-500/40';
+
+                return `
+                    <tr class="hover:bg-brand-dark/40 transition-colors">
+                        <td class="p-4">
+                            <p class="font-bold text-white">${b.name}</p>
+                            <a href="https://wa.me/${b.phone.replace(/[^0-9]/g, '')}" target="_blank" class="text-xs text-brand-orange hover:underline">
+                                <i class="fa-brands fa-whatsapp mr-1"></i>${b.phone}
+                            </a>
+                        </td>
+                        <td class="p-4 text-gray-300 font-medium">${b.car}</td>
+                        <td class="p-4">
+                            <p class="font-semibold text-white text-xs">${b.service}</p>
+                            <p class="text-xs text-gray-400 italic">${b.notes}</p>
+                        </td>
+                        <td class="p-4 text-gray-300 text-xs font-mono">${b.date}</td>
+                        <td class="p-4">
+                            <select onchange="updateBookingStatus(${b.id}, this.value)" class="text-xs px-3 py-1.5 rounded-lg border font-bold ${statusBadge} bg-brand-dark focus:outline-none">
+                                <option value="Antre" ${b.status === 'Antre' ? 'selected' : ''}>Antre</option>
+                                <option value="Dikerjakan" ${b.status === 'Dikerjakan' ? 'selected' : ''}>Dikerjakan</option>
+                                <option value="Selesai" ${b.status === 'Selesai' ? 'selected' : ''}>Selesai</option>
+                            </select>
+                        </td>
+                        <td class="p-4 text-center">
+                            <button onclick="deleteBooking(${b.id})" class="w-8 h-8 rounded-lg bg-red-600/20 border border-red-500/40 text-red-400 hover:bg-red-600 hover:text-white transition-all">
+                                <i class="fa-solid fa-trash text-xs"></i>
+                            </button>
+                        </td>
+                    </tr>
+                `;
+            }).join('');
+        }
+
+        function updateBookingStatus(id, newStatus) {
+            let bookings = JSON.parse(localStorage.getItem('garage_bookings')) || [];
+            bookings = bookings.map(b => b.id === id ? { ...b, status: newStatus } : b);
+            localStorage.setItem('garage_bookings', JSON.stringify(bookings));
+            renderAdminBookings();
+            updateTodayBookingCounter();
+        }
+
+        function deleteBooking(id) {
+            if (confirm('Hapus riwayat booking ini dari sistem?')) {
+                let bookings = JSON.parse(localStorage.getItem('garage_bookings')) || [];
+                bookings = bookings.filter(b => b.id !== id);
+                localStorage.setItem('garage_bookings', JSON.stringify(bookings));
+                renderAdminBookings();
+                updateTodayBookingCounter();
+            }
+        }
+    </script>
+</body>
+</html>
