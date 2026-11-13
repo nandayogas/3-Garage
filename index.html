@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Koleksi Video Eksklusif</title>
+    <title>3 GARAGE - Subaru & Mazda Specialist</title>
     <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
@@ -16,6 +16,8 @@
                         darkBg: '#0f172a',
                         darkCard: '#1e293b',
                         accentRed: '#ef4444',
+                        accentOrange: '#f97316',
+                        accentBlue: '#2563eb'
                     }
                 }
             }
@@ -24,150 +26,388 @@
     <!-- Font Awesome for Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <style>
         body {
             font-family: 'Plus Jakarta Sans', sans-serif;
         }
-        /* Smooth transition for modals and toasts */
         .modal-fade {
             transition: opacity 0.3s ease, transform 0.3s ease;
         }
     </style>
 </head>
-<body class="bg-slate-950 text-slate-100 min-h-screen flex flex-col selection:bg-red-500 selection:text-white">
+<body class="bg-slate-950 text-slate-100 min-h-screen flex flex-col selection:bg-orange-500 selection:text-white">
 
     <!-- Header / Navbar -->
-    <header class="sticky top-0 z-40 backdrop-blur-md bg-slate-950/80 border-b border-slate-800">
+    <header class="sticky top-0 z-40 backdrop-blur-md bg-slate-950/90 border-b border-slate-800">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+            <!-- Brand Logo & Name -->
             <div class="flex items-center space-x-3 cursor-pointer" onclick="app.navigateHome()">
-                <div class="w-10 h-10 rounded-xl bg-red-600 flex items-center justify-center shadow-lg shadow-red-600/30">
-                    <i class="fa-solid fa-play text-white text-lg"></i>
+                <div class="w-12 h-12 rounded-full overflow-hidden border-2 border-orange-500 shadow-lg shadow-orange-500/20 bg-slate-900 flex-shrink-0">
+                    <img src="https://placehold.co/100x100/1e293b/ffffff?text=3G" alt="3 GARAGE Logo" class="w-full h-full object-cover" onerror="this.src='https://placehold.co/100x100/1e293b/ffffff?text=3G'">
                 </div>
                 <div>
-                    <span class="text-xl font-bold tracking-tight bg-gradient-to-r from-white to-slate-400 bg-clip-text text-transparent">StreamVault</span>
-                    <span class="block text-xs text-slate-400 font-medium">Koleksi Video Pilihan</span>
+                    <span class="text-xl font-extrabold tracking-tight bg-gradient-to-r from-white via-slate-200 to-orange-400 bg-clip-text text-transparent">3 GARAGE</span>
+                    <span class="block text-[10px] text-orange-400 font-bold uppercase tracking-wider">Subaru & Mazda Specialist</span>
                 </div>
             </div>
 
-            <!-- Navigation Actions -->
+            <!-- Navigation Actions & Hamburger Menu -->
             <div class="flex items-center space-x-3">
-                <div id="adminBadge" class="hidden items-center space-x-2 bg-red-500/10 border border-red-500/20 px-3 py-1.5 rounded-full text-xs font-semibold text-red-400">
-                    <span class="w-2 h-2 rounded-full bg-red-500 animate-pulse"></span>
-                    <span>Admin Mode Aktif</span>
+                <div id="adminBadge" class="hidden items-center space-x-2 bg-orange-500/10 border border-orange-500/20 px-3 py-1.5 rounded-full text-xs font-semibold text-orange-400">
+                    <span class="w-2 h-2 rounded-full bg-orange-500 animate-pulse"></span>
+                    <span>Admin Aktif</span>
                 </div>
                 
-                <button id="adminBtn" onclick="app.openLoginModal()" class="flex items-center space-x-2 px-4 py-2 rounded-xl bg-slate-900 border border-slate-800 hover:border-slate-700 text-slate-300 hover:text-white text-sm font-medium transition-all shadow-sm">
-                    <i class="fa-solid fa-lock text-xs"></i>
-                    <span>Admin Login</span>
+                <button id="adminBtn" onclick="app.openLoginModal()" class="hidden sm:flex items-center space-x-2 px-3.5 py-2 rounded-xl bg-slate-900 border border-slate-800 hover:border-slate-700 text-slate-300 hover:text-white text-xs font-medium transition-all">
+                    <i class="fa-solid fa-lock text-[10px]"></i>
+                    <span>Admin</span>
                 </button>
 
-                <button id="logoutBtn" onclick="app.logout()" class="hidden flex items-center space-x-2 px-4 py-2 rounded-xl bg-red-500/10 border border-red-500/30 hover:bg-red-500/20 text-red-400 text-sm font-medium transition-all">
-                    <i class="fa-solid fa-right-from-bracket text-xs"></i>
+                <button id="logoutBtn" onclick="app.logout()" class="hidden flex items-center space-x-2 px-3 py-2 rounded-xl bg-red-500/10 border border-red-500/30 text-red-400 text-xs font-medium transition-all">
+                    <i class="fa-solid fa-right-from-bracket text-[10px]"></i>
                     <span>Keluar</span>
+                </button>
+
+                <!-- Hamburger Menu Button (Garis 3 pojok kanan) -->
+                <button onclick="app.toggleSidebarMenu()" class="w-11 h-11 rounded-xl bg-slate-900 border border-slate-800 hover:border-slate-700 flex items-center justify-center text-slate-200 hover:text-orange-400 transition-all shadow-md">
+                    <i class="fa-solid fa-bars text-lg"></i>
                 </button>
             </div>
         </div>
     </header>
 
-    <!-- Main Content -->
-    <main class="flex-grow max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-8">
-        
-        <!-- Admin Dashboard Panel (Hidden by default) -->
-        <section id="adminPanel" class="hidden mb-12 bg-slate-900/90 border border-slate-800 rounded-2xl p-6 sm:p-8 shadow-2xl relative overflow-hidden">
-            <div class="absolute top-0 right-0 w-96 h-96 bg-red-600/5 rounded-full blur-3xl pointer-events-none"></div>
-            
-            <div class="flex flex-col md:flex-row md:items-center justify-between gap-4 mb-6 pb-6 border-b border-slate-800">
-                <div>
-                    <h2 class="text-xl font-bold text-white flex items-center gap-2">
-                        <i class="fa-solid fa-sliders text-red-500"></i>
-                        Dashboard Kelola Video
-                    </h2>
-                    <p class="text-sm text-slate-400 mt-1">Tambahkan link video YouTube baru atau kelola video yang sudah ada.</p>
+    <!-- Slide-out Sidebar Menu (Hamburger) -->
+    <div id="sidebarOverlay" class="fixed inset-0 z-50 bg-slate-950/80 backdrop-blur-sm hidden transition-opacity" onclick="app.toggleSidebarMenu()"></div>
+    <div id="sidebarMenu" class="fixed top-0 right-0 z-50 h-full w-80 bg-slate-900 border-l border-slate-800 shadow-2xl transform translate-x-full transition-transform duration-300 flex flex-col">
+        <div class="p-6 border-b border-slate-800 flex items-center justify-between">
+            <div class="flex items-center space-x-3">
+                <div class="w-9 h-9 rounded-full overflow-hidden border border-orange-500">
+                    <img src="https://placehold.co/100x100/1e293b/ffffff?text=3G" alt="Logo" class="w-full h-full object-cover">
                 </div>
-                <button onclick="app.toggleAddForm()" class="bg-red-600 hover:bg-red-500 text-white px-5 py-2.5 rounded-xl font-medium text-sm transition-all shadow-lg shadow-red-600/20 flex items-center gap-2 self-start md:self-auto">
-                    <i class="fa-solid fa-plus"></i>
-                    <span>Tambah Video Baru</span>
+                <div>
+                    <h3 class="font-bold text-white text-sm">Menu 3 GARAGE</h3>
+                    <p class="text-[11px] text-slate-400">Navigasi Utama</p>
+                </div>
+            </div>
+            <button onclick="app.toggleSidebarMenu()" class="text-slate-400 hover:text-white p-2">
+                <i class="fa-solid fa-xmark text-lg"></i>
+            </button>
+        </div>
+
+        <div class="flex-grow overflow-y-auto p-6 space-y-6">
+            <!-- Nav Links -->
+            <div class="space-y-2">
+                <button onclick="app.switchTab('home'); app.toggleSidebarMenu();" class="w-full flex items-center space-x-3 px-4 py-3 rounded-xl bg-slate-950 border border-slate-800 hover:border-orange-500/50 text-slate-200 text-sm font-medium transition-all group">
+                    <i class="fa-solid fa-house text-orange-400 group-hover:scale-110 transition-transform"></i>
+                    <span>Beranda & Video</span>
+                </button>
+                <button onclick="app.switchTab('booking'); app.toggleSidebarMenu();" class="w-full flex items-center space-x-3 px-4 py-3 rounded-xl bg-slate-950 border border-slate-800 hover:border-orange-500/50 text-slate-200 text-sm font-medium transition-all group">
+                    <i class="fa-solid fa-calendar-check text-blue-400 group-hover:scale-110 transition-transform"></i>
+                    <span>Booking Servis</span>
+                </button>
+                <button onclick="app.switchTab('catalog'); app.toggleSidebarMenu();" class="w-full flex items-center space-x-3 px-4 py-3 rounded-xl bg-slate-950 border border-slate-800 hover:border-orange-500/50 text-slate-200 text-sm font-medium transition-all group">
+                    <i class="fa-solid fa-box-archive text-emerald-400 group-hover:scale-110 transition-transform"></i>
+                    <span>Sparepart Catalog</span>
                 </button>
             </div>
 
-            <!-- Add Video Form (Collapsible/Toggleable) -->
-            <div id="addVideoFormContainer" class="hidden mb-8 bg-slate-950/60 border border-slate-800/80 p-6 rounded-xl">
-                <h3 class="text-base font-semibold text-white mb-4">Form Konversi Link YouTube</h3>
-                <form id="videoForm" onsubmit="app.handleAddVideo(event)" class="space-y-4">
+            <!-- Social Media Section -->
+            <div class="pt-4 border-t border-slate-800">
+                <h4 class="text-xs font-semibold text-slate-400 uppercase tracking-wider mb-3">Media Sosial Kami</h4>
+                <div class="space-y-2.5">
+                    <a href="https://www.instagram.com/3garageid?srtk=NHcxZDQ0dHFqaHlq" target="_blank" class="flex items-center space-x-3 px-3 py-2.5 rounded-xl bg-slate-950 border border-slate-800 hover:border-pink-500 text-slate-300 hover:text-white text-xs font-medium transition-all">
+                        <i class="fa-brands fa-instagram text-pink-500 text-base"></i>
+                        <span>Instagram (@3garageid)</span>
+                    </a>
+                    <a href="https://wa.me/62895392922023" target="_blank" class="flex items-center space-x-3 px-3 py-2.5 rounded-xl bg-slate-950 border border-slate-800 hover:border-emerald-500 text-slate-300 hover:text-white text-xs font-medium transition-all">
+                        <i class="fa-brands fa-whatsapp text-emerald-500 text-base"></i>
+                        <span>WhatsApp (0895392922023)</span>
+                    </a>
+                    <a href="https://tiktok.com" target="_blank" class="flex items-center space-x-3 px-3 py-2.5 rounded-xl bg-slate-950 border border-slate-800 hover:border-slate-500 text-slate-300 hover:text-white text-xs font-medium transition-all">
+                        <i class="fa-brands fa-tiktok text-white text-base"></i>
+                        <span>TikTok (3 Garage)</span>
+                    </a>
+                </div>
+            </div>
+
+            <!-- Admin Toggle in Sidebar for Mobile/Convenience -->
+            <div class="pt-4 border-t border-slate-800">
+                <button onclick="app.openLoginModal(); app.toggleSidebarMenu();" id="sidebarAdminBtn" class="w-full flex items-center justify-center space-x-2 py-2.5 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-200 text-xs font-semibold transition-all">
+                    <i class="fa-solid fa-lock text-xs"></i>
+                    <span>Login Admin</span>
+                </button>
+            </div>
+        </div>
+
+        <div class="p-4 border-t border-slate-800 text-center text-[11px] text-slate-500">
+            &copy; 2026 3 GARAGE Specialist
+        </div>
+    </div>
+
+    <!-- Active Booking Ticker Banner on Homepage -->
+    <div id="activeBookingBanner" class="bg-gradient-to-r from-orange-600/20 via-blue-600/20 to-orange-600/20 border-b border-orange-500/30 py-2.5 px-4 hidden">
+        <div class="max-w-7xl mx-auto flex items-center justify-between text-xs sm:text-sm">
+            <div class="flex items-center space-x-2 overflow-hidden">
+                <span class="bg-orange-500 text-slate-950 font-bold px-2 py-0.5 rounded text-[10px] uppercase tracking-wider animate-pulse flex-shrink-0">Booking Terbaru</span>
+                <span id="activeBookingTickerText" class="text-slate-200 font-medium truncate">Memuat informasi servis...</span>
+            </div>
+            <button onclick="app.switchTab('booking')" class="text-orange-400 hover:underline font-semibold flex-shrink-0 ml-4">Detail &rarr;</button>
+        </div>
+    </div>
+
+    <!-- Main Content Area -->
+    <main class="flex-grow max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-8">
+        
+        <!-- TAB 1: HOME & VIDEO GALLERY -->
+        <div id="tabHome" class="tab-content space-y-10">
+            
+            <!-- Admin Dashboard Panel for YouTube & Sparepart & Bookings -->
+            <section id="adminPanel" class="hidden bg-slate-900/90 border border-slate-800 rounded-2xl p-6 sm:p-8 shadow-2xl relative overflow-hidden">
+                <div class="absolute top-0 right-0 w-96 h-96 bg-orange-600/5 rounded-full blur-3xl pointer-events-none"></div>
+                
+                <div class="flex flex-col md:flex-row md:items-center justify-between gap-4 mb-6 pb-6 border-b border-slate-800">
                     <div>
-                        <label class="block text-xs font-semibold text-slate-400 uppercase tracking-wider mb-2">Link YouTube (URL / Watch / Short / Embed)</label>
-                        <input type="text" id="youtubeUrl" placeholder="Contoh: https://www.youtube.com/watch?v=dQw4w9WgXcQ atau https://youtu.be/dQw4w9WgXcQ" required
-                            class="w-full bg-slate-900 border border-slate-700 rounded-xl px-4 py-3 text-slate-100 placeholder-slate-500 focus:outline-none focus:border-red-500 focus:ring-1 focus:ring-red-500 text-sm">
+                        <h2 class="text-xl font-bold text-white flex items-center gap-2">
+                            <i class="fa-solid fa-sliders text-orange-500"></i>
+                            Panel Kontrol Admin 3 GARAGE
+                        </h2>
+                        <p class="text-sm text-slate-400 mt-1">Kelola video YouTube, Katalog Sparepart, dan lihat data Booking Servis pelanggan.</p>
                     </div>
+                    <div class="flex flex-wrap gap-2">
+                        <button onclick="app.toggleAddVideoForm()" class="bg-orange-600 hover:bg-orange-500 text-slate-950 font-bold px-4 py-2 rounded-xl text-xs transition-all flex items-center gap-2 shadow-md">
+                            <i class="fa-solid fa-plus"></i> Tambah Video
+                        </button>
+                        <button onclick="app.toggleAddPartForm()" class="bg-blue-600 hover:bg-blue-500 text-white font-bold px-4 py-2 rounded-xl text-xs transition-all flex items-center gap-2 shadow-md">
+                            <i class="fa-solid fa-plus"></i> Tambah Sparepart
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Admin Tabs Sub-navigation -->
+                <div class="flex space-x-2 border-b border-slate-800 mb-6 pb-2">
+                    <button onclick="app.switchAdminSubTab('videos')" id="adminSubTabVideosBtn" class="px-4 py-2 rounded-lg text-xs font-semibold bg-orange-500 text-slate-950 transition-all">Kelola Video</button>
+                    <button onclick="app.switchAdminSubTab('parts')" id="adminSubTabPartsBtn" class="px-4 py-2 rounded-lg text-xs font-semibold bg-slate-800 text-slate-300 hover:text-white transition-all">Kelola Katalog Sparepart</button>
+                    <button onclick="app.switchAdminSubTab('bookings')" id="adminSubTabBookingsBtn" class="px-4 py-2 rounded-lg text-xs font-semibold bg-slate-800 text-slate-300 hover:text-white transition-all">Data Booking Servis</button>
+                </div>
+
+                <!-- 1. Admin Videos Management -->
+                <div id="adminSubTabVideos" class="space-y-4">
+                    <div id="addVideoFormContainer" class="hidden mb-6 bg-slate-950/80 border border-slate-800 p-5 rounded-xl">
+                        <h3 class="text-sm font-semibold text-white mb-3">Tambah Link YouTube Baru</h3>
+                        <form onsubmit="app.handleAddVideo(event)" class="space-y-3">
+                            <input type="text" id="youtubeUrl" placeholder="Link YouTube (misal: https://youtu.be/...)" required
+                                class="w-full bg-slate-900 border border-slate-700 rounded-xl px-4 py-2.5 text-xs text-slate-100 focus:outline-none focus:border-orange-500">
+                            <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                                <input type="text" id="videoTitle" placeholder="Judul Kustom (Opsional)"
+                                    class="w-full bg-slate-900 border border-slate-700 rounded-xl px-4 py-2.5 text-xs text-slate-100 focus:outline-none focus:border-orange-500">
+                                <input type="text" id="videoCategory" placeholder="Kategori (Misal: Subaru Engine, Mazda Tuneup)" value="Spesialis Servis"
+                                    class="w-full bg-slate-900 border border-slate-700 rounded-xl px-4 py-2.5 text-xs text-slate-100 focus:outline-none focus:border-orange-500">
+                            </div>
+                            <div class="flex justify-end space-x-2 pt-1">
+                                <button type="button" onclick="app.toggleAddVideoForm()" class="px-3 py-1.5 bg-slate-800 text-slate-300 rounded-lg text-xs">Batal</button>
+                                <button type="submit" class="px-4 py-1.5 bg-orange-600 text-slate-950 font-bold rounded-lg text-xs">Simpan Video</button>
+                            </div>
+                        </form>
+                    </div>
+                    <h3 class="text-xs font-semibold text-slate-400 uppercase tracking-wider">Daftar Video Tersimpan (<span id="adminVideoCount">0</span>)</h3>
+                    <div id="adminVideoList" class="space-y-2 max-h-72 overflow-y-auto pr-2"></div>
+                </div>
+
+                <!-- 2. Admin Spareparts Management -->
+                <div id="adminSubTabParts" class="space-y-4 hidden">
+                    <div id="addPartFormContainer" class="hidden mb-6 bg-slate-950/80 border border-slate-800 p-5 rounded-xl">
+                        <h3 class="text-sm font-semibold text-white mb-3">Tambah Sparepart Baru ke Katalog</h3>
+                        <form onsubmit="app.handleAddPart(event)" class="space-y-3">
+                            <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                                <input type="text" id="partName" placeholder="Nama Sparepart (Contoh: Kampas Rem Subaru XV)" required
+                                    class="w-full bg-slate-900 border border-slate-700 rounded-xl px-4 py-2.5 text-xs text-slate-100 focus:outline-none focus:border-blue-500">
+                                <input type="text" id="partModel" placeholder="Model Kendaraan (Subaru / Mazda)" required
+                                    class="w-full bg-slate-900 border border-slate-700 rounded-xl px-4 py-2.5 text-xs text-slate-100 focus:outline-none focus:border-blue-500">
+                            </div>
+                            <div class="grid grid-cols-1 sm:grid-cols-3 gap-3">
+                                <input type="text" id="partPrice" placeholder="Harga (Contoh: Rp 750.000)" required
+                                    class="w-full bg-slate-900 border border-slate-700 rounded-xl px-4 py-2.5 text-xs text-slate-100 focus:outline-none focus:border-blue-500">
+                                <input type="text" id="partStock" placeholder="Stok (Ready / 5 pcs)" required
+                                    class="w-full bg-slate-900 border border-slate-700 rounded-xl px-4 py-2.5 text-xs text-slate-100 focus:outline-none focus:border-blue-500">
+                                <input type="url" id="partImage" placeholder="URL Gambar (Opsional)"
+                                    class="w-full bg-slate-900 border border-slate-700 rounded-xl px-4 py-2.5 text-xs text-slate-100 focus:outline-none focus:border-blue-500">
+                            </div>
+                            <div class="flex justify-end space-x-2 pt-1">
+                                <button type="button" onclick="app.toggleAddPartForm()" class="px-3 py-1.5 bg-slate-800 text-slate-300 rounded-lg text-xs">Batal</button>
+                                <button type="submit" class="px-4 py-1.5 bg-blue-600 text-white font-bold rounded-lg text-xs">Simpan Sparepart</button>
+                            </div>
+                        </form>
+                    </div>
+                    <h3 class="text-xs font-semibold text-slate-400 uppercase tracking-wider">Katalog Sparepart Aktif (<span id="adminPartCount">0</span>)</h3>
+                    <div id="adminPartList" class="space-y-2 max-h-72 overflow-y-auto pr-2"></div>
+                </div>
+
+                <!-- 3. Admin Bookings List -->
+                <div id="adminSubTabBookings" class="space-y-4 hidden">
+                    <h3 class="text-xs font-semibold text-slate-400 uppercase tracking-wider">Riwayat Booking Servis Masuk (<span id="adminBookingCount">0</span>)</h3>
+                    <div id="adminBookingList" class="space-y-2 max-h-72 overflow-y-auto pr-2"></div>
+                </div>
+            </section>
+
+            <!-- Video Gallery Section Header -->
+            <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+                <div>
+                    <h1 class="text-2xl sm:text-3xl font-extrabold text-white tracking-tight">Koleksi Video 3 GARAGE</h1>
+                    <p class="text-slate-400 text-sm mt-1">Dokumentasi servis, tune-up, dan performa Subaru & Mazda.</p>
+                </div>
+                
+                <div class="relative w-full sm:w-72">
+                    <span class="absolute inset-y-0 left-0 flex items-center pl-3.5 pointer-events-none text-slate-500">
+                        <i class="fa-solid fa-search text-sm"></i>
+                    </span>
+                    <input type="text" id="searchInput" oninput="app.handleSearch(this.value)" placeholder="Cari video..." 
+                        class="w-full bg-slate-900/80 border border-slate-800 rounded-xl pl-10 pr-4 py-2.5 text-sm text-slate-100 placeholder-slate-500 focus:outline-none focus:border-orange-500 transition-all">
+                </div>
+            </div>
+
+            <!-- Video Grid container -->
+            <div id="videoGrid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6"></div>
+
+            <!-- Empty State for Video -->
+            <div id="emptyState" class="hidden py-16 text-center">
+                <div class="w-16 h-16 bg-slate-900 border border-slate-800 rounded-2xl flex items-center justify-center mx-auto mb-3 text-slate-500 text-xl shadow-xl">
+                    <i class="fa-solid fa-film"></i>
+                </div>
+                <h3 class="text-base font-bold text-white mb-1">Belum Ada Video</h3>
+                <p class="text-slate-400 text-xs max-w-xs mx-auto">Admin belum menambahkan video ke beranda.</p>
+            </div>
+        </div>
+
+        <!-- TAB 2: BOOKING SERVIS -->
+        <div id="tabBooking" class="tab-content hidden space-y-8 max-w-3xl mx-auto">
+            <div class="text-center">
+                <div class="w-12 h-12 bg-blue-600/10 border border-blue-500/20 rounded-2xl flex items-center justify-center mx-auto mb-3 text-blue-400 text-xl">
+                    <i class="fa-solid fa-calendar-days"></i>
+                </div>
+                <h2 class="text-2xl font-extrabold text-white">Booking Servis Kendaraan</h2>
+                <p class="text-slate-400 text-sm mt-1">Jadwalkan perawatan khusus Subaru & Mazda Anda di 3 GARAGE.</p>
+            </div>
+
+            <div class="bg-slate-900 border border-slate-800 p-6 sm:p-8 rounded-2xl shadow-xl">
+                <form onsubmit="app.handleBookingSubmit(event)" class="space-y-4">
                     <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
                         <div>
-                            <label class="block text-xs font-semibold text-slate-400 uppercase tracking-wider mb-2">Judul Kustom (Opsional)</label>
-                            <input type="text" id="videoTitle" placeholder="Kosongkan untuk ambil otomatis dari YouTube"
-                                class="w-full bg-slate-900 border border-slate-700 rounded-xl px-4 py-3 text-slate-100 placeholder-slate-500 focus:outline-none focus:border-red-500 focus:ring-1 focus:ring-red-500 text-sm">
+                            <label class="block text-xs font-semibold text-slate-400 uppercase tracking-wider mb-2">Nama Pemilik / Pelanggan</label>
+                            <input type="text" id="bookName" required placeholder="Nama Lengkap"
+                                class="w-full bg-slate-950 border border-slate-800 rounded-xl px-4 py-3 text-sm text-slate-100 focus:outline-none focus:border-blue-500">
                         </div>
                         <div>
-                            <label class="block text-xs font-semibold text-slate-400 uppercase tracking-wider mb-2">Kategori / Tag</label>
-                            <input type="text" id="videoCategory" placeholder="Misal: Musik, Teknologi, Vlogging" value="Umum"
-                                class="w-full bg-slate-900 border border-slate-700 rounded-xl px-4 py-3 text-slate-100 placeholder-slate-500 focus:outline-none focus:border-red-500 focus:ring-1 focus:ring-red-500 text-sm">
+                            <label class="block text-xs font-semibold text-slate-400 uppercase tracking-wider mb-2">Nomor WhatsApp / Telp</label>
+                            <input type="tel" id="bookPhone" required placeholder="08123456789"
+                                class="w-full bg-slate-950 border border-slate-800 rounded-xl px-4 py-3 text-sm text-slate-100 focus:outline-none focus:border-blue-500">
+                        </div>
                     </div>
+
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                        <div>
+                            <label class="block text-xs font-semibold text-slate-400 uppercase tracking-wider mb-2">Unit / Model Kendaraan</label>
+                            <select id="bookVehicle" required
+                                class="w-full bg-slate-950 border border-slate-800 rounded-xl px-4 py-3 text-sm text-slate-100 focus:outline-none focus:border-blue-500">
+                                <option value="">-- Pilih Model Kendaraan --</option>
+                                <option value="Subaru XV">Subaru XV</option>
+                                <option value="Subaru Forester">Subaru Forester</option>
+                                <option value="Subaru BRZ">Subaru BRZ</option>
+                                <option value="Subaru WRX">Subaru WRX</option>
+                                <option value="Mazda 2">Mazda 2</option>
+                                <option value="Mazda 3">Mazda 3</option>
+                                <option value="Mazda CX-3">Mazda CX-3</option>
+                                <option value="Mazda CX-5">Mazda CX-5</option>
+                                <option value="Mazda CX-9">Mazda CX-9</option>
+                                <option value="Lainnya (Subaru/Mazda)">Lainnya (Subaru/Mazda)</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label class="block text-xs font-semibold text-slate-400 uppercase tracking-wider mb-2">Nomor Plat Kendaraan</label>
+                            <input type="text" id="bookPlat" required placeholder="Contoh: B 1234 XYZ"
+                                class="w-full bg-slate-950 border border-slate-800 rounded-xl px-4 py-3 text-sm text-slate-100 focus:outline-none focus:border-blue-500">
+                        </div>
                     </div>
-                    <div class="flex justify-end space-x-3 pt-2">
-                        <button type="button" onclick="app.toggleAddForm()" class="px-4 py-2 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-300 text-sm font-medium transition-all">Batal</button>
-                        <button type="submit" class="px-6 py-2 rounded-xl bg-red-600 hover:bg-red-500 text-white text-sm font-medium transition-all shadow-md shadow-red-600/20">Konversi & Simpan</button>
+
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                        <div>
+                            <label class="block text-xs font-semibold text-slate-400 uppercase tracking-wider mb-2">Tanggal Servis</label>
+                            <input type="date" id="bookDate" required
+                                class="w-full bg-slate-950 border border-slate-800 rounded-xl px-4 py-3 text-sm text-slate-100 focus:outline-none focus:border-blue-500">
+                        </div>
+                        <div>
+                            <label class="block text-xs font-semibold text-slate-400 uppercase tracking-wider mb-2">Jenis Layanan / Keluhan</label>
+                            <input type="text" id="bookService" required placeholder="Contoh: Tune up rutin / Ganti Oli / Kaki-kaki"
+                                class="w-full bg-slate-950 border border-slate-800 rounded-xl px-4 py-3 text-sm text-slate-100 focus:outline-none focus:border-blue-500">
+                        </div>
                     </div>
+
+                    <button type="submit" class="w-full bg-blue-600 hover:bg-blue-500 text-white font-bold py-3.5 rounded-xl transition-all shadow-lg shadow-blue-600/20 text-sm mt-2">
+                        Kirim Booking Servis Sekarang
+                    </button>
                 </form>
             </div>
 
-            <!-- Admin Video Management List -->
-            <div>
-                <h3 class="text-sm font-semibold text-slate-400 uppercase tracking-wider mb-4">Daftar Video Tersimpan (<span id="adminVideoCount">0</span>)</h3>
-                <div id="adminVideoList" class="space-y-3 max-h-96 overflow-y-auto pr-2 custom-scrollbar">
-                    <!-- Dynamic admin list items -->
+            <!-- List of Bookings publicly visible summary or user notice -->
+            <div class="bg-slate-900 border border-slate-800 rounded-2xl p-6">
+                <h3 class="text-sm font-bold text-white mb-3 flex items-center gap-2">
+                    <i class="fa-solid fa-list-check text-blue-400"></i> Antrean Booking Terbaru
+                </h3>
+                <div id="publicBookingList" class="space-y-3"></div>
+            </div>
+        </div>
+
+        <!-- TAB 3: SPAREPART CATALOG -->
+        <div id="tabCatalog" class="tab-content hidden space-y-6">
+            <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+                <div>
+                    <h2 class="text-2xl font-extrabold text-white">Katalog Sparepart 3 GARAGE</h2>
+                    <p class="text-slate-400 text-sm mt-1">Suku cadang original & pilihan untuk Subaru dan Mazda.</p>
+                </div>
+                <div class="relative w-full sm:w-72">
+                    <span class="absolute inset-y-0 left-0 flex items-center pl-3.5 pointer-events-none text-slate-500">
+                        <i class="fa-solid fa-search text-sm"></i>
+                    </span>
+                    <input type="text" id="searchPartInput" oninput="app.handleSearchPart(this.value)" placeholder="Cari sparepart..." 
+                        class="w-full bg-slate-900/80 border border-slate-800 rounded-xl pl-10 pr-4 py-2.5 text-sm text-slate-100 placeholder-slate-500 focus:outline-none focus:border-blue-500 transition-all">
                 </div>
             </div>
-        </section>
 
-        <!-- Gallery Header & Search Filter -->
-        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-8">
-            <div>
-                <h1 class="text-2xl sm:text-3xl font-extrabold text-white tracking-tight">Beranda Video</h1>
-                <p class="text-slate-400 text-sm mt-1">Jelajahi video pilihan yang diperbarui langsung oleh admin.</p>
-            </div>
-            
-            <div class="relative w-full sm:w-72">
-                <span class="absolute inset-y-0 left-0 flex items-center pl-3.5 pointer-events-none text-slate-500">
-                    <i class="fa-solid fa-search text-sm"></i>
-                </span>
-                <input type="text" id="searchInput" oninput="app.handleSearch(this.value)" placeholder="Cari judul video..." 
-                    class="w-full bg-slate-900/80 border border-slate-800 rounded-xl pl-10 pr-4 py-2.5 text-sm text-slate-100 placeholder-slate-500 focus:outline-none focus:border-red-500 transition-all">
-            </div>
-        </div>
+            <!-- Sparepart Grid -->
+            <div id="sparepartGrid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6"></div>
 
-        <!-- Video Grid container -->
-        <div id="videoGrid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-            <!-- Dynamic Video Cards will be inserted here -->
-        </div>
-
-        <!-- Empty State -->
-        <div id="emptyState" class="hidden py-20 text-center">
-            <div class="w-20 h-20 bg-slate-900 border border-slate-800 rounded-3xl flex items-center justify-center mx-auto mb-4 text-slate-500 text-2xl shadow-xl">
-                <i class="fa-solid fa-film"></i>
+            <div id="emptyPartState" class="hidden py-16 text-center">
+                <div class="w-16 h-16 bg-slate-900 border border-slate-800 rounded-2xl flex items-center justify-center mx-auto mb-3 text-slate-500 text-xl shadow-xl">
+                    <i class="fa-solid fa-box-open"></i>
+                </div>
+                <h3 class="text-base font-bold text-white mb-1">Katalog Kosong</h3>
+                <p class="text-slate-400 text-xs">Belum ada sparepart yang ditambahkan oleh admin.</p>
             </div>
-            <h3 class="text-lg font-bold text-white mb-1">Belum Ada Video</h3>
-            <p class="text-slate-400 text-sm max-w-sm mx-auto">Admin belum menambahkan video ke beranda, atau pencarian tidak ditemukan.</p>
         </div>
 
     </main>
 
     <!-- Footer -->
-    <footer class="border-t border-slate-800/80 mt-auto py-8 bg-slate-950">
-        <div class="max-w-7xl mx-auto px-4 text-center text-sm text-slate-500">
-            &copy; 2026 StreamVault Video Gallery. Hak Cipta Dilindungi.
+    <footer class="border-t border-slate-800 mt-auto py-8 bg-slate-950">
+        <div class="max-w-7xl mx-auto px-4 flex flex-col md:flex-row items-center justify-between gap-4 text-center md:text-left">
+            <div class="flex items-center space-x-3">
+                <div class="w-8 h-8 rounded-full overflow-hidden border border-orange-500">
+                    <img src="https://placehold.co/100x100/1e293b/ffffff?text=3G" alt="Logo" class="w-full h-full object-cover">
+                </div>
+                <span class="text-sm font-bold text-white">3 GARAGE &bull; Subaru & Mazda Specialist</span>
+            </div>
+            <div class="flex items-center space-x-4 text-slate-400 text-sm">
+                <a href="https://www.instagram.com/3garageid?srtk=NHcxZDQ0dHFqaHlq" target="_blank" class="hover:text-pink-400 transition-colors"><i class="fa-brands fa-instagram text-lg"></i></a>
+                <a href="https://wa.me/62895392922023" target="_blank" class="hover:text-emerald-400 transition-colors"><i class="fa-brands fa-whatsapp text-lg"></i></a>
+                <a href="https://tiktok.com" target="_blank" class="hover:text-white transition-colors"><i class="fa-brands fa-tiktok text-lg"></i></a>
+            </div>
+            <div class="text-xs text-slate-500">
+                &copy; 2026 3 GARAGE. All rights reserved.
+            </div>
         </div>
     </footer>
 
-    <!-- Admin Login Modal -->
+    <!-- Admin Login Modal (Blank username credential as requested) -->
     <div id="loginModal" class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-950/80 backdrop-blur-sm hidden modal-fade">
         <div class="bg-slate-900 border border-slate-800 rounded-2xl w-full max-w-md p-6 sm:p-8 shadow-2xl relative">
             <button onclick="app.closeLoginModal()" class="absolute top-5 right-5 text-slate-400 hover:text-white transition-colors">
@@ -175,108 +415,156 @@
             </button>
 
             <div class="text-center mb-6">
-                <div class="w-12 h-12 bg-red-600/10 border border-red-500/20 rounded-2xl flex items-center justify-center mx-auto mb-3 text-red-500 text-xl">
+                <div class="w-12 h-12 bg-orange-500/10 border border-orange-500/20 rounded-2xl flex items-center justify-center mx-auto mb-3 text-orange-400 text-xl">
                     <i class="fa-solid fa-shield-halved"></i>
                 </div>
-                <h3 class="text-xl font-bold text-white">Login Admin Rahasia</h3>
-                <p class="text-xs text-slate-400 mt-1">Masukkan kredensial admin yang valid untuk mengakses panel kontrol.</p>
+                <h3 class="text-xl font-bold text-white">Login Admin 3 GARAGE</h3>
+                <p class="text-xs text-slate-400 mt-1">Masukkan kredensial khusus untuk mengelola konten web.</p>
             </div>
 
             <form onsubmit="app.handleLogin(event)" class="space-y-4">
                 <div>
-                    <label class="block text-xs font-semibold text-slate-400 uppercase tracking-wider mb-2">Username / Email</label>
-                    <input type="text" id="loginUsername" required placeholder="admin"
-                        class="w-full bg-slate-950 border border-slate-800 rounded-xl px-4 py-3 text-sm text-slate-100 placeholder-slate-600 focus:outline-none focus:border-red-500">
+                    <label class="block text-xs font-semibold text-slate-400 uppercase tracking-wider mb-2">Username Admin</label>
+                    <input type="text" id="loginUsername" required placeholder="User"
+                        class="w-full bg-slate-950 border border-slate-800 rounded-xl px-4 py-3 text-sm text-slate-100 placeholder-slate-600 focus:outline-none focus:border-orange-500">
                 </div>
                 <div>
                     <label class="block text-xs font-semibold text-slate-400 uppercase tracking-wider mb-2">Password</label>
                     <input type="password" id="loginPassword" required placeholder="••••••••"
-                        class="w-full bg-slate-950 border border-slate-800 rounded-xl px-4 py-3 text-sm text-slate-100 placeholder-slate-600 focus:outline-none focus:border-red-500">
+                        class="w-full bg-slate-950 border border-slate-800 rounded-xl px-4 py-3 text-sm text-slate-100 placeholder-slate-600 focus:outline-none focus:border-orange-500">
                 </div>
                 <div id="loginError" class="hidden text-xs text-red-400 font-medium text-center bg-red-500/10 border border-red-500/20 py-2 rounded-lg">
                     Username atau password salah!
                 </div>
                 <div class="pt-2">
-                    <button type="submit" class="w-full bg-red-600 hover:bg-red-500 text-white font-medium py-3 rounded-xl transition-all shadow-lg shadow-red-600/20 text-sm">
+                    <button type="submit" class="w-full bg-orange-600 hover:bg-orange-500 text-slate-950 font-bold py-3 rounded-xl transition-all shadow-lg text-sm">
                         Masuk Sebagai Admin
                     </button>
                 </div>
             </form>
-            <div class="mt-6 text-center text-xs text-slate-500 border-t border-slate-800/80 pt-4">
-                Tip Default: Username <code class="text-slate-300 bg-slate-950 px-1.5 py-0.5 rounded">admin</code> | Password <code class="text-slate-300 bg-slate-950 px-1.5 py-0.5 rounded">3garageid</code>
-            </div>
         </div>
     </div>
 
-    <!-- Notification Toast / Custom Message Box -->
+    <!-- Notification Toast -->
     <div id="toast" class="fixed bottom-6 right-6 z-50 transform translate-y-20 opacity-0 transition-all duration-300 pointer-events-none">
         <div id="toastContent" class="bg-slate-900 border border-slate-800 shadow-2xl rounded-xl px-4 py-3 flex items-center space-x-3 text-sm font-medium text-white">
             <i id="toastIcon" class="fa-solid fa-circle-check text-emerald-500"></i>
-            <span id="toastMessage">Pesan Berhasil</span>
+            <span id="toastMessage">Berhasil</span>
         </div>
     </div>
 
     <!-- Application Script -->
     <script>
-        class VideoGalleryApp {
+        class GarageApp {
             constructor() {
                 this.videos = [];
+                this.parts = [];
+                this.bookings = [];
                 this.isAdmin = false;
                 this.searchQuery = '';
+                this.searchPartQuery = '';
                 
-                // Default admin credentials stored in localStorage if not exists
+                // Admin credentials setup: User: 10262026, password 3garageid
                 if (!localStorage.getItem('admin_credentials')) {
                     localStorage.setItem('admin_credentials', JSON.stringify({
-                        username: 'admin',
+                        username: '10262026',
                         password: '3garageid'
                     }));
                 }
 
-                this.loadVideos();
+                this.loadData();
                 this.checkAdminSession();
             }
 
-            // Load videos from localStorage or sample fallback
-            loadVideos() {
-                const stored = localStorage.getItem('vault_youtube_videos');
-                if (stored) {
-                    try {
-                        this.videos = JSON.parse(stored);
-                    } catch (e) {
-                        this.videos = [];
-                    }
+            loadData() {
+                // Videos
+                const storedVideos = localStorage.getItem('vault_youtube_videos');
+                if (storedVideos) {
+                    try { this.videos = JSON.parse(storedVideos); } catch(e) { this.videos = []; }
                 } else {
-                    // Default sample videos
                     this.videos = [
                         {
                             id: 'dQw4w9WgXcQ',
-                            title: 'Rick Astley - Never Gonna Give You Up (Official Music Video)',
-                            category: 'Musik Legendaris',
+                            title: 'Subaru Engine Tuning & Maintenance di 3 GARAGE',
+                            category: 'Subaru Specialist',
                             embedUrl: 'https://www.youtube.com/embed/dQw4w9WgXcQ',
-                            addedAt: new Date().toISOString()
-                        },
-                        {
-                            id: '5qap5aO4i9A',
-                            title: 'Lofi hip hop radio - beats to study/relax to',
-                            category: 'Musik Santai',
-                            embedUrl: 'https://www.youtube.com/embed/5qap5aO4i9A',
                             addedAt: new Date().toISOString()
                         }
                     ];
                     this.saveVideos();
                 }
+
+                // Parts Catalog
+                const storedParts = localStorage.getItem('garage_spareparts');
+                if (storedParts) {
+                    try { this.parts = JSON.parse(storedParts); } catch(e) { this.parts = []; }
+                } else {
+                    this.parts = [
+                        { id: 'p1', name: 'Kampas Rem Set Depan Original', model: 'Subaru XV / Forester', price: 'Rp 1.250.000', stock: 'Tersedia (Ready)', image: 'https://placehold.co/400x300/1e293b/ffffff?text=Kampas+Rem', addedAt: new Date().toISOString() },
+                        { id: 'p2', name: 'Mazda Genuine Oil 0W-20 (1L)', model: 'Mazda SkyActiv Series', price: 'Rp 185.000', stock: 'Tersedia (Ready 15 pcs)', image: 'https://placehold.co/400x300/1e293b/ffffff?text=Mazda+Oil', addedAt: new Date().toISOString() },
+                        { id: 'p3', name: 'Busi Iridium Racing NGK', model: 'Subaru WRX / BRZ', price: 'Rp 280.000 / pcs', stock: 'Stok Terbatas', image: 'https://placehold.co/400x300/1e293b/ffffff?text=Busi+Iridium', addedAt: new Date().toISOString() }
+                    ];
+                    this.saveParts();
+                }
+
+                // Bookings
+                const storedBookings = localStorage.getItem('garage_bookings');
+                if (storedBookings) {
+                    try { this.bookings = JSON.parse(storedBookings); } catch(e) { this.bookings = []; }
+                } else {
+                    this.bookings = [
+                        { id: 'b1', name: 'Budi Santoso', phone: '08123456789', vehicle: 'Subaru Forester', plat: 'B 888 GRC', date: '2026-03-20', service: 'Tune up berkala & Ganti oli', createdAt: new Date().toISOString() }
+                    ];
+                    this.saveBookings();
+                }
+
                 this.render();
             }
 
-            saveVideos() {
-                localStorage.setItem('vault_youtube_videos', JSON.stringify(this.videos));
-            }
+            saveVideos() { localStorage.setItem('vault_youtube_videos', JSON.stringify(this.videos)); }
+            saveParts() { localStorage.setItem('garage_spareparts', JSON.stringify(this.parts)); }
+            saveBookings() { localStorage.setItem('garage_bookings', JSON.stringify(this.bookings)); }
 
             checkAdminSession() {
-                const session = sessionStorage.getItem('admin_logged_in');
-                if (session === 'true') {
+                if (sessionStorage.getItem('admin_logged_in') === 'true') {
                     this.isAdmin = true;
                     this.updateAdminUI();
+                }
+            }
+
+            toggleSidebarMenu() {
+                const sidebar = document.getElementById('sidebarMenu');
+                const overlay = document.getElementById('sidebarOverlay');
+                sidebar.classList.toggle('translate-x-full');
+                overlay.classList.toggle('hidden');
+            }
+
+            switchTab(tabName) {
+                document.querySelectorAll('.tab-content').forEach(el => el.classList.add('hidden'));
+                if (tabName === 'home') document.getElementById('tabHome').classList.remove('hidden');
+                if (tabName === 'booking') document.getElementById('tabBooking').classList.remove('hidden');
+                if (tabName === 'catalog') document.getElementById('tabCatalog').classList.remove('hidden');
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            }
+
+            switchAdminSubTab(subTab) {
+                document.getElementById('adminSubTabVideos').classList.add('hidden');
+                document.getElementById('adminSubTabParts').classList.add('hidden');
+                document.getElementById('adminSubTabBookings').classList.add('hidden');
+
+                document.getElementById('adminSubTabVideosBtn').className = 'px-4 py-2 rounded-lg text-xs font-semibold bg-slate-800 text-slate-300 transition-all';
+                document.getElementById('adminSubTabPartsBtn').className = 'px-4 py-2 rounded-lg text-xs font-semibold bg-slate-800 text-slate-300 transition-all';
+                document.getElementById('adminSubTabBookingsBtn').className = 'px-4 py-2 rounded-lg text-xs font-semibold bg-slate-800 text-slate-300 transition-all';
+
+                if (subTab === 'videos') {
+                    document.getElementById('adminSubTabVideos').classList.remove('hidden');
+                    document.getElementById('adminSubTabVideosBtn').className = 'px-4 py-2 rounded-lg text-xs font-semibold bg-orange-500 text-slate-950 transition-all';
+                } else if (subTab === 'parts') {
+                    document.getElementById('adminSubTabParts').classList.remove('hidden');
+                    document.getElementById('adminSubTabPartsBtn').className = 'px-4 py-2 rounded-lg text-xs font-semibold bg-blue-500 text-white transition-all';
+                } else if (subTab === 'bookings') {
+                    document.getElementById('adminSubTabBookings').classList.remove('hidden');
+                    document.getElementById('adminSubTabBookingsBtn').className = 'px-4 py-2 rounded-lg text-xs font-semibold bg-blue-600 text-white transition-all';
                 }
             }
 
@@ -296,7 +584,6 @@
                 e.preventDefault();
                 const u = document.getElementById('loginUsername').value.trim();
                 const p = document.getElementById('loginPassword').value.trim();
-                
                 const creds = JSON.parse(localStorage.getItem('admin_credentials'));
 
                 if (u === creds.username && p === creds.password) {
@@ -304,7 +591,7 @@
                     sessionStorage.setItem('admin_logged_in', 'true');
                     this.closeLoginModal();
                     this.updateAdminUI();
-                    this.showToast('Login Berhasil! Selamat datang Admin.', 'success');
+                    this.showToast('Login Admin Berhasil!', 'success');
                 } else {
                     document.getElementById('loginError').classList.remove('hidden');
                 }
@@ -314,7 +601,7 @@
                 this.isAdmin = false;
                 sessionStorage.removeItem('admin_logged_in');
                 this.updateAdminUI();
-                this.showToast('Anda telah keluar dari mode admin.', 'info');
+                this.showToast('Anda keluar dari mode admin.', 'info');
             }
 
             updateAdminUI() {
@@ -322,6 +609,7 @@
                 const logoutBtn = document.getElementById('logoutBtn');
                 const adminBadge = document.getElementById('adminBadge');
                 const adminPanel = document.getElementById('adminPanel');
+                const sidebarAdminBtn = document.getElementById('sidebarAdminBtn');
 
                 if (this.isAdmin) {
                     adminBtn.classList.add('hidden');
@@ -330,6 +618,7 @@
                     adminBadge.classList.remove('hidden');
                     adminBadge.classList.add('flex');
                     adminPanel.classList.remove('hidden');
+                    sidebarAdminBtn.parentElement.classList.add('hidden');
                 } else {
                     adminBtn.classList.remove('hidden');
                     logoutBtn.classList.add('hidden');
@@ -337,124 +626,159 @@
                     adminBadge.classList.add('hidden');
                     adminBadge.classList.remove('flex');
                     adminPanel.classList.add('hidden');
-                    // Hide add form if open
+                    sidebarAdminBtn.parentElement.classList.remove('hidden');
                     document.getElementById('addVideoFormContainer').classList.add('hidden');
+                    document.getElementById('addPartFormContainer').classList.add('hidden');
                 }
                 this.render();
             }
 
-            toggleAddForm() {
-                const formContainer = document.getElementById('addVideoFormContainer');
-                formContainer.classList.toggle('hidden');
-                if (!formContainer.classList.contains('hidden')) {
-                    document.getElementById('youtubeUrl').focus();
-                }
+            toggleAddVideoForm() {
+                const c = document.getElementById('addVideoFormContainer');
+                c.classList.toggle('hidden');
+                if (!c.classList.contains('hidden')) document.getElementById('youtubeUrl').focus();
             }
 
-            // Automatic YouTube URL parser & embed converter
+            toggleAddPartForm() {
+                const c = document.getElementById('addPartFormContainer');
+                c.classList.toggle('hidden');
+                if (!c.classList.contains('hidden')) document.getElementById('partName').focus();
+            }
+
             extractYouTubeId(url) {
                 if (!url) return null;
-                let videoId = null;
-                
-                // Clean up whitespace
                 url = url.trim();
-
-                // Regex patterns for various YouTube URL formats
                 const patterns = [
                     /(?:https?:\/\/)?(?:www\.)?youtube\.com\/watch\?v=([a-zA-Z0-9_-]{11})/,
                     /(?:https?:\/\/)?(?:www\.)?youtube\.com\/embed\/([a-zA-Z0-9_-]{11})/,
                     /(?:https?:\/\/)?(?:www\.)?youtube\.com\/shorts\/([a-zA-Z0-9_-]{11})/,
                     /(?:https?:\/\/)?youtu\.be\/([a-zA-Z0-9_-]{11})/,
-                    /^([a-zA-Z0-9_-]{11})$/ // Direct ID fallback
+                    /^([a-zA-Z0-9_-]{11})$/
                 ];
-
-                for (let pattern of patterns) {
-                    const match = url.match(pattern);
-                    if (match && match[1]) {
-                        videoId = match[1];
-                        break;
-                    }
+                for (let p of patterns) {
+                    const m = url.match(p);
+                    if (m && m[1]) return m[1];
                 }
-                return videoId;
+                return null;
             }
 
             handleAddVideo(e) {
                 e.preventDefault();
                 const rawUrl = document.getElementById('youtubeUrl').value;
-                let customTitle = document.getElementById('videoTitle').value.trim();
-                const category = document.getElementById('videoCategory').value.trim() || 'Umum';
+                let title = document.getElementById('videoTitle').value.trim();
+                const category = document.getElementById('videoCategory').value.trim() || 'Servis';
+                const id = this.extractYouTubeId(rawUrl);
 
-                const videoId = this.extractYouTubeId(rawUrl);
-
-                if (!videoId) {
-                    this.showToast('Format link YouTube tidak valid. Coba link lain.', 'error');
+                if (!id) {
+                    this.showToast('Link YouTube tidak valid!', 'error');
                     return;
                 }
-
-                // Check duplicate
-                if (this.videos.some(v => v.id === videoId)) {
-                    this.showToast('Video ini sudah ada di dalam galeri!', 'error');
+                if (this.videos.some(v => v.id === id)) {
+                    this.showToast('Video sudah ada di galeri!', 'error');
                     return;
                 }
+                if (!title) title = `Video Servis #${id}`;
 
-                if (!customTitle) {
-                    customTitle = `Video YouTube #${videoId}`;
-                }
-
-                const newVideo = {
-                    id: videoId,
-                    title: customTitle,
-                    category: category,
-                    embedUrl: `https://www.youtube.com/embed/${videoId}`,
-                    addedAt: new Date().toISOString()
-                };
-
-                this.videos.unshift(newVideo);
+                this.videos.unshift({ id, title, category, embedUrl: `https://www.youtube.com/embed/${id}`, addedAt: new Date().toISOString() });
                 this.saveVideos();
-                
-                // Reset form & hide
-                document.getElementById('videoForm').reset();
+                document.getElementById('youtubeUrl').value = '';
+                document.getElementById('videoTitle').value = '';
                 document.getElementById('addVideoFormContainer').classList.add('hidden');
-                
                 this.render();
-                this.showToast('Video berhasil dikonversi dan ditambahkan!', 'success');
+                this.showToast('Video berhasil ditambahkan!', 'success');
             }
 
             deleteVideo(id) {
-                if (!confirm('Apakah Anda yakin ingin menghapus video ini dari beranda?')) return;
+                if (!confirm('Hapus video ini?')) return;
                 this.videos = this.videos.filter(v => v.id !== id);
                 this.saveVideos();
                 this.render();
-                this.showToast('Video berhasil dihapus.', 'info');
+                this.showToast('Video dihapus.', 'info');
             }
 
-            handleSearch(query) {
-                this.searchQuery = query.toLowerCase();
-                this.renderGrid();
-            }
+            handleAddPart(e) {
+                e.preventDefault();
+                const name = document.getElementById('partName').value.trim();
+                const model = document.getElementById('partModel').value.trim();
+                const price = document.getElementById('partPrice').value.trim();
+                const stock = document.getElementById('partStock').value.trim();
+                let image = document.getElementById('partImage').value.trim();
 
-            navigateHome() {
-                window.scrollTo({ top: 0, behavior: 'smooth' });
-            }
-
-            showToast(message, type = 'success') {
-                const toast = document.getElementById('toast');
-                const toastMessage = document.getElementById('toastMessage');
-                const toastIcon = document.getElementById('toastIcon');
-
-                toastMessage.textContent = message;
-                
-                if (type === 'success') {
-                    toastIcon.className = 'fa-solid fa-circle-check text-emerald-500';
-                } else if (type === 'error') {
-                    toastIcon.className = 'fa-solid fa-circle-exclamation text-red-500';
-                } else {
-                    toastIcon.className = 'fa-solid fa-circle-info text-sky-500';
+                if (!image) {
+                    image = `https://placehold.co/400x300/1e293b/ffffff?text=${encodeURIComponent(name.substring(0, 15))}`;
                 }
+
+                const newPart = {
+                    id: 'part_' + Date.now(),
+                    name, model, price, stock, image,
+                    addedAt: new Date().toISOString()
+                };
+
+                this.parts.unshift(newPart);
+                this.saveParts();
+                document.getElementById('partName').value = '';
+                document.getElementById('partModel').value = '';
+                document.getElementById('partPrice').value = '';
+                document.getElementById('partStock').value = '';
+                document.getElementById('partImage').value = '';
+                document.getElementById('addPartFormContainer').classList.add('hidden');
+                this.render();
+                this.showToast('Sparepart berhasil ditambahkan ke katalog!', 'success');
+            }
+
+            deletePart(id) {
+                if (!confirm('Hapus sparepart ini dari katalog?')) return;
+                this.parts = this.parts.filter(p => p.id !== id);
+                this.saveParts();
+                this.render();
+                this.showToast('Sparepart dihapus.', 'info');
+            }
+
+            handleBookingSubmit(e) {
+                e.preventDefault();
+                const name = document.getElementById('bookName').value.trim();
+                const phone = document.getElementById('bookPhone').value.trim();
+                const vehicle = document.getElementById('bookVehicle').value;
+                const plat = document.getElementById('bookPlat').value.trim();
+                const date = document.getElementById('bookDate').value;
+                const service = document.getElementById('bookService').value.trim();
+
+                const newBooking = {
+                    id: 'b_' + Date.now(),
+                    name, phone, vehicle, plat, date, service,
+                    createdAt: new Date().toISOString()
+                };
+
+                this.bookings.unshift(newBooking);
+                this.saveBookings();
+                e.target.reset();
+                this.render();
+                this.showToast('Booking Servis Berhasil Dikirim! Otomatis tampil di beranda.', 'success');
+                this.switchTab('home');
+            }
+
+            deleteBooking(id) {
+                if (!confirm('Hapus data booking ini?')) return;
+                this.bookings = this.bookings.filter(b => b.id !== id);
+                this.saveBookings();
+                this.render();
+                this.showToast('Data booking dihapus.', 'info');
+            }
+
+            handleSearch(q) { this.searchQuery = q.toLowerCase(); this.renderVideoGrid(); }
+            handleSearchPart(q) { this.searchPartQuery = q.toLowerCase(); this.renderPartGrid(); }
+            navigateHome() { this.switchTab('home'); }
+
+            showToast(msg, type = 'success') {
+                const toast = document.getElementById('toast');
+                document.getElementById('toastMessage').textContent = msg;
+                const icon = document.getElementById('toastIcon');
+                if (type === 'success') icon.className = 'fa-solid fa-circle-check text-emerald-500';
+                else if (type === 'error') icon.className = 'fa-solid fa-circle-exclamation text-red-500';
+                else icon.className = 'fa-solid fa-circle-info text-sky-500';
 
                 toast.classList.remove('translate-y-20', 'opacity-0');
                 toast.classList.add('translate-y-0', 'opacity-100');
-
                 setTimeout(() => {
                     toast.classList.remove('translate-y-0', 'opacity-100');
                     toast.classList.add('translate-y-20', 'opacity-0');
@@ -462,51 +786,44 @@
             }
 
             render() {
-                this.renderGrid();
-                this.renderAdminList();
+                this.renderVideoGrid();
+                this.renderPartGrid();
+                this.renderBookings();
+                this.renderAdminLists();
             }
 
-            renderGrid() {
+            renderVideoGrid() {
                 const grid = document.getElementById('videoGrid');
-                const emptyState = document.getElementById('emptyState');
-
-                const filtered = this.videos.filter(v => 
-                    v.title.toLowerCase().includes(this.searchQuery) || 
-                    v.category.toLowerCase().includes(this.searchQuery)
-                );
+                const empty = document.getElementById('emptyState');
+                const filtered = this.videos.filter(v => v.title.toLowerCase().includes(this.searchQuery) || v.category.toLowerCase().includes(this.searchQuery));
 
                 if (filtered.length === 0) {
                     grid.innerHTML = '';
-                    emptyState.classList.remove('hidden');
+                    empty.classList.remove('hidden');
                     return;
                 }
+                empty.classList.add('hidden');
 
-                emptyState.classList.add('hidden');
-
-                grid.innerHTML = filtered.map(video => `
+                grid.innerHTML = filtered.map(v => `
                     <div class="bg-slate-900 border border-slate-800 rounded-2xl overflow-hidden shadow-xl hover:border-slate-700 transition-all flex flex-col group">
                         <div class="relative w-full aspect-video bg-slate-950">
-                            <iframe src="${video.embedUrl}" title="${video.title}" 
-                                class="w-full h-full border-0" 
-                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
-                                allowfullscreen>
-                            </iframe>
+                            <iframe src="${v.embedUrl}" title="${v.title}" class="w-full h-full border-0" allowfullscreen></iframe>
                         </div>
                         <div class="p-5 flex flex-col flex-grow">
                             <div class="flex items-center justify-between gap-2 mb-2">
-                                <span class="bg-red-500/10 border border-red-500/20 text-red-400 text-xs font-semibold px-2.5 py-1 rounded-lg">
-                                    ${escapeHtml(video.category)}
+                                <span class="bg-orange-500/10 border border-orange-500/25 text-orange-400 text-xs font-semibold px-2.5 py-1 rounded-lg">
+                                    ${escapeHtml(v.category)}
                                 </span>
                                 <span class="text-xs text-slate-500">
-                                    ${new Date(video.addedAt).toLocaleDateString('id-ID', { day: 'numeric', month: 'short', year: 'numeric' })}
+                                    ${new Date(v.addedAt).toLocaleDateString('id-ID', { day: 'numeric', month: 'short', year: 'numeric' })}
                                 </span>
                             </div>
-                            <h3 class="text-base font-bold text-slate-100 group-hover:text-red-400 transition-colors line-clamp-2 mt-1">
-                                ${escapeHtml(video.title)}
+                            <h3 class="text-base font-bold text-slate-100 group-hover:text-orange-400 transition-colors line-clamp-2 mt-1">
+                                ${escapeHtml(v.title)}
                             </h3>
                             ${this.isAdmin ? `
-                                <div class="mt-4 pt-4 border-t border-slate-800/80 flex justify-end">
-                                    <button onclick="app.deleteVideo('${video.id}')" class="text-xs text-red-400 hover:text-red-300 font-medium flex items-center gap-1.5 bg-red-500/10 px-3 py-1.5 rounded-lg transition-colors">
+                                <div class="mt-4 pt-4 border-t border-slate-800 flex justify-end">
+                                    <button onclick="app.deleteVideo('${v.id}')" class="text-xs text-red-400 hover:text-red-300 font-medium flex items-center gap-1.5 bg-red-500/10 px-3 py-1.5 rounded-lg">
                                         <i class="fa-solid fa-trash-can"></i> Hapus Video
                                     </button>
                                 </div>
@@ -516,48 +833,125 @@
                 `).join('');
             }
 
-            renderAdminList() {
-                const listContainer = document.getElementById('adminVideoList');
-                const countBadge = document.getElementById('adminVideoCount');
-                
-                countBadge.textContent = this.videos.length;
+            renderPartGrid() {
+                const grid = document.getElementById('sparepartGrid');
+                const empty = document.getElementById('emptyPartState');
+                const filtered = this.parts.filter(p => p.name.toLowerCase().includes(this.searchPartQuery) || p.model.toLowerCase().includes(this.searchPartQuery));
 
-                if (this.videos.length === 0) {
-                    listContainer.innerHTML = '<p class="text-xs text-slate-500 italic py-2">Belum ada video tersimpan.</p>';
+                if (filtered.length === 0) {
+                    grid.innerHTML = '';
+                    empty.classList.remove('hidden');
+                    return;
+                }
+                empty.classList.add('hidden');
+
+                grid.innerHTML = filtered.map(p => `
+                    <div class="bg-slate-900 border border-slate-800 rounded-2xl overflow-hidden shadow-xl hover:border-slate-700 transition-all flex flex-col justify-between group">
+                        <div class="relative w-full aspect-video bg-slate-950 overflow-hidden">
+                            <img src="${escapeHtml(p.image || 'https://placehold.co/400x300/1e293b/ffffff?text=Sparepart')}" alt="${escapeHtml(p.name)}" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" onerror="this.src='https://placehold.co/400x300/1e293b/ffffff?text=Sparepart'">
+                            <div class="absolute top-3 left-3">
+                                <span class="bg-blue-600/90 backdrop-blur-md text-white text-[11px] font-bold px-2.5 py-1 rounded-lg shadow">
+                                    ${escapeHtml(p.model)}
+                                </span>
+                            </div>
+                        </div>
+                        <div class="p-5 flex flex-col flex-grow justify-between">
+                            <div>
+                                <div class="flex items-center justify-between gap-2 mb-2">
+                                    <span class="text-xs text-emerald-400 font-semibold bg-emerald-500/10 px-2 py-0.5 rounded">
+                                        ${escapeHtml(p.stock)}
+                                    </span>
+                                </div>
+                                <h3 class="text-base font-bold text-white mb-2 line-clamp-2">${escapeHtml(p.name)}</h3>
+                            </div>
+                            <div class="pt-4 border-t border-slate-800 flex items-center justify-between mt-4">
+                                <span class="text-base font-extrabold text-orange-400">${escapeHtml(p.price)}</span>
+                                <a href="https://wa.me/62895392922023?text=Halo%203%20GARAGE,%20saya%20tertarik%20dengan%20sparepart:%20${encodeURIComponent(p.name)}" target="_blank" class="bg-blue-600 hover:bg-blue-500 text-white text-xs font-bold px-3 py-2 rounded-xl transition-all shadow-md">
+                                    <i class="fa-brands fa-whatsapp mr-1"></i> Pesan
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                `).join('');
+            }
+
+            renderBookings() {
+                const banner = document.getElementById('activeBookingBanner');
+                const tickerText = document.getElementById('activeBookingTickerText');
+                const pubList = document.getElementById('publicBookingList');
+
+                if (this.bookings.length > 0) {
+                    const latest = this.bookings[0];
+                    banner.classList.remove('hidden');
+                    tickerText.textContent = `${latest.name} (${latest.vehicle} - ${latest.plat}) melakukan booking untuk ${latest.service} pada ${latest.date}`;
+                } else {
+                    banner.classList.add('hidden');
+                }
+
+                if (this.bookings.length === 0) {
+                    pubList.innerHTML = '<p class="text-xs text-slate-500 italic">Belum ada data booking servis.</p>';
                     return;
                 }
 
-                listContainer.innerHTML = this.videos.map(video => `
-                    <div class="bg-slate-950 border border-slate-800 p-3.5 rounded-xl flex items-center justify-between gap-4">
-                        <div class="flex items-center space-x-3 overflow-hidden">
-                            <img src="https://img.youtube.com/vi/${video.id}/hqdefault.jpg" alt="Thumbnail" class="w-16 h-10 object-cover rounded-lg flex-shrink-0 bg-slate-900">
-                            <div class="overflow-hidden">
-                                <h4 class="text-sm font-semibold text-slate-200 truncate">${escapeHtml(video.title)}</h4>
-                                <span class="text-xs text-slate-500">ID: ${video.id} &bull; ${escapeHtml(video.category)}</span>
+                pubList.innerHTML = this.bookings.map(b => `
+                    <div class="bg-slate-950 border border-slate-800 p-4 rounded-xl flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+                        <div>
+                            <div class="flex items-center space-x-2">
+                                <span class="font-bold text-white text-sm">${escapeHtml(b.name)}</span>
+                                <span class="bg-blue-500/10 text-blue-400 text-xs px-2 py-0.5 rounded font-semibold">${escapeHtml(b.vehicle)} (${escapeHtml(b.plat)})</span>
                             </div>
+                            <p class="text-xs text-slate-400 mt-1">Layanan: <span class="text-slate-200 font-medium">${escapeHtml(b.service)}</span> &bull; Tanggal: ${escapeHtml(b.date)}</p>
                         </div>
-                        <button onclick="app.deleteVideo('${video.id}')" class="text-slate-400 hover:text-red-400 p-2 transition-colors flex-shrink-0" title="Hapus Video">
-                            <i class="fa-solid fa-trash-can text-sm"></i>
-                        </button>
+                        <span class="text-xs text-slate-500 self-start sm:self-auto">${new Date(b.createdAt).toLocaleDateString('id-ID')}</span>
+                    </div>
+                `).join('');
+            }
+
+            renderAdminLists() {
+                // Admin Videos
+                const vList = document.getElementById('adminVideoList');
+                document.getElementById('adminVideoCount').textContent = this.videos.length;
+                vList.innerHTML = this.videos.length === 0 ? '<p class="text-xs text-slate-500 italic">Kosong</p>' : this.videos.map(v => `
+                    <div class="bg-slate-950 border border-slate-800 p-3 rounded-xl flex items-center justify-between gap-3">
+                        <span class="text-xs text-slate-200 truncate font-medium">${escapeHtml(v.title)}</span>
+                        <button onclick="app.deleteVideo('${v.id}')" class="text-red-400 hover:text-red-300 text-xs px-2 py-1"><i class="fa-solid fa-trash-can"></i></button>
+                    </div>
+                `).join('');
+
+                // Admin Parts
+                const pList = document.getElementById('adminPartList');
+                document.getElementById('adminPartCount').textContent = this.parts.length;
+                pList.innerHTML = this.parts.length === 0 ? '<p class="text-xs text-slate-500 italic">Kosong</p>' : this.parts.map(p => `
+                    <div class="bg-slate-950 border border-slate-800 p-3 rounded-xl flex items-center justify-between gap-3">
+                        <div class="truncate">
+                            <span class="text-xs text-slate-200 font-medium">${escapeHtml(p.name)}</span>
+                            <span class="text-[11px] text-orange-400 ml-2">${escapeHtml(p.price)}</span>
+                        </div>
+                        <button onclick="app.deletePart('${p.id}')" class="text-red-400 hover:text-red-300 text-xs px-2 py-1"><i class="fa-solid fa-trash-can"></i></button>
+                    </div>
+                `).join('');
+
+                // Admin Bookings
+                const bList = document.getElementById('adminBookingList');
+                document.getElementById('adminBookingCount').textContent = this.bookings.length;
+                bList.innerHTML = this.bookings.length === 0 ? '<p class="text-xs text-slate-500 italic">Kosong</p>' : this.bookings.map(b => `
+                    <div class="bg-slate-950 border border-slate-800 p-3 rounded-xl flex items-center justify-between gap-3">
+                        <div>
+                            <span class="text-xs text-slate-200 font-bold">${escapeHtml(b.name)} - ${escapeHtml(b.vehicle)} (${escapeHtml(b.plat)})</span>
+                            <span class="block text-[11px] text-slate-400">${escapeHtml(b.service)} | ${escapeHtml(b.date)}</span>
+                        </div>
+                        <button onclick="app.deleteBooking('${b.id}')" class="text-red-400 hover:text-red-300 text-xs px-2 py-1"><i class="fa-solid fa-trash-can"></i></button>
                     </div>
                 `).join('');
             }
         }
 
-        // Helper to prevent XSS
         function escapeHtml(text) {
-            const map = {
-                '&': '&amp;',
-                '<': '&lt;',
-                '>': '&gt;',
-                '"': '&quot;',
-                "'": '&#039;'
-            };
+            const map = { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#039;' };
             return text.replace(/[&<>"']/g, function(m) { return map[m]; });
         }
 
-        // Initialize application
-        const app = new VideoGalleryApp();
+        const app = new GarageApp();
     </script>
 </body>
 </html>
