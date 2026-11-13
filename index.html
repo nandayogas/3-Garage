@@ -33,6 +33,18 @@
         .modal-fade {
             transition: opacity 0.3s ease, transform 0.3s ease;
         }
+        @keyframes rainbowAnimation {
+            0% { filter: hue-rotate(0deg); }
+            100% { filter: hue-rotate(360deg); }
+        }
+        .rainbow-text {
+            background: linear-gradient(90deg, #ff0000, #ff7f00, #ffff00, #00ff00, #0000ff, #4b0082, #8b00ff, #ff0000);
+            background-size: 400% auto;
+            color: transparent;
+            -webkit-background-clip: text;
+            background-clip: text;
+            animation: rainbowAnimation 6s linear infinite;
+        }
     </style>
 </head>
 <body class="bg-slate-950 text-slate-100 min-h-screen flex flex-col selection:bg-orange-500 selection:text-white">
@@ -43,10 +55,10 @@
             <!-- Brand Logo & Name -->
             <div class="flex items-center space-x-3 cursor-pointer" onclick="app.navigateHome()">
                 <div class="w-12 h-12 rounded-full overflow-hidden border-2 border-orange-500 shadow-lg shadow-orange-500/20 bg-slate-900 flex-shrink-0">
-                    <img src="https://placehold.co/100x100/1e293b/ffffff?text=3G" alt="3 GARAGE Logo" class="w-full h-full object-cover" onerror="this.src='https://placehold.co/100x100/1e293b/ffffff?text=3G'">
+                    <img src="logo.png" alt="3 GARAGE Logo" class="w-full h-full object-cover" onerror="this.src='https://placehold.co/100x100/1e293b/ffffff?text=3G'">
                 </div>
                 <div>
-                    <span class="text-xl font-extrabold tracking-tight bg-gradient-to-r from-white via-slate-200 to-orange-400 bg-clip-text text-transparent">3 GARAGE</span>
+                    <span class="text-xl font-extrabold tracking-tight rainbow-text">3 GARAGE</span>
                     <span class="block text-[10px] text-orange-400 font-bold uppercase tracking-wider">Subaru & Mazda Specialist</span>
                 </div>
             </div>
@@ -57,11 +69,6 @@
                     <span class="w-2 h-2 rounded-full bg-orange-500 animate-pulse"></span>
                     <span>Admin Aktif</span>
                 </div>
-                
-                <button id="adminBtn" onclick="app.openLoginModal()" class="hidden sm:flex items-center space-x-2 px-3.5 py-2 rounded-xl bg-slate-900 border border-slate-800 hover:border-slate-700 text-slate-300 hover:text-white text-xs font-medium transition-all">
-                    <i class="fa-solid fa-lock text-[10px]"></i>
-                    <span>Admin</span>
-                </button>
 
                 <button id="logoutBtn" onclick="app.logout()" class="hidden flex items-center space-x-2 px-3 py-2 rounded-xl bg-red-500/10 border border-red-500/30 text-red-400 text-xs font-medium transition-all">
                     <i class="fa-solid fa-right-from-bracket text-[10px]"></i>
@@ -82,7 +89,7 @@
         <div class="p-6 border-b border-slate-800 flex items-center justify-between">
             <div class="flex items-center space-x-3">
                 <div class="w-9 h-9 rounded-full overflow-hidden border border-orange-500">
-                    <img src="https://placehold.co/100x100/1e293b/ffffff?text=3G" alt="Logo" class="w-full h-full object-cover">
+                    <img src="logo.png" alt="Logo" class="w-full h-full object-cover" onerror="this.src='https://placehold.co/100x100/1e293b/ffffff?text=3G'">
                 </div>
                 <div>
                     <h3 class="font-bold text-white text-sm">Menu 3 GARAGE</h3>
@@ -109,6 +116,20 @@
                     <i class="fa-solid fa-box-archive text-emerald-400 group-hover:scale-110 transition-transform"></i>
                     <span>Sparepart Catalog</span>
                 </button>
+            </div>
+
+            <!-- Alamat & Google Maps Section in Sidebar Menu -->
+            <div class="pt-4 border-t border-slate-800">
+                <h4 class="text-xs font-semibold text-slate-400 uppercase tracking-wider mb-3">Alamat Bengkel</h4>
+                <div class="space-y-3">
+                    <div class="rounded-xl overflow-hidden border border-slate-800 h-36 relative bg-slate-950">
+                        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3966.2!2d106.8!3d-6.2!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zNsKwMTInMDAuMCJTIDEwNsKwNDgnMDAuMCJF!5e0!3m2!1sid!2sid!4v1!5m2!1sid!2sid" class="w-full h-full border-0" allowfullscreen="" loading="lazy"></iframe>
+                    </div>
+                    <a href="https://maps.app.goo.gl/rWKBm8oB1Sw3CKE89?g_st=ac" target="_blank" class="w-full flex items-center justify-center space-x-2 px-3 py-2.5 rounded-xl bg-orange-600 hover:bg-orange-500 text-slate-950 text-xs font-bold transition-all shadow-md">
+                        <i class="fa-solid fa-map-location-dot"></i>
+                        <span>Buka Google Maps</span>
+                    </a>
+                </div>
             </div>
 
             <!-- Social Media Section -->
@@ -144,16 +165,7 @@
         </div>
     </div>
 
-    <!-- Active Booking Ticker Banner on Homepage -->
-    <div id="activeBookingBanner" class="bg-gradient-to-r from-orange-600/20 via-blue-600/20 to-orange-600/20 border-b border-orange-500/30 py-2.5 px-4 hidden">
-        <div class="max-w-7xl mx-auto flex items-center justify-between text-xs sm:text-sm">
-            <div class="flex items-center space-x-2 overflow-hidden">
-                <span class="bg-orange-500 text-slate-950 font-bold px-2 py-0.5 rounded text-[10px] uppercase tracking-wider animate-pulse flex-shrink-0">Booking Terbaru</span>
-                <span id="activeBookingTickerText" class="text-slate-200 font-medium truncate">Memuat informasi servis...</span>
-            </div>
-            <button onclick="app.switchTab('booking')" class="text-orange-400 hover:underline font-semibold flex-shrink-0 ml-4">Detail &rarr;</button>
-        </div>
-    </div>
+    <!-- Active Booking Ticker Banner removed -->
 
     <!-- Main Content Area -->
     <main class="flex-grow max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-8">
@@ -161,6 +173,34 @@
         <!-- TAB 1: HOME & VIDEO GALLERY -->
         <div id="tabHome" class="tab-content space-y-10">
             
+            <!-- Hero Banner with Mazda RX-7 Background -->
+            <section class="relative rounded-3xl overflow-hidden border border-slate-800 bg-slate-900 shadow-2xl">
+                <div class="absolute inset-0 z-0">
+                    <img src="https://images.unsplash.com/photo-1552519507-da3b142c6e3d?auto=format&fit=crop&w=1600&q=80" alt="Mazda RX-7 Sports Car" class="w-full h-full object-cover opacity-35 filter brightness-75">
+                    <div class="absolute inset-0 bg-gradient-to-r from-slate-950 via-slate-950/80 to-transparent"></div>
+                </div>
+                <div class="relative z-10 p-8 sm:p-12 md:p-16 max-w-2xl space-y-4">
+                    <div class="inline-flex items-center space-x-2 bg-orange-500/10 border border-orange-500/30 px-3 py-1.5 rounded-full text-xs font-semibold text-orange-400">
+                        <i class="fa-solid fa-wrench"></i>
+                        <span>Bengkel Spesialis Performa & Perawatan</span>
+                    </div>
+                    <h1 class="text-3xl sm:text-4xl md:text-5xl font-extrabold text-white tracking-tight leading-tight">
+                        3 GARAGE <span class="text-orange-500">Subaru & Mazda</span> Specialist
+                    </h1>
+                    <p class="text-slate-300 text-sm sm:text-base leading-relaxed">
+                        Pusat servis profesional, perawatan mesin, tune-up, dan penyediaan sparepart original berkualitas tinggi khusus kendaraan Jepang berkarakter tinggi.
+                    </p>
+                    <div class="pt-2 flex flex-wrap gap-3">
+                        <button onclick="app.switchTab('booking')" class="bg-blue-600 hover:bg-blue-500 text-white font-bold px-6 py-3 rounded-xl text-sm transition-all shadow-lg shadow-blue-600/30 flex items-center gap-2">
+                            <i class="fa-solid fa-calendar-check"></i> Booking Servis
+                        </button>
+                        <button onclick="app.switchTab('catalog')" class="bg-slate-900/90 hover:bg-slate-800 border border-slate-700 text-white font-bold px-6 py-3 rounded-xl text-sm transition-all flex items-center gap-2">
+                            <i class="fa-solid fa-box-archive"></i> Lihat Sparepart
+                        </button>
+                    </div>
+                </div>
+            </section>
+
             <!-- Admin Dashboard Panel for YouTube & Sparepart & Bookings -->
             <section id="adminPanel" class="hidden bg-slate-900/90 border border-slate-800 rounded-2xl p-6 sm:p-8 shadow-2xl relative overflow-hidden">
                 <div class="absolute top-0 right-0 w-96 h-96 bg-orange-600/5 rounded-full blur-3xl pointer-events-none"></div>
@@ -395,7 +435,7 @@
         <div class="max-w-7xl mx-auto px-4 flex flex-col md:flex-row items-center justify-between gap-4 text-center md:text-left">
             <div class="flex items-center space-x-3">
                 <div class="w-8 h-8 rounded-full overflow-hidden border border-orange-500">
-                    <img src="https://placehold.co/100x100/1e293b/ffffff?text=3G" alt="Logo" class="w-full h-full object-cover">
+                    <img src="logo.png" alt="Logo" class="w-full h-full object-cover" onerror="this.src='https://placehold.co/100x100/1e293b/ffffff?text=3G'">
                 </div>
                 <span class="text-sm font-bold text-white">3 GARAGE &bull; Subaru & Mazda Specialist</span>
             </div>
@@ -404,8 +444,9 @@
                 <a href="https://wa.me/62895392922023" target="_blank" class="hover:text-emerald-400 transition-colors"><i class="fa-brands fa-whatsapp text-lg"></i></a>
                 <a href="https://tiktok.com" target="_blank" class="hover:text-white transition-colors"><i class="fa-brands fa-tiktok text-lg"></i></a>
             </div>
-            <div class="text-xs text-slate-500">
-                &copy; 2026 3 GARAGE. All rights reserved.
+            <div class="text-xs text-slate-500 flex flex-col items-center md:items-end gap-1">
+                <span>&copy; 2026 3 GARAGE. All rights reserved.</span>
+                <span class="text-orange-400 font-semibold">Author: Nanda</span>
             </div>
         </div>
     </footer>
@@ -521,7 +562,7 @@
                     this.saveBookings();
                 }
 
-                this.render();
+                this.updateAdminUI();
             }
 
             saveVideos() { localStorage.setItem('vault_youtube_videos', JSON.stringify(this.videos)); }
@@ -608,14 +649,12 @@
             }
 
             updateAdminUI() {
-                const adminBtn = document.getElementById('adminBtn');
                 const logoutBtn = document.getElementById('logoutBtn');
                 const adminBadge = document.getElementById('adminBadge');
                 const adminPanel = document.getElementById('adminPanel');
                 const sidebarAdminBtn = document.getElementById('sidebarAdminBtn');
 
                 if (this.isAdmin) {
-                    adminBtn.classList.add('hidden');
                     logoutBtn.classList.remove('hidden');
                     logoutBtn.classList.add('flex');
                     adminBadge.classList.remove('hidden');
@@ -623,7 +662,6 @@
                     adminPanel.classList.remove('hidden');
                     sidebarAdminBtn.parentElement.classList.add('hidden');
                 } else {
-                    adminBtn.classList.remove('hidden');
                     logoutBtn.classList.add('hidden');
                     logoutBtn.classList.remove('flex');
                     adminBadge.classList.add('hidden');
@@ -926,13 +964,7 @@
                 const tickerText = document.getElementById('activeBookingTickerText');
                 const pubList = document.getElementById('publicBookingList');
 
-                if (this.bookings.length > 0) {
-                    const latest = this.bookings[0];
-                    banner.classList.remove('hidden');
-                    tickerText.textContent = `${latest.name} (${latest.vehicle} - ${latest.plat}) melakukan booking untuk ${latest.service} pada ${latest.date}`;
-                } else {
-                    banner.classList.add('hidden');
-                }
+                if (banner) banner.classList.add('hidden');
 
                 if (this.bookings.length === 0) {
                     pubList.innerHTML = '<p class="text-xs text-slate-500 italic">Belum ada data booking servis.</p>';
