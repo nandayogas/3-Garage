@@ -224,13 +224,16 @@
                                 <input type="text" id="partModel" placeholder="Model Kendaraan (Subaru / Mazda)" required
                                     class="w-full bg-slate-900 border border-slate-700 rounded-xl px-4 py-2.5 text-xs text-slate-100 focus:outline-none focus:border-blue-500">
                             </div>
-                            <div class="grid grid-cols-1 sm:grid-cols-3 gap-3">
+                            <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
                                 <input type="text" id="partPrice" placeholder="Harga (Contoh: Rp 750.000)" required
                                     class="w-full bg-slate-900 border border-slate-700 rounded-xl px-4 py-2.5 text-xs text-slate-100 focus:outline-none focus:border-blue-500">
                                 <input type="text" id="partStock" placeholder="Stok (Ready / 5 pcs)" required
                                     class="w-full bg-slate-900 border border-slate-700 rounded-xl px-4 py-2.5 text-xs text-slate-100 focus:outline-none focus:border-blue-500">
-                                <input type="url" id="partImage" placeholder="URL Gambar (Opsional)"
-                                    class="w-full bg-slate-900 border border-slate-700 rounded-xl px-4 py-2.5 text-xs text-slate-100 focus:outline-none focus:border-blue-500">
+                            </div>
+                            <div>
+                                <label class="block text-xs font-medium text-slate-400 mb-1">Pilih Gambar Sparepart dari Galeri / Perangkat</label>
+                                <input type="file" id="partImageFile" accept="image/*"
+                                    class="w-full bg-slate-900 border border-slate-700 rounded-xl px-4 py-2 text-xs text-slate-300 file:mr-4 file:py-1.5 file:px-3 file:rounded-lg file:border-0 file:text-xs file:font-semibold file:bg-blue-600 file:text-white hover:file:bg-blue-500 cursor-pointer">
                             </div>
                             <div class="flex justify-end space-x-2 pt-1">
                                 <button type="button" onclick="app.toggleAddPartForm()" class="px-3 py-1.5 bg-slate-800 text-slate-300 rounded-lg text-xs">Batal</button>
@@ -701,28 +704,37 @@
                 const model = document.getElementById('partModel').value.trim();
                 const price = document.getElementById('partPrice').value.trim();
                 const stock = document.getElementById('partStock').value.trim();
-                let image = document.getElementById('partImage').value.trim();
+                const fileInput = document.getElementById('partImageFile');
 
-                if (!image) {
-                    image = `https://placehold.co/400x300/1e293b/ffffff?text=${encodeURIComponent(name.substring(0, 15))}`;
-                }
+                const processPartSave = (imageUrl) => {
+                    const newPart = {
+                        id: 'part_' + Date.now(),
+                        name, model, price, stock,
+                        image: imageUrl || `https://placehold.co/400x300/1e293b/ffffff?text=${encodeURIComponent(name.substring(0, 15))}`,
+                        addedAt: new Date().toISOString()
+                    };
 
-                const newPart = {
-                    id: 'part_' + Date.now(),
-                    name, model, price, stock, image,
-                    addedAt: new Date().toISOString()
+                    this.parts.unshift(newPart);
+                    this.saveParts();
+                    document.getElementById('partName').value = '';
+                    document.getElementById('partModel').value = '';
+                    document.getElementById('partPrice').value = '';
+                    document.getElementById('partStock').value = '';
+                    fileInput.value = '';
+                    document.getElementById('addPartFormContainer').classList.add('hidden');
+                    this.render();
+                    this.showToast('Sparepart berhasil ditambahkan ke katalog!', 'success');
                 };
 
-                this.parts.unshift(newPart);
-                this.saveParts();
-                document.getElementById('partName').value = '';
-                document.getElementById('partModel').value = '';
-                document.getElementById('partPrice').value = '';
-                document.getElementById('partStock').value = '';
-                document.getElementById('partImage').value = '';
-                document.getElementById('addPartFormContainer').classList.add('hidden');
-                this.render();
-                this.showToast('Sparepart berhasil ditambahkan ke katalog!', 'success');
+                if (fileInput.files && fileInput.files[0]) {
+                    const reader = new FileReader();
+                    reader.onload = (uploadEvent) => {
+                        processPartSave(uploadEvent.target.result);
+                    };
+                    reader.readAsDataURL(fileInput.files[0]);
+                } else {
+                    processPartSave(null);
+                }
             }
 
             deletePart(id) {
