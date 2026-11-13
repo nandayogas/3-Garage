@@ -720,16 +720,19 @@
                     document.getElementById('partModel').value = '';
                     document.getElementById('partPrice').value = '';
                     document.getElementById('partStock').value = '';
-                    fileInput.value = '';
+                    if (fileInput) fileInput.value = '';
                     document.getElementById('addPartFormContainer').classList.add('hidden');
                     this.render();
                     this.showToast('Sparepart berhasil ditambahkan ke katalog!', 'success');
                 };
 
-                if (fileInput.files && fileInput.files[0]) {
+                if (fileInput && fileInput.files && fileInput.files[0]) {
                     const reader = new FileReader();
                     reader.onload = (uploadEvent) => {
                         processPartSave(uploadEvent.target.result);
+                    };
+                    reader.onerror = () => {
+                        processPartSave(null);
                     };
                     reader.readAsDataURL(fileInput.files[0]);
                 } else {
