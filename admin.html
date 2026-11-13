@@ -1,67 +1,131 @@
-<!doctype html>
-<html lang="id">
+<!DOCTYPE html>
+<html lang="id" class="scroll-smooth">
 <head>
-<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<meta name="theme-color" content="#090909"><meta name="description" content="3 GARAGE - Subaru & Mazda specialist.">
-<title>3 GARAGE — Subaru & Mazda Specialist</title><style>
-@import url('https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700;800;900&family=DM+Sans:wght@400;500;600;700&display=swap');
-:root{--bg:#090909;--panel:#141414;--line:#292929;--red:#e3262e;--white:#f4f4f2;--muted:#9a9a9a}*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--bg);color:var(--white);font-family:'DM Sans',sans-serif}a{color:inherit;text-decoration:none}.topbar{height:76px;display:flex;align-items:center;justify-content:space-between;padding:0 6%;background:#080808;position:sticky;top:0;z-index:10;border-bottom:1px solid #202020}.brand{display:flex;align-items:center;gap:10px;font-family:'Barlow Condensed';font-weight:900;font-size:27px;letter-spacing:1px}.brand-mark{background:var(--red);width:38px;height:38px;display:grid;place-items:center;font-size:29px;transform:skew(-8deg)}.brand small{display:block;font:600 8px 'DM Sans';letter-spacing:2px;color:#aaa;margin-top:-3px}.topbar nav{display:flex;gap:30px}.topbar nav a,.eyebrow,.hero-foot,.btn{font-size:10px;font-weight:700;letter-spacing:1.7px}.topbar nav a{color:#c5c5c5}.topbar nav a:hover,.admin-link:hover{color:var(--red)}.menu-toggle{display:none;background:none;border:0;color:white;font-size:26px}.hero{min-height:650px;height:calc(100vh - 76px);max-height:850px;position:relative;display:flex;align-items:center;padding:7% 10%;overflow:hidden;background:linear-gradient(90deg,#080808 0%,rgba(8,8,8,.88) 38%,rgba(8,8,8,.2) 100%),url('https://images.unsplash.com/photo-1492144534655-ae79c964c9d7?auto=format&fit=crop&w=2000&q=85') center/cover}.hero-shade{position:absolute;inset:0;background:linear-gradient(0deg,#090909 0%,transparent 24%,transparent 80%,rgba(0,0,0,.2))}.hero-content{position:relative;max-width:650px}.eyebrow{color:var(--red);margin:0 0 18px}.hero h1,h2{font:900 clamp(48px,8vw,100px)/.86 'Barlow Condensed';letter-spacing:-1px;margin:0}.hero h1 span,h2 span{color:var(--red)}.hero-copy{color:#c1c1c1;line-height:1.8;max-width:430px;margin:28px 0}.actions{display:flex;gap:12px;flex-wrap:wrap}.btn{min-height:48px;padding:0 22px;display:inline-flex;align-items:center;justify-content:center;gap:18px;border:1px solid transparent;cursor:pointer}.btn-red{background:var(--red);color:white}.btn-red:hover{background:#bd1720}.btn-outline{border-color:#777}.hero-foot{position:absolute;bottom:28px;left:10%;right:10%;display:flex;justify-content:space-between;color:#aaa;font-size:9px}.section{padding:105px 10%}.intro{display:grid;grid-template-columns:1fr 1fr;align-items:end;gap:40px;border-bottom:1px solid var(--line)}h2{font-size:clamp(43px,6vw,72px)}.muted{color:var(--muted);line-height:1.9;font-size:14px;max-width:440px}.section-head{display:flex;justify-content:space-between;align-items:end;gap:35px;margin-bottom:42px}.booking-section{background:#101010}.booking-card{display:grid;grid-template-columns:1fr 1fr;gap:18px;padding:28px;background:#171717;border:1px solid #2c2c2c}.field{display:flex;flex-direction:column;gap:9px}.field label{font-size:9px;color:#aaa;letter-spacing:1.5px;font-weight:700}.field input,.field select,.field textarea{background:#0c0c0c;border:1px solid #343434;color:white;padding:14px;font:14px 'DM Sans';border-radius:0;min-width:0}.field textarea{resize:vertical}.full{grid-column:1/-1}.parts-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}.part-card{background:#141414;border:1px solid #292929}.part-card img{width:100%;height:210px;object-fit:cover;background:#202020}.part-info{padding:18px}.part-info h3{font:700 24px 'Barlow Condensed';margin:0 0 8px}.part-info p{color:#999;font-size:12px;line-height:1.7;min-height:40px}.price{font-weight:700;color:white}.stock{font-size:10px;color:#aaa;margin:8px 0 15px}.part-card .btn{width:100%}.video-section{padding:100px 10%;background:#101010}.video-frame{aspect-ratio:16/9;background:#050505;border:1px solid #333;max-width:1000px;margin:auto}.video-frame iframe{width:100%;height:100%;border:0}.video-placeholder{height:100%;min-height:220px;display:grid;place-items:center;color:#555;font:700 30px 'Barlow Condensed';letter-spacing:5px}.contact-section{background:linear-gradient(120deg,#151515,#080808)}.contact-section h2{margin-bottom:28px}.socials{display:flex;gap:22px;flex-wrap:wrap;margin:28px 0}.socials a{font-size:11px;letter-spacing:1px;border-bottom:1px solid #555;padding-bottom:6px}footer{padding:28px 6%;display:flex;justify-content:space-between;align-items:center;gap:20px;border-top:1px solid #222;color:#888;font-size:9px;letter-spacing:1px}.admin-link{font-size:9px;color:#777}
-@media(max-width:760px){.topbar{height:66px;padding:0 5%}.menu-toggle{display:block}.topbar nav{display:none;position:absolute;top:66px;left:0;right:0;background:#101010;padding:22px 6%;flex-direction:column;gap:22px;border-bottom:1px solid #333}.topbar nav.open{display:flex}.hero{height:670px;min-height:570px;padding:12% 7%;background-position:60% center}.hero h1{font-size:64px}.hero-foot{left:7%;right:7%;font-size:7px}.section,.video-section{padding:75px 7%}.intro,.section-head{grid-template-columns:1fr;display:grid;gap:18px}.section-head{align-items:start}.booking-card{grid-template-columns:1fr;padding:18px}.full{grid-column:auto}.parts-grid{grid-template-columns:1fr 1fr;gap:10px}.part-card img{height:145px}.part-info{padding:12px}.part-info h3{font-size:20px}.part-info p{font-size:11px}.part-info .btn{padding:0 8px;font-size:8px}footer{padding:25px 6%;flex-wrap:wrap}footer>span{order:3;width:100%}}@media(max-width:390px){.parts-grid{grid-template-columns:1fr}.hero h1{font-size:55px}}
-
-.hidden{display:none!important}.part-edit .field{margin:10px 0}
-</style>
-</head>
-<body>
-<header class="topbar"><a class="brand" href="#home"><span class="brand-mark">3</span><span>GARAGE<small>SUBARU × MAZDA SPECIALIST</small></span></a>
-<button class="menu-toggle" id="menuToggle" aria-label="Buka menu">☰</button>
-<nav id="nav"><a href="#home">HOME</a><a href="#booking">BOOKING SERVICE</a><a href="#parts">SPAREPARTS</a><a href="#video">VIDEO</a><a href="#contact">CONTACT</a></nav></header>
-<main>
-<section class="hero" id="home"><div class="hero-shade"></div><div class="hero-content"><p class="eyebrow">PRECISION • PERFORMANCE • PASSION</p><h1>BUILT FOR<br><span>THE DRIVE.</span></h1><p class="hero-copy" id="heroText">Spesialis Subaru & Mazda. Perawatan, performa, dan sparepart dengan standar terbaik.</p><div class="actions"><a class="btn btn-red" href="#booking">BOOK SERVICE <b>↗</b></a><a class="btn btn-outline" href="#parts">EXPLORE PARTS</a></div></div><div class="hero-foot"><span>3 GARAGE / INDONESIA</span><span>SUBARU & MAZDA SPECIALIST</span></div></section>
-<section class="intro section"><div><p class="eyebrow">01 / THE GARAGE</p><h2>MORE THAN<br><span>A WORKSHOP.</span></h2></div><p class="muted">Tempat untuk pemilik Subaru dan Mazda yang mengutamakan detail, kualitas pengerjaan, dan pengalaman berkendara.</p></section>
-<section class="section booking-section" id="booking"><div class="section-head"><div><p class="eyebrow">02 / BOOKING</p><h2>BOOK YOUR<br><span>SERVICE.</span></h2></div><p class="muted">Pilih kendaraan dan kebutuhan servis. Booking akan diteruskan langsung ke WhatsApp 3 GARAGE.</p></div>
-<form id="bookingForm" class="booking-card"><div class="field"><label>BRAND</label><select id="carBrand"><option>Subaru</option><option>Mazda</option></select></div><div class="field"><label>MODEL</label><select id="carModel"></select></div><div class="field"><label>TAHUN KENDARAAN</label><input id="carYear" placeholder="Contoh: 2018" inputmode="numeric"></div><div class="field"><label>JENIS LAYANAN</label><select id="serviceType"><option>General Service</option><option>Engine / Transmission</option><option>Suspension & Brake</option><option>Electrical / Diagnostics</option><option>Performance Upgrade</option><option>Sparepart Inquiry</option><option>Other</option></select></div><div class="field full"><label>CATATAN</label><textarea id="bookingNote" rows="3" placeholder="Ceritakan keluhan atau kebutuhan kendaraan..."></textarea></div><button class="btn btn-red full" type="submit">CONTINUE TO WHATSAPP ↗</button></form></section>
-<section class="section parts-section" id="parts"><div class="section-head"><div><p class="eyebrow">03 / PARTS</p><h2>SELECTED<br><span>COMPONENTS.</span></h2></div><p class="muted">Pilihan sparepart dan aksesoris. Hubungi kami untuk ketersediaan dan pemasangan.</p></div><div class="parts-grid" id="partsGrid"><p class="muted">Memuat katalog...</p></div></section>
-<section class="video-section" id="video"><div class="section-head"><div><p class="eyebrow">04 / WATCH</p><h2>INSIDE THE<br><span>GARAGE.</span></h2></div><p class="muted">Update aktivitas, project, dan dunia 3 GARAGE.</p></div><div class="video-frame" id="videoFrame"><div class="video-placeholder">VIDEO 3 GARAGE</div></div></section>
-<section class="contact-section section" id="contact"><p class="eyebrow">05 / CONNECT</p><h2>LET'S TALK<br><span>ABOUT YOUR CAR.</span></h2><div class="socials" id="socials"></div><a class="btn btn-red" id="waContact" href="#" target="_blank" rel="noopener">WHATSAPP US ↗</a></section>
-
-<section id="adminPanel" class="section hidden" style="min-height:75vh"><p class="eyebrow">PRIVATE MANAGEMENT / 3 GARAGE</p><h2>ADMIN <span>PANEL.</span></h2>
-<div id="loginPanel" class="booking-card" style="margin-top:30px"><div class="field full"><label>USERNAME</label><input id="username"></div><div class="field full"><label>PASSWORD</label><input id="password" type="password"></div><button class="btn btn-red full" id="loginBtn" type="button">LOGIN ↗</button><p id="loginStatus" class="muted full"></p></div>
-<div id="dashboard" class="hidden"><div class="booking-card"><div class="field full"><label>HERO TEXT</label><textarea id="heroTextAdmin"></textarea></div><div class="field"><label>WHATSAPP</label><input id="whatsappAdmin"></div><div class="field"><label>YOUTUBE</label><input id="youtubeAdmin"></div><div class="field"><label>INSTAGRAM</label><input id="instagramAdmin"></div><div class="field"><label>TIKTOK</label><input id="tiktokAdmin"></div></div>
-<div class="booking-card" style="margin-top:20px"><h3 class="full">SPAREPART CATALOG</h3><div id="partsEditor" class="full"></div><div class="field"><label>PRODUCT NAME</label><input id="pTitle"></div><div class="field"><label>PRICE</label><input id="pPrice"></div><div class="field"><label>STOCK</label><input id="pStock"></div><div class="field"><label>IMAGE URL</label><input id="pImage"></div><div class="field full"><label>DESCRIPTION</label><textarea id="pDescription"></textarea></div><button class="btn btn-outline full" id="addPart" type="button">ADD PRODUCT</button></div>
-<div class="actions"><button class="btn btn-red" id="saveBtn" type="button">SAVE & PUBLISH ↗</button><button class="btn btn-outline" id="logoutBtn" type="button">LOG OUT</button></div><p id="saveStatus" class="muted"></p></div></section></main><footer><a class="brand" href="#home"><span class="brand-mark">3</span><span>GARAGE<small>SUBARU × MAZDA SPECIALIST</small></span></a><span>© <span id="year"></span> 3 GARAGE. ALL RIGHTS RESERVED.</span><a class="admin-link" href="#admin">ADMIN</a></footer>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Admin Dashboard — 3 GARAGE</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700;800;900&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 <script>
-
-const API_URL="PASTE_CLOUDFLARE_WORKER_URL_HERE";
-
-const DEFAULT_DATA={heroText:"Spesialis Subaru & Mazda. Perawatan, performa, dan sparepart dengan standar terbaik.",whatsapp:"62895392922023",youtube:"https://youtu.be/b1qI9p3F__Q",instagram:"https://www.instagram.com/3garageid/",tiktok:"https://tiktok.com/",parts:[]};
-let siteData={...DEFAULT_DATA};
-const models={Subaru:["BRZ","Forester","Impreza","Legacy","Outback","XV / Crosstrek","WRX","WRX STI"],Mazda:["Mazda 2","Mazda 3","Mazda 6","CX-3","CX-5","CX-8","MX-5","RX-8"]};
-function videoId(url){try{let u=new URL(url);if(u.hostname.includes("youtu.be"))return u.pathname.slice(1);if(u.searchParams.get("v"))return u.searchParams.get("v");let m=u.pathname.match(/\/embed\/([^/]+)/);return m?m[1]:""}catch{return ""}}
-function renderModels(){let brand=document.getElementById("carBrand"),model=document.getElementById("carModel");if(!brand||!model)return;model.innerHTML=models[brand.value].map(x=>`<option>${x}</option>`).join("")}
-function renderParts(){let el=document.getElementById("partsGrid");if(!el)return;el.innerHTML=siteData.parts?.length?siteData.parts.map(p=>`<article class="part-card">${p.image?`<img src="${esc(p.image)}" alt="${esc(p.title)}">`:`<div class="video-placeholder">3G</div>`}<div class="part-info"><h3>${esc(p.title)}</h3><p>${esc(p.description||"Hubungi kami untuk informasi produk.")}</p><div class="price">${esc(p.price||"Hubungi kami")}</div><div class="stock">STOK: ${esc(p.stock||"Tanya admin")}</div><a class="btn btn-outline" target="_blank" rel="noopener" href="${waLink("Halo 3 GARAGE, saya ingin tanya "+p.title)}">ASK VIA WHATSAPP ↗</a></div></article>`).join(""):`<p class="muted">Katalog sedang diperbarui. Hubungi kami untuk informasi sparepart.</p>`}
-function esc(s){return String(s??"").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]))}
-function waLink(msg){return `https://wa.me/${siteData.whatsapp||DEFAULT_DATA.whatsapp}?text=${encodeURIComponent(msg)}`}
-function render(){document.getElementById("heroText").textContent=siteData.heroText||DEFAULT_DATA.heroText;document.getElementById("waContact").href=waLink("Halo 3 GARAGE, saya ingin bertanya.");let links=[["INSTAGRAM",siteData.instagram],["TIKTOK",siteData.tiktok],["YOUTUBE",siteData.youtube]].filter(x=>x[1]);document.getElementById("socials").innerHTML=links.map(x=>`<a href="${esc(x[1])}" target="_blank" rel="noopener">${x[0]} ↗</a>`).join("");let id=videoId(siteData.youtube);document.getElementById("videoFrame").innerHTML=id?`<iframe src="https://www.youtube-nocookie.com/embed/${encodeURIComponent(id)}" title="3 GARAGE video" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>`:`<div class="video-placeholder">VIDEO 3 GARAGE</div>`;renderParts()}
-async function loadData(){if(!API_URL.startsWith("https://")){render();return}try{let r=await fetch(API_URL+"/api/data");if(r.ok)siteData={...DEFAULT_DATA,...await r.json()}}catch(e){console.warn("Data online belum tersedia",e)}render()}
-document.getElementById("menuToggle").addEventListener("click",()=>document.getElementById("nav").classList.toggle("open"));
-document.querySelectorAll("#nav a").forEach(a=>a.addEventListener("click",()=>document.getElementById("nav").classList.remove("open")));
-document.getElementById("carBrand").addEventListener("change",renderModels);
-document.getElementById("bookingForm").addEventListener("submit",e=>{e.preventDefault();let msg=`Halo 3 GARAGE, saya ingin booking service.%0A%0ABrand: ${document.getElementById("carBrand").value}%0AModel: ${document.getElementById("carModel").value}%0ATahun: ${document.getElementById("carYear").value||"-"}%0ALayanan: ${document.getElementById("serviceType").value}%0ACatatan: ${document.getElementById("bookingNote").value||"-"}`;window.open(waLink(decodeURIComponent(msg)),"_blank")});
-document.getElementById("year").textContent=new Date().getFullYear();renderModels();loadData();
-const adminDefaults={heroText:"Spesialis Subaru & Mazda. Perawatan, performa, dan sparepart dengan standar terbaik.",whatsapp:"62895392922023",youtube:"https://youtu.be/b1qI9p3F__Q",instagram:"https://www.instagram.com/3garageid/",tiktok:"https://tiktok.com/",parts:[]};
-let adminData={...adminDefaults},adminToken=localStorage.getItem("3g_admin_token")||"";
-const $=id=>document.getElementById(id),say=(id,msg)=>{if($(id))$(id).textContent=msg};
-async function api(path,opts={}){if(!API_URL.startsWith("https://"))throw Error("URL Cloudflare Worker belum dipasang di index.html.");let headers={"Content-Type":"application/json",...(opts.headers||{})};if(adminToken)headers.Authorization="Bearer "+adminToken;let r=await fetch(API_URL+path,{...opts,headers}),j=await r.json().catch(()=>({}));if(!r.ok)throw Error(j.error||"Permintaan gagal");return j}
-function adminView(on){$("adminPanel").classList.toggle("hidden",!on);document.querySelectorAll("main>section:not(#adminPanel)").forEach(s=>s.classList.toggle("hidden",on));window.scrollTo(0,0)}
-async function openDash(){try{adminData={...adminDefaults,...await api("/api/data")};$("loginPanel").classList.add("hidden");$("dashboard").classList.remove("hidden");$("heroTextAdmin").value=adminData.heroText||"";$("whatsappAdmin").value=adminData.whatsapp||"";$("youtubeAdmin").value=adminData.youtube||"";$("instagramAdmin").value=adminData.instagram||"";$("tiktokAdmin").value=adminData.tiktok||"";renderEditor()}catch(e){adminToken="";localStorage.removeItem("3g_admin_token");$("loginPanel").classList.remove("hidden");$("dashboard").classList.add("hidden");say("loginStatus",e.message)}}
-async function login(){say("loginStatus","Memeriksa login...");try{let x=await api("/api/login",{method:"POST",body:JSON.stringify({username:$("username").value,password:$("password").value})});adminToken=x.token;localStorage.setItem("3g_admin_token",adminToken);await openDash()}catch(e){say("loginStatus",e.message)}}
-function escAdmin(v){return String(v??"").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]))}
-function renderEditor(){$("partsEditor").innerHTML=(adminData.parts||[]).map((p,i)=>`<div class="part-edit"><div class="field"><label>NAME</label><input data-i="${i}" data-k="title" value="${escAdmin(p.title)}"></div><div class="field"><label>PRICE</label><input data-i="${i}" data-k="price" value="${escAdmin(p.price)}"></div><div class="field"><label>STOCK</label><input data-i="${i}" data-k="stock" value="${escAdmin(p.stock)}"></div><div class="field"><label>IMAGE URL</label><input data-i="${i}" data-k="image" value="${escAdmin(p.image)}"></div><div class="field"><label>DESCRIPTION</label><textarea data-i="${i}" data-k="description">${escAdmin(p.description)}</textarea></div><button class="btn btn-outline" type="button" data-del="${i}">DELETE</button></div>`).join("")||'<p class="muted">Belum ada produk.</p>';document.querySelectorAll("[data-del]").forEach(b=>b.onclick=()=>{adminData.parts.splice(+b.dataset.del,1);renderEditor()})}
-function collect(){document.querySelectorAll("[data-i][data-k]").forEach(e=>adminData.parts[+e.dataset.i][e.dataset.k]=e.value);adminData.heroText=$("heroTextAdmin").value;adminData.whatsapp=$("whatsappAdmin").value.replace(/\D/g,"");adminData.youtube=$("youtubeAdmin").value;adminData.instagram=$("instagramAdmin").value;adminData.tiktok=$("tiktokAdmin").value}
-$("loginBtn").onclick=login;$("password").addEventListener("keydown",e=>{if(e.key==="Enter")login()});
-$("logoutBtn").onclick=()=>{adminToken="";localStorage.removeItem("3g_admin_token");$("dashboard").classList.add("hidden");$("loginPanel").classList.remove("hidden");say("loginStatus","Kamu sudah keluar.")};
-$("addPart").onclick=()=>{let t=$("pTitle").value.trim();if(!t){alert("Isi nama produk dulu.");return}adminData.parts.push({title:t,price:$("pPrice").value,stock:$("pStock").value,image:$("pImage").value,description:$("pDescription").value});["pTitle","pPrice","pStock","pImage","pDescription"].forEach(x=>$(x).value="");renderEditor()};
-$("saveBtn").onclick=async()=>{collect();say("saveStatus","Menyimpan...");try{await api("/api/save",{method:"PUT",body:JSON.stringify(adminData)});siteData={...DEFAULT_DATA,...adminData};render();say("saveStatus","Berhasil disimpan. Tunggu Pages memperbarui website.")}catch(e){say("saveStatus","Gagal: "+e.message)}};
-function route(){let on=location.hash==="#admin";adminView(on);if(on&&adminToken)openDash()}window.addEventListener("hashchange",route);route();
-
-</script></body></html>
+tailwind.config = {
+theme: {
+extend: {
+colors: { garageRed: '#E31B23', garageDark: '#0A0A0A', garageCard: '#141414', garageBorder: '#262626' },
+fontFamily: { barlow: ['"Barlow Condensed"', 'sans-serif'], sans: ['"Plus Jakarta Sans"', 'sans-serif'] }
+}
+}
+}
+</script>
+<style>body { font-family: 'Plus Jakarta Sans', sans-serif; background-color: #0a0a0a; color: #f5f5f5; } .font-barlow { font-family: 'Barlow Condensed', sans-serif; }</style>
+</head>
+<body class="bg-garageDark text-white min-h-screen">
+<div id="customModal" class="fixed inset-0 z-50 flex items-center justify-center bg-black/80 backdrop-blur-sm hidden">
+<div class="bg-garageCard border border-garageBorder p-6 rounded-2xl max-w-sm w-full mx-4 shadow-2xl">
+<h3 id="modalTitle" class="font-barlow text-2xl font-bold text-center uppercase mb-2">Informasi</h3>
+<p id="modalMessage" class="text-gray-400 text-sm text-center mb-6"></p>
+<button onclick="document.getElementById('customModal').classList.add('hidden')" class="w-full py-3 bg-garageRed font-barlow text-lg font-bold uppercase rounded-xl">OK</button>
+</div>
+</div>
+​<header class="sticky top-0 z-40 bg-garageDark/95 border-b border-garageBorder">
+<div class="max-w-7xl mx-auto px-4 h-20 flex items-center justify-between">
+<span class="font-barlow text-2xl font-black uppercase">ADMIN PANEL 3 GARAGE</span>
+<a href="index.html" target="_blank" class="px-4 py-2 bg-garageCard border border-garageBorder rounded-xl text-xs font-bold font-barlow uppercase">Lihat Website ↗</a>
+</div>
+</header>
+​<div id="loginScreen" class="min-h-[80vh] flex items-center justify-center px-4">
+<div class="bg-garageCard border border-garageBorder p-8 rounded-2xl max-w-md w-full shadow-2xl space-y-4">
+<h3 class="font-barlow text-3xl font-black uppercase text-center">LOGIN ADMIN</h3>
+<input type="text" id="adminUser" placeholder="Username (admin3garage)" class="w-full bg-garageDark border border-garageBorder rounded-xl p-3 text-white">
+<input type="password" id="adminPass" placeholder="Password (garagejaya99)" class="w-full bg-garageDark border border-garageBorder rounded-xl p-3 text-white">
+<p id="loginErrorMsg" class="text-red-500 text-xs text-center hidden"></p>
+<button onclick="processLogin()" class="w-full py-3.5 bg-garageRed font-barlow text-lg font-bold uppercase rounded-xl shadow-lg">MASUK</button>
+</div>
+</div>
+​<div id="adminDashboard" class="hidden min-h-screen py-10 px-4 max-w-7xl mx-auto space-y-8">
+<div class="flex justify-between items-center bg-garageCard border border-garageBorder p-6 rounded-2xl">
+<h2 class="font-barlow text-3xl font-black uppercase">CONTROL CENTER</h2>
+<div class="flex gap-3">
+<button onclick="saveAdminData()" class="px-6 py-3 bg-garageRed font-barlow font-bold uppercase rounded-xl shadow-lg">Simpan Perubahan</button>
+<button onclick="logoutAdmin()" class="px-4 py-3 bg-garageDark border border-garageBorder font-barlow font-bold uppercase rounded-xl">Keluar</button>
+</div>
+</div>
+​<div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+<div class="bg-garageCard border border-garageBorder p-6 rounded-2xl space-y-4">
+<h3 class="font-barlow text-xl font-bold uppercase">Pengaturan Utama</h3>
+<textarea id="editHeroText" rows="3" class="w-full bg-garageDark border border-garageBorder rounded-xl p-3 text-xs text-white resize-none"></textarea>
+<input type="text" id="editWhatsapp" placeholder="WhatsApp" class="w-full bg-garageDark border border-garageBorder rounded-xl p-3 text-xs text-white">
+<input type="text" id="editYoutube" placeholder="YouTube URL" class="w-full bg-garageDark border border-garageBorder rounded-xl p-3 text-xs text-white">
+<input type="text" id="editInstagram" placeholder="Instagram URL" class="w-full bg-garageDark border border-garageBorder rounded-xl p-3 text-xs text-white">
+<input type="text" id="editTiktok" placeholder="TikTok URL" class="w-full bg-garageDark border border-garageBorder rounded-xl p-3 text-xs text-white">
+</div>
+​<div class="lg:col-span-2 bg-garageCard border border-garageBorder p-6 rounded-2xl space-y-6">
+<h3 class="font-barlow text-xl font-bold uppercase">Kelola Sparepart</h3>
+<div class="p-4 bg-garageDark border border-garageBorder rounded-xl space-y-3">
+<input type="text" id="newPartTitle" placeholder="Nama Produk" class="w-full bg-garageCard border border-garageBorder rounded-lg p-2.5 text-xs text-white">
+<div class="grid grid-cols-2 gap-3">
+<input type="text" id="newPartPrice" placeholder="Harga" class="bg-garageCard border border-garageBorder rounded-lg p-2.5 text-xs text-white">
+<input type="text" id="newPartStock" placeholder="Stok" class="bg-garageCard border border-garageBorder rounded-lg p-2.5 text-xs text-white">
+</div>
+<input type="text" id="newPartImage" placeholder="URL Gambar" class="w-full bg-garageCard border border-garageBorder rounded-lg p-2.5 text-xs text-white">
+<button onclick="addNewPart()" class="w-full py-2 bg-garageBorder hover:bg-garageRed font-barlow font-bold uppercase rounded-lg">Tambah Produk</button>
+</div>
+<div id="adminPartsList" class="space-y-3 max-h-[400px] overflow-y-auto"></div>
+</div>
+</div>
+</div>
+​<script>
+const DEFAULT_DATA = {
+heroText: "Spesialis Subaru & Mazda. Perawatan, performa, dan sparepart dengan standar kualitas tertinggi untuk kepuasan berkendara Anda.",
+whatsapp: "62895392922023",
+youtube: "https://youtu.be/b1qI9p3F__Q",
+instagram: "https://www.instagram.com/3garageid/",
+tiktok: "https://tiktok.com/@3garage",
+parts: [{ title: "Brake Pad Subaru", price: "Rp 1.250.000", stock: "Stok: 10", image: "", description: "Original" }]
+};
+let siteData = JSON.parse(localStorage.getItem("garage_site_data")) || DEFAULT_DATA;
+if (localStorage.getItem("garage_admin_logged") === "true") showDashboard();
+​function processLogin() {
+if (document.getElementById("adminUser").value === "admin3garage" && document.getElementById("adminPass").value === "garagejaya99") {
+localStorage.setItem("garage_admin_logged", "true");
+showDashboard();
+} else {
+let err = document.getElementById("loginErrorMsg");
+err.textContent = "Username/Password salah!"; err.classList.remove("hidden");
+}
+}
+function logoutAdmin() {
+localStorage.removeItem("garage_admin_logged");
+location.reload();
+}
+function showDashboard() {
+document.getElementById("loginScreen").classList.add("hidden");
+document.getElementById("adminDashboard").classList.remove("hidden");
+document.getElementById("editHeroText").value = siteData.heroText;
+document.getElementById("editWhatsapp").value = siteData.whatsapp;
+document.getElementById("editYoutube").value = siteData.youtube;
+document.getElementById("editInstagram").value = siteData.instagram;
+document.getElementById("editTiktok").value = siteData.tiktok;
+renderAdminParts();
+}
+function renderAdminParts() {
+document.getElementById("adminPartsList").innerHTML = siteData.parts.map((p, i) => <div class="p-3 bg-garageDark border border-garageBorder rounded-xl flex justify-between items-center"> <div><h5 class="font-barlow font-bold">${p.title}</h5><p class="text-xs text-garageRed">${p.price} • ${p.stock}</p></div> <button onclick="siteData.parts.splice(${i},1);renderAdminParts()" class="px-3 py-1.5 bg-red-500/20 text-red-500 rounded-lg text-xs font-bold">Hapus</button> </div>).join("");
+}
+function addNewPart() {
+let t = document.getElementById("newPartTitle").value.trim();
+if (!t) return alert("Nama produk wajib diisi!");
+siteData.parts.push({ title: t, price: document.getElementById("newPartPrice").value, stock: document.getElementById("newPartStock").value, image: document.getElementById("newPartImage").value });
+document.getElementById("newPartTitle").value = ""; renderAdminParts();
+}
+function saveAdminData() {
+siteData.heroText = document.getElementById("editHeroText").value;
+siteData.whatsapp = document.getElementById("editWhatsapp").value;
+siteData.youtube = document.getElementById("editYoutube").value;
+siteData.instagram = document.getElementById("editInstagram").value;
+siteData.tiktok = document.getElementById("editTiktok").value;
+localStorage.setItem("garage_site_data", JSON.stringify(siteData));
+alert("Data berhasil disimpan!");
+}
+</script>
+</body>
+</html>
