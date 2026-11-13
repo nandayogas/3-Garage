@@ -231,10 +231,10 @@
                                     class="w-full bg-slate-900 border border-slate-700 rounded-xl px-4 py-2.5 text-xs text-slate-100 focus:outline-none focus:border-blue-500">
                             </div>
                             <div>
-                                <label class="block text-xs font-semibold text-slate-400 uppercase tracking-wider mb-2">Foto / Background Sparepart dari Galeri HP/Laptop</label>
+                                <label class="block text-xs font-semibold text-slate-400 uppercase tracking-wider mb-2">Foto / Background Sparepart (Pilih dari Galeri HP/Laptop)</label>
                                 <input type="file" id="partImageFile" accept="image/*"
                                     class="w-full bg-slate-900 border border-slate-700 rounded-xl px-4 py-2 text-xs text-slate-300 file:mr-4 file:py-1.5 file:px-3 file:rounded-lg file:border-0 file:text-xs file:font-semibold file:bg-blue-600 file:text-white hover:file:bg-blue-500 cursor-pointer">
-                                <p class="text-[10px] text-slate-500 mt-1">Gambar akan otomatis dikompres ke ukuran optimal agar cepat dan mulus disimpan.</p>
+                                <p class="text-[10px] text-orange-400 mt-1"><i class="fa-solid fa-bolt mr-1"></i> Gambar dari galeri Anda akan otomatis dikompres & dikonversi agar pas dan tampil sempurna di katalog.</p>
                             </div>
                             <div class="flex justify-end space-x-2 pt-1">
                                 <button type="button" onclick="app.toggleAddPartForm()" class="px-3 py-1.5 bg-slate-800 text-slate-300 rounded-lg text-xs">Batal</button>
@@ -735,18 +735,17 @@
                             const ctx = canvas.getContext('2d');
                             ctx.drawImage(img, 0, 0, width, height);
 
-                            // Compressed Data URL JPEG
-                            const compressedDataUrl = canvas.toDataURL('image/jpeg', 0.8);
+                            // Otomatis kompres dan konversi ke data URL JPEG berkualitas tinggi
+                            const compressedDataUrl = canvas.toDataURL('image/jpeg', 0.85);
                             this.saveNewPart(name, model, price, stock, compressedDataUrl);
                         };
                         img.src = event.target.result;
                     };
                     reader.readAsDataURL(fileInput.files[0]);
                 } else {
-                    // Fallback to auto HD generated image if no file chosen
-                    const randomId = Math.floor(Math.random() * 1000);
-                    const hdImageUrl = `https://picsum.photos/seed/${encodeURIComponent(name + model + randomId)}/800/600`;
-                    this.saveNewPart(name, model, price, stock, hdImageUrl);
+                    // Fallback jika tidak memilih foto
+                    const fallbackUrl = `https://placehold.co/400x300/1e293b/ffffff?text=${encodeURIComponent(name)}`;
+                    this.saveNewPart(name, model, price, stock, fallbackUrl);
                 }
             }
 
