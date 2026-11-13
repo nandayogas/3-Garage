@@ -1110,7 +1110,7 @@ document.addEventListener("DOMContentLoaded", function() {
             // Nomor WhatsApp tujuan 
             const nomorWhatsApp = "62895392922023";
             
-            // Format pesan yang otomatis dikirim ke WhatsApp
+            // Format pesan
             const pesan = `Halo 3 Garage, saya ingin melakukan booking servis.%0A%0A` +
                           `*Nama:* ${nama}%0A` +
                           `*Mobil:* ${mobil}%0A` +
@@ -1118,11 +1118,13 @@ document.addEventListener("DOMContentLoaded", function() {
                           `*Tanggal:* ${tanggal}%0A%0A` +
                           `Mohon konfirmasi jadwalnya. Terima kasih!`;
             
-            // Membuka WhatsApp secara otomatis dengan pesan yang terisi
-            window.open(`https://wa.me/${nomorWhatsApp}?text=${pesan}`, '_blank');
+            // Alihkan langsung ke link WhatsApp agar tidak terblokir pop-up browser
+            window.location.href = `https://wa.me/${nomorWhatsApp}?text=${pesan}`;
         });
     }
 });
+</script>
+
 </script>
 
 </body>
